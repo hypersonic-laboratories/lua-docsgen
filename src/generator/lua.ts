@@ -1,40 +1,5 @@
-import { CodeGenerator, OPERATORS } from ".";
+import { CodeGenerator, OPERATORS, Type, ComplexType } from ".";
 import { Authority, DocClass, DocConstructor, DocDescriptive, DocEnumValue, DocEvent, DocFunction, DocParameter, DocReturn, Docs, DocTyped } from "../schema";
-
-
-interface Type {
-	name: string;
-	array: boolean;
-}
-
-class ComplexType {
-	public optional: boolean = false;
-	public typenames: Type[] = [];
-
-	private mapTypename(name: string) {
-		if (name.endsWith("Path")) {
-			return "string";
-		}
-
-		switch (name) {
-			case "float":
-				return "number";
-			default:
-				return name;
-		}
-	}
-
-	public toString = (): string => {
-		let ret = "";
-		this.typenames.forEach((type) => {
-			ret += this.mapTypename(type.name);
-			if (type.array) ret += "[]";
-			ret += "|";
-		});
-		ret = ret.slice(0, -1);
-		return ret;
-	};
-}
 
 export class LuaGenerator implements CodeGenerator {
     docsName: string = "annotations.lua";

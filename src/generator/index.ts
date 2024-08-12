@@ -1,5 +1,7 @@
 import { Authority, DocClass, DocEnumValue, Docs } from "../schema";
+
 import { LuaGenerator } from "./lua";
+import { YmlGenerator } from "./yml";
 
 export interface SupportedLanguages {
 	[key: string]: CodeGenerator;
@@ -7,6 +9,7 @@ export interface SupportedLanguages {
 
 export const SUPPORTED_LANGUAGES: SupportedLanguages = {
 	lua: new LuaGenerator(),
+	yml: new YmlGenerator(),
 }
 
 export const OPERATORS: { [key: string]: string } = {
@@ -29,6 +32,51 @@ export const OPERATORS: { [key: string]: string } = {
 	__call: "call",
 }
 
+export interface Type {
+	name: string;
+	array: boolean;
+}
+
+export class ComplexType {
+	public optional: boolean = false;
+	public typenames: Type[] = [];
+
+    protected static LUA_TYPE = ["string", "number", "boolean", "table", "function", "thread", "userdata"];
+
+	public static IsLuaType(type: string): boolean {
+		return ComplexType.LUA_TYPE.includes(type);
+	}
+
+	public containsLuaType() {
+		return this.typenames.some((type) => ComplexType.LUA_TYPE.includes(type.name));
+	}
+
+	protected mapTypename(name: string) {
+		if (name.endsWith("Path")) {
+			return "string";
+		}
+
+		switch (name) {
+			case "float":
+				return "number";
+			default:
+				return name;
+		}
+	}
+
+	public toString = (): string => {
+		let ret = "";
+		this.typenames.forEach((type) => {
+			ret += this.mapTypename(type.name);
+			if (type.array) ret += "[]";
+			ret += "|";
+		});
+		ret = ret.slice(0, -1);
+		return ret;
+	};
+
+
+}
 
 export interface CodeGenerator {
 	docsName: string;
