@@ -87,6 +87,7 @@ async function buildDocs() {
 	await fs.promises.mkdir("./docs");
 
 	for (const [name, gen] of Object.entries(SUPPORTED_LANGUAGES)) {
+		console.log(`Generating ${name} documentation...`);
 		const output = gen.generate(docs);
 		await fs.promises.writeFile(`./docs/${gen.docsName}`, output);
 	}
