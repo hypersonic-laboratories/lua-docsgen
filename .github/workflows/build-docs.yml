@@ -1,0 +1,47 @@
+name: Build Documentation
+on:
+  push:
+    branches:
+      - docgen
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  run-action:
+    name: Run action
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run compile
+
+      - name: Run docgen
+        id: docgen
+        uses: ./
+        with:
+          repository-owner: "hypersonic-laboratories"
+          repository-name: "lua-docsgen"
+          repository-branch: "docs"
+          github-token: ${{ github.token }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ github.token }}
+          publish_branch: docgen-output
+          publish_dir: ./docs
+          enable_jekyll: true
+        if: steps.docgen.outcome == 'success'

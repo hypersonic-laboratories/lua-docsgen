@@ -1,0 +1,36 @@
+{
+	"name": "lua-docgen",
+	"displayName": "HELIX Game Docgen GitHub Action",
+	"description": "Add HELIX Game support to sumneko's lua language server",
+	"version": "0.1.0",
+	"publisher": "HELIX Game",
+	"repository": "https://github.com/hypersonic-laboratories/lua-docsgen",
+	"icon": "https://cdn.prod.website-files.com/64526acacac2b6fd912b6ba6/6466d3f6f8cc50991aa65912_helix-fav.png",
+	"main": "./out/extension.js",
+	"contributes": {},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"start": "ts-node ./src/index.ts"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^4.31.1",
+		"@typescript-eslint/parser": "^4.31.1",
+		"eslint": "^7.32.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.1",
+		"ts-node": "^10.9.1",
+		"typescript": "^4.4.3"
+	},
+	"dependencies": {
+		"@actions/core": "^1.9.0",
+		"@actions/github": "^5.0.3",
+		"axios": "^0.27.2",
+		"typescript-eslint": "^0.0.1-alpha.0"
+	}
+}

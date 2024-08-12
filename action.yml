@@ -1,0 +1,21 @@
+name: HELIX Lua Docgen
+author: HELIX Game
+description: GitHub action to build EmmyLua annotations from the HELIX Game JSON documentation
+
+inputs:
+  repository-owner:
+    description: Name of the user that owns the repository (as displayed in the URL)
+    required: true
+  repository-name:
+    description: Name of the repository
+    required: true
+  repository-branch:
+    description: Branch to get the docs from
+    required: true
+  github-token:
+    description: GitHub access token
+    required: true
+
+runs:
+  using: "node16"
+  main: "out/index.js"
