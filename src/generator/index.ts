@@ -1,12 +1,12 @@
 import { Authority, DocClass, DocEnumValue, Docs } from "../schema";
-export * from "./lua";
+import { LuaGenerator } from "./lua";
 
 export interface SupportedLanguages {
 	[key: string]: CodeGenerator;
 }
 
 export const SUPPORTED_LANGUAGES: SupportedLanguages = {
-	lua: require("./lua").default(),
+	lua: new LuaGenerator(),
 }
 
 export const OPERATORS: { [key: string]: string } = {
