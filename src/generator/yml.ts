@@ -156,7 +156,7 @@ export class YmlGenerator implements CodeGenerator {
                     cls.name !== "Events"
                 )
                     return;
-                functions += YmlGenerator.generateFunction(fun, `${cls.name}:`);
+                functions += YmlGenerator.generateFunction(fun, ``);
             });
         }
 
@@ -168,10 +168,10 @@ export class YmlGenerator implements CodeGenerator {
         let fields = "";
         if (cls.properties !== undefined) {
             cls.properties.forEach((prop) => {
-                fields += `\n    ${cls.name}.${prop.name}:\n      property: read-only`;
+                fields += `\n    ${prop.name}:\n      property: read-only`;
             });
         }
-        return `\n    ${cls.name}:${fields}${functions}${events}`;
+        return `\n  ${cls.name}:${fields}${functions}${events}`;
     }
 
     generateClass(classes: { [key: string]: DocClass; }, cls: DocClass): string {
