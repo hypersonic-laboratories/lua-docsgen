@@ -108,7 +108,11 @@ export class YmlGenerator implements CodeGenerator {
             output += this.generateEnum(name, values);
         });
         Object.entries(docs.classes).forEach(([_, cls]) => {
-            output += this.generateClass(docs.classes, cls);
+            output += this.generateStaticClass(docs.classes, cls);
+        });
+        output += "\nstructs:";
+        Object.entries(docs.classes).forEach(([_, cls]) => {
+            output += this.generateStaticClass(docs.classes, cls);
         });
         return output;
     }
@@ -157,13 +161,13 @@ export class YmlGenerator implements CodeGenerator {
 
         let events = "";
         if (cls.events !== undefined && !cls.staticClass) {
-            events = `\n      Subscribe:\n    args:\n      - type: string\n      - type: function\n      Unsubscribe:\n    args:\n      - type: string\n      - type: function`;
+            events = `\n    Subscribe:\n      args:\n        - type: string\n        - type: function\n    Unsubscribe:\n      args:\n        - type: string\n        - type: function`;
         }
 
         let fields = "";
         if (cls.properties !== undefined) {
             cls.properties.forEach((prop) => {
-                fields += `\n      ${cls.name}.${prop.name}:\n        property: read-only`;
+                fields += `\n    ${cls.name}.${prop.name}:\n      property: read-only`;
             });
         }
         return `\n    ${cls.name}:${fields}${functions}${events}`;
@@ -176,7 +180,7 @@ export class YmlGenerator implements CodeGenerator {
     generateEnum(name: string, values: DocEnumValue[]): string {
         let vaulesString = "";
         values.forEach((value) => {
-            vaulesString += `  ${value.key}.${value.value}:\n    property: read-only\n`;
+            vaulesString += `  ${name}.${value.key}:\n    property: read-only\n`;
         });
         return vaulesString;
     }
