@@ -113,7 +113,7 @@ export class YmlGenerator implements CodeGenerator {
         });
         output += "\nstructs:";
         Object.entries(docs.classes).forEach(([_, cls]) => {
-            output += this.generateStaticClass(docs.classes, cls);
+            output += this.generateInstanceClass(docs.classes, cls);
         });
         return output;
     }
