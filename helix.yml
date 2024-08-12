@@ -1,0 +1,682 @@
+---
+base: lua52
+name: helix
+globals:
+  None.0:
+    property: read-only
+  ADS.1:
+    property: read-only
+  ZoomedZoom.2:
+    property: read-only
+  Zoomed.3:
+    property: read-only
+  ZoomedFar.4:
+    property: read-only
+  FullBody.0:
+    property: read-only
+  UpperBody.1:
+    property: read-only
+  Map.2:
+    property: read-only
+  StaticMesh.4:
+    property: read-only
+  SkeletalMesh.8:
+    property: read-only
+  Sound.16:
+    property: read-only
+  Animation.32:
+    property: read-only
+  Particle.64:
+    property: read-only
+  Material.128:
+    property: read-only
+  Blueprint.256:
+    property: read-only
+  KeepRelative.0:
+    property: read-only
+  KeepWorld.1:
+    property: read-only
+  SnapToTarget.2:
+    property: read-only
+  Linear.0:
+    property: read-only
+  Logarithmic.1:
+    property: read-only
+  Inverse.2:
+    property: read-only
+  LogReverse.3:
+    property: read-only
+  NaturalSound.4:
+    property: read-only
+  Opaque.0:
+    property: read-only
+  Masked.1:
+    property: read-only
+  Translucent.2:
+    property: read-only
+  Additive.3:
+    property: read-only
+  Modulate.4:
+    property: read-only
+  MaskedDistanceField.5:
+    property: read-only
+  MaskedDistanceFieldShadowed.6:
+    property: read-only
+  TranslucentDistanceField.7:
+    property: read-only
+  TranslucentDistanceFieldShadowed.8:
+    property: read-only
+  AlphaComposite.9:
+    property: read-only
+  AlphaHoldout.10:
+    property: read-only
+  AlphaBlend.11:
+    property: read-only
+  TranslucentAlphaOnly.12:
+    property: read-only
+  TranslucentAlphaOnlyWriteAlpha.13:
+    property: read-only
+  FPSTPS.0:
+    property: read-only
+  FPSOnly.1:
+    property: read-only
+  TPSOnly.2:
+    property: read-only
+  Auto.0:
+    property: read-only
+  Disabled.1:
+    property: read-only
+  Enabled.2:
+    property: read-only
+  WorldStatic.1 << 0:
+    property: read-only
+  WorldDynamic.1 << 1:
+    property: read-only
+  Pawn.1 << 2:
+    property: read-only
+  PhysicsBody.1 << 5:
+    property: read-only
+  Mesh.1 << 17:
+    property: read-only
+  Water.1 << 19:
+    property: read-only
+  Foliage.1 << 20:
+    property: read-only
+  Vehicle.1 << 22:
+    property: read-only
+  Normal.0:
+    property: read-only
+  StaticOnly.1:
+    property: read-only
+  NoCollision.2:
+    property: read-only
+  IgnoreOnlyPawn.3:
+    property: read-only
+  Auto.4:
+    property: read-only
+  None.0:
+    property: read-only
+  Default.1:
+    property: read-only
+  TextEditBeam.2:
+    property: read-only
+  ResizeLeftRight.3:
+    property: read-only
+  ResizeUpDown.4:
+    property: read-only
+  ResizeSouthEast.5:
+    property: read-only
+  ResizeSouthWest.6:
+    property: read-only
+  CardinalCross.7:
+    property: read-only
+  Crosshairs.8:
+    property: read-only
+  Hand.9:
+    property: read-only
+  GrabHand.10:
+    property: read-only
+  GrabHandClosed.11:
+    property: read-only
+  SlashedCircle.12:
+    property: read-only
+  EyeDropper.13:
+    property: read-only
+  Free.0:
+    property: read-only
+  Limited.1:
+    property: read-only
+  Locked.2:
+    property: read-only
+  Shot.0:
+    property: read-only
+  Explosion.1:
+    property: read-only
+  Punch.2:
+    property: read-only
+  Fall.3:
+    property: read-only
+  RunOverProp.4:
+    property: read-only
+  RunOverVehicle.5:
+    property: read-only
+  Melee.6:
+    property: read-only
+  Unknown.7:
+    property: read-only
+  SQLite.0:
+    property: read-only
+  MySQL.1:
+    property: read-only
+  PostgreSQL.2:
+    property: read-only
+  None.0:
+    property: read-only
+  Jumping.1:
+    property: read-only
+  Climbing.2:
+    property: read-only
+  Vaulting.3:
+    property: read-only
+  Falling.4:
+    property: read-only
+  HighFalling.5:
+    property: read-only
+  Parachuting.6:
+    property: read-only
+  SkyDiving.7:
+    property: read-only
+  Roboto.0:
+    property: read-only
+  GothicA1.1:
+    property: read-only
+  PoiretOne.2:
+    property: read-only
+  Oswald.3:
+    property: read-only
+  RobotoMono.4:
+    property: read-only
+  OpenSans.5:
+    property: read-only
+  None.0:
+    property: read-only
+  Walking.1:
+    property: read-only
+  Sprinting.2:
+    property: read-only
+  Disabled.0:
+    property: read-only
+  Auto.1:
+    property: read-only
+  Enabled.2:
+    property: read-only
+  Always.0:
+    property: read-only
+  OnlyHidden.1:
+    property: read-only
+  OnlyVisible.2:
+    property: read-only
+  SingleHandedWeapon.0:
+    property: read-only
+  DoubleHandedWeapon.1:
+    property: read-only
+  SingleHandedMelee.2:
+    property: read-only
+  DoubleHandedMelee.3:
+    property: read-only
+  Throwable.4:
+    property: read-only
+  Torch.5:
+    property: read-only
+  Barrel.6:
+    property: read-only
+  Box.7:
+    property: read-only
+  JPEG.0:
+    property: read-only
+  PNG.1:
+    property: read-only
+  BMP.2:
+    property: read-only
+  Pressed.0:
+    property: read-only
+  Released.1:
+    property: read-only
+  None.0:
+    property: read-only
+  LeftShiftDown.1 << 0:
+    property: read-only
+  RightShiftDown.1 << 1:
+    property: read-only
+  LeftControlDown.1 << 2:
+    property: read-only
+  RightControlDown.1 << 3:
+    property: read-only
+  LeftAltDown.1 << 4:
+    property: read-only
+  RightAltDown.1 << 5:
+    property: read-only
+  LeftCommandDown.1 << 6:
+    property: read-only
+  RightCommandDown.1 << 7:
+    property: read-only
+  CapsLocked.1 << 8:
+    property: read-only
+  None.0:
+    property: read-only
+  Arrow_Star.1:
+    property: read-only
+  Arrow_Up.2:
+    property: read-only
+  Beam_01.3:
+    property: read-only
+  Beam_02.4:
+    property: read-only
+  Beam_03.5:
+    property: read-only
+  Beam_04.6:
+    property: read-only
+  Beam_05.7:
+    property: read-only
+  Beam_06.8:
+    property: read-only
+  Beam_07.9:
+    property: read-only
+  Beam_08.10:
+    property: read-only
+  Beam_LED_01.11:
+    property: read-only
+  Beam_LED_02.12:
+    property: read-only
+  Beam_LED_03.13:
+    property: read-only
+  Beam_LED_04.14:
+    property: read-only
+  Beam_LED_05.15:
+    property: read-only
+  Beam_LED_06.16:
+    property: read-only
+  Beam_LED_07.17:
+    property: read-only
+  Bow.18:
+    property: read-only
+  Capped_01.19:
+    property: read-only
+  Capped_02.20:
+    property: read-only
+  Shattered_01.21:
+    property: read-only
+  Shattered_02.22:
+    property: read-only
+  Shattered_03.23:
+    property: read-only
+  Shattered_04.24:
+    property: read-only
+  Shattered_05.25:
+    property: read-only
+  SpotLight_01.26:
+    property: read-only
+  SpotLight_02.27:
+    property: read-only
+  SpotLight_03.28:
+    property: read-only
+  SpotLight_04.29:
+    property: read-only
+  Spreadout_01.30:
+    property: read-only
+  Spreadout_02.31:
+    property: read-only
+  Spreadout_03.32:
+    property: read-only
+  Spreadout_04.33:
+    property: read-only
+  Star_Bow.34:
+    property: read-only
+  Star_Burst_01.35:
+    property: read-only
+  Star_Burst_02.36:
+    property: read-only
+  Star_Burst_03.37:
+    property: read-only
+  Star_Burst_04.38:
+    property: read-only
+  Star_Burst_05.39:
+    property: read-only
+  Star_Burst_06.40:
+    property: read-only
+  Star_Burst_07.41:
+    property: read-only
+  Star_Burst_08.42:
+    property: read-only
+  Star_X_01.43:
+    property: read-only
+  Star_X_02.44:
+    property: read-only
+  Wall_Boomerang.45:
+    property: read-only
+  Wall_Inverted_V.46:
+    property: read-only
+  Wall_Star_T.47:
+    property: read-only
+  Wing_6.48:
+    property: read-only
+  Wing_V_01.49:
+    property: read-only
+  Wing_V_02.50:
+    property: read-only
+  Display.0:
+    property: read-only
+  Warning.1:
+    property: read-only
+  Error.2:
+    property: read-only
+  Debug.3:
+    property: read-only
+  Verbose.4:
+    property: read-only
+  Scripting.5:
+    property: read-only
+  ScriptingWarn.6:
+    property: read-only
+  ScriptingError.7:
+    property: read-only
+  Chat.8:
+    property: read-only
+  WebUI.9:
+    property: read-only
+  Success.10:
+    property: read-only
+  Fatal.11:
+    property: read-only
+  Point.0:
+    property: read-only
+  Spot.1:
+    property: read-only
+  React.2:
+    property: read-only
+  Border.0:
+    property: read-only
+  Button.1:
+    property: read-only
+  CheckBox.2:
+    property: read-only
+  Image.3:
+    property: read-only
+  ProgressBar.4:
+    property: read-only
+  RichTextBlock.5:
+    property: read-only
+  Slider.6:
+    property: read-only
+  Text.7:
+    property: read-only
+  ComboBox.8:
+    property: read-only
+  EditableText.9:
+    property: read-only
+  EditableTextMultiLine.10:
+    property: read-only
+  SpinBox.11:
+    property: read-only
+  TextBox.12:
+    property: read-only
+  TextBoxMultiLine.13:
+    property: read-only
+  CanvasPanel.14:
+    property: read-only
+  GridPanel.15:
+    property: read-only
+  HorizontalBox.16:
+    property: read-only
+  Overlay.17:
+    property: read-only
+  ScaleBox.18:
+    property: read-only
+  ScrollBox.19:
+    property: read-only
+  SizeBox.20:
+    property: read-only
+  UniformGridPanel.21:
+    property: read-only
+  VerticalBox.22:
+    property: read-only
+  WrapBox.23:
+    property: read-only
+  BackgroundBlur.24:
+    property: read-only
+  Script.0:
+    property: read-only
+  GameMode.1:
+    property: read-only
+  LoadingScreen.2:
+    property: read-only
+  Map.4:
+    property: read-only
+  VolumetricClouds.0:
+    property: read-only
+  StaticClouds.1:
+    property: read-only
+  DynamicClouds2D.2:
+    property: read-only
+  NoClouds.3:
+    property: read-only
+  VolumetricAurora.4:
+    property: read-only
+  Space.5:
+    property: read-only
+  SFX.0:
+    property: read-only
+  Music.1:
+    property: read-only
+  UI.2:
+    property: read-only
+  Default.0:
+    property: read-only
+  Forever.1:
+    property: read-only
+  Never.2:
+    property: read-only
+  None.0:
+    property: read-only
+  Standing.1:
+    property: read-only
+  Crouching.2:
+    property: read-only
+  Proning.3:
+    property: read-only
+  SingleAngle.0:
+    property: read-only
+  AngleRatio.1:
+    property: read-only
+  Ackermann.2:
+    property: read-only
+  Default.0:
+    property: read-only
+  Carpet.1:
+    property: read-only
+  Concrete.2:
+    property: read-only
+  Grass.3:
+    property: read-only
+  Gravel.4:
+    property: read-only
+  Ground.5:
+    property: read-only
+  MetalLight.6:
+    property: read-only
+  Plastic.7:
+    property: read-only
+  Sand.8:
+    property: read-only
+  Snow.9:
+    property: read-only
+  Water.10:
+    property: read-only
+  WoodLight.11:
+    property: read-only
+  Flesh.12:
+    property: read-only
+  MetalHeavy.13:
+    property: read-only
+  WoodHeavy.14:
+    property: read-only
+  Ice.15:
+    property: read-only
+  Mud.16:
+    property: read-only
+  Rock.17:
+    property: read-only
+  Thump.18:
+    property: read-only
+  Glass.19:
+    property: read-only
+  Rubber.20:
+    property: read-only
+  Air.21:
+    property: read-only
+  None.0:
+    property: read-only
+  Surface.1:
+    property: read-only
+  Underwater.2:
+    property: read-only
+  Unaligned.0:
+    property: read-only
+  AlignCameraRotation.1:
+    property: read-only
+  FaceCamera.2:
+    property: read-only
+  Linear.0:
+    property: read-only
+  HalfCircle.1:
+    property: read-only
+  Convex.2:
+    property: read-only
+  Concave.3:
+    property: read-only
+  OneStep.4:
+    property: read-only
+  TwoSteps.5:
+    property: read-only
+  Engraved.6:
+    property: read-only
+  Left.0:
+    property: read-only
+  Center.1:
+    property: read-only
+  Right.2:
+    property: read-only
+  Top.0:
+    property: read-only
+  Center.1:
+    property: read-only
+  Bottom.2:
+    property: read-only
+  QuadTop.3:
+    property: read-only
+  Sphere.0:
+    property: read-only
+  Box.1:
+    property: read-only
+  DrawDebug.1 << 0:
+    property: read-only
+  TraceComplex.1 << 1:
+    property: read-only
+  ReturnPhysicalMaterial.1 << 2:
+    property: read-only
+  ReturnEntity.1 << 3:
+    property: read-only
+  ReturnNames.1 << 4:
+    property: read-only
+  ReturnUV.1 << 5:
+    property: read-only
+  FPS.0:
+    property: read-only
+  TPS1.1:
+    property: read-only
+  TPS2.2:
+    property: read-only
+  TPS3.3:
+    property: read-only
+  TopDown.4:
+    property: read-only
+  Local.0:
+    property: read-only
+  Global.1:
+    property: read-only
+  Muted.2:
+    property: read-only
+  ClearSkies.1:
+    property: read-only
+  Cloudy.2:
+    property: read-only
+  Foggy.3:
+    property: read-only
+  Overcast.4:
+    property: read-only
+  PartlyCloudy.5:
+    property: read-only
+  Rain.6:
+    property: read-only
+  RainLight.7:
+    property: read-only
+  RainThunderstorm.8:
+    property: read-only
+  SandDustCalm.9:
+    property: read-only
+  SandDustStorm.10:
+    property: read-only
+  Snow.11:
+    property: read-only
+  SnowBlizzard.12:
+    property: read-only
+  SnowLight.13:
+    property: read-only
+  None.0:
+    property: read-only
+  CapsLockOn.1 << 0:
+    property: read-only
+  ShiftDown.1 << 1:
+    property: read-only
+  ControlDown.1 << 2:
+    property: read-only
+  AltDown.1 << 3:
+    property: read-only
+  LeftMouseButton.1 << 4:
+    property: read-only
+  MiddleMouseButton.1 << 5:
+    property: read-only
+  RightMouseButton.1 << 6:
+    property: read-only
+  CommandDown.1 << 7:
+    property: read-only
+  NumLockOn.1 << 8:
+    property: read-only
+  IsKeyPad.1 << 9:
+    property: read-only
+  IsLeft.1 << 10:
+    property: read-only
+  IsRight.1 << 11:
+    property: read-only
+  AltgrDown.1 << 12:
+    property: read-only
+  IsRepeat.1 << 13:
+    property: read-only
+  Down.0:
+    property: read-only
+  Up.1:
+    property: read-only
+  Char.2:
+    property: read-only
+  Left.0:
+    property: read-only
+  Right.1:
+    property: read-only
+  Middle.2:
+    property: read-only
+  Hidden.0:
+    property: read-only
+  Visible.1:
+    property: read-only
+  VisibleNotHitTestable.2:
+    property: read-only
