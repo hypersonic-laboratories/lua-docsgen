@@ -1,0 +1,90 @@
+{
+	"name": "Matchmaking",
+	"description": "Start matchmaking for any world.",
+	"authority": "server",
+	"static_functions": [
+		{
+			"name": "JoinMatchmaking",
+			"description": "Join matchmaking for any world",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "world_name",
+					"description": "World name to join"
+				},
+				{
+					"type": "Player",
+					"name": "player",
+					"description": "Player joining matchmaking"
+				},
+				{
+					"type": "integer",
+					"name": "min_players",
+					"description": "Minimum players to start"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Matchmaking callback in the format (success, match_id, current_players, min_players)"
+				}
+			]
+		},
+		{
+			"name": "CheckMatchmakingStatus",
+			"description": "Check matchmaking status",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "match_id",
+					"description": "Matchmaking ID"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Matchmaking status callback in the format (success, match_id, current_players, min_players, match_status, addr_to_connect)"
+				}
+			]
+		},
+		{
+			"name": "LeaveMatchmaking",
+			"description": "Remove player from specified matchmaking",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "match_id",
+					"description": "Matchmaking ID"
+				},
+				{
+					"type": "Player",
+					"name": "player",
+					"description": "Player to be removed from matchmaking"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Matchmaking status callback in the format (success)"
+				}
+			]
+		},
+		{
+			"name": "LeaveAllMatchmaking",
+			"description": "Remove player from specified matchmaking",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "Player",
+					"name": "player",
+					"description": "Player to be removed from matchmaking"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Matchmaking status callback in the format (success)"
+				}
+			]
+		}
+	]
+}

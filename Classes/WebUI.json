@@ -1,0 +1,403 @@
+{
+	"name": "WebUI",
+	"description": "Class for spawning a dynamic Web Browser.",
+	"authority": "client",
+	"inheritance": [
+		"Entity"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "name",
+					"description": "Used for debugging logs"
+				},
+				{
+					"type": "HTMLPath",
+					"name": "path",
+					"description": "Web URL or <a href='#html-path-searchers'>HTML File Path</a> as <code>file://my_file.html</code>"
+				},
+				{
+					"type": "WidgetVisibility",
+					"name": "visibility",
+					"default": "WidgetVisibility.Visible",
+					"description": "if WebUI is visible on screen"
+				},
+				{
+					"type": "boolean",
+					"name": "is_transparent",
+					"default": "true",
+					"description": "if WebUI background is transparent"
+				},
+				{
+					"type": "boolean",
+					"name": "auto_resize",
+					"default": "true",
+					"description": "if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI)"
+				},
+				{
+					"type": "integer",
+					"name": "width",
+					"default": "0",
+					"description": "size of the WebUI width when you are not using auto_resize"
+				},
+				{
+					"type": "integer",
+					"name": "height",
+					"default": "0",
+					"description": "size of the WebUI height when you are not using auto_resize"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"name": "BringToFront",
+			"authority": "client",
+			"description": "Puts this WebUI in the front of all WebUIs and Widgets"
+		},
+		{
+			"name": "CallEvent",
+			"authority": "client",
+			"description": "Calls an Event on the Browser's JavaScript",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": "The Event Name to trigger the event"
+				},
+				{
+					"type": "any",
+					"name": "args...",
+					"description": "Arguments to pass to the event"
+				}
+			]
+		},
+		{
+			"name": "LoadURL",
+			"authority": "client",
+			"description": "Loads a new File/URL in this Browser",
+			"parameters": [
+				{
+					"type": "HTMLPath",
+					"name": "url"
+				}
+			]
+		},
+		{
+			"name": "LoadHTML",
+			"authority": "client",
+			"description": "Loads a pure HTML in this Browser",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "html"
+				}
+			]
+		},
+		{
+			"name": "GetName",
+			"authority": "client",
+			"description": "Gets this WebUI name",
+			"return": [
+				{
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "ExecuteJavaScript",
+			"authority": "client",
+			"description": "Executes a JavaScript code in the Browser",
+			"description_long": "Executes a JavaScript code in the Browser<br/>Note: This method is experimental and should be used cautiously. Events are still the preferred way of communicating between Packages and WebUI.",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "javascript_code"
+				}
+			]
+		},
+		{
+			"name": "SetFocus",
+			"authority": "client",
+			"description": "Enables the focus on this browser (i.e. can receive Keyboard input and will trigger input events)",
+			"description_long": "Enables the focus on this browser (i.e. can receive Keyboard input and will trigger input events<br/>Note: Only one browser can have focus per time."
+		},
+		{
+			"name": "RemoveFocus",
+			"authority": "client",
+			"description": "Removes the focus from this WebUI (and sets it back to game viewport)",
+			"description_long": "Removes the focus from this WebUI (and sets it back to game viewport)<br/>You MUST call this after you don't need keyboard input anymore"
+		},
+		{
+			"name": "SetLayout",
+			"authority": "client",
+			"description": "Sets the Layout as Canvas on Screen",
+			"description_long": "Sets the Layout as Canvas on Screen. <strong>Anchors</strong>:<br/><br/><img src='/img/docs/anchors.webp' />",
+			"parameters": [
+				{
+					"type": "Vector2D",
+					"name": "screen_location/offset_left_top",
+					"description": "",
+					"default": "Vector(0, 0)"
+				},
+				{
+					"type": "Vector2D",
+					"name": "size/offset_right_bottom",
+					"description": "",
+					"default": "Vector(0, 0)"
+				},
+				{
+					"type": "Vector2D",
+					"name": "anchors_min",
+					"description": "",
+					"default": "Vector(0, 0)"
+				},
+				{
+					"type": "Vector2D",
+					"name": "anchors_max",
+					"description": "",
+					"default": "Vector(1, 1)"
+				},
+				{
+					"type": "Vector2D",
+					"name": "alignment",
+					"description": "",
+					"default": "Vector(0.5, 0.5)"
+				}
+			]
+		},
+		{
+			"name": "SetFreeze",
+			"authority": "client",
+			"description": "Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "freeze"
+				}
+			]
+		},
+		{
+			"name": "SetVisibility",
+			"authority": "client",
+			"description": "Sets the visibility in screen",
+			"parameters": [
+				{
+					"type": "WidgetVisibility",
+					"name": "visibility"
+				}
+			]
+		},
+		{
+			"name": "SpawnSound",
+			"authority": "client",
+			"description": "Spawns a Sound entity to plays this WebUI sound",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location",
+					"default": "Vector(0, 0, 0)"
+				},
+				{
+					"type": "boolean",
+					"name": "is_2d",
+					"default": "true"
+				},
+				{
+					"type": "float",
+					"name": "volume",
+					"default": "1.0"
+				},
+				{
+					"type": "integer",
+					"name": "inner_radius",
+					"default": "400"
+				},
+				{
+					"type": "integer",
+					"name": "falloff_distance",
+					"default": "3600"
+				},
+				{
+					"type": "AttenuationFunction",
+					"name": "attenuation_function",
+					"default": "AttenuationFunction.Linear"
+				}
+			],
+			"return": [
+				{
+					"type": "Sound"
+				}
+			]
+		},
+		{
+			"name": "SendMouseWheelEvent",
+			"authority": "client",
+			"description": "Sends a Mouse Event into the WebUI programatically",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "mouse_x",
+					"description": "Position X of the mouse"
+				},
+				{
+					"type": "integer",
+					"name": "mouse_y",
+					"description": "Position Y of the mouse"
+				},
+				{
+					"type": "float",
+					"name": "delta_x"
+				},
+				{
+					"type": "float",
+					"name": "delta_y"
+				}
+			]
+		},
+		{
+			"name": "SendKeyEvent",
+			"authority": "client",
+			"description": "Sends a Key Event into the WebUI programatically",
+			"parameters": [
+				{
+					"type": "WebUIKeyType",
+					"name": "key_type"
+				},
+				{
+					"type": "integer",
+					"name": "key_code"
+				},
+				{
+					"type": "WebUIModifier",
+					"name": "modifiers",
+					"default": "WebUIModifier.None",
+					"description": "Supports several modifiers separating by <code>|</code> (using bit-wise operations)"
+				}
+			]
+		},
+		{
+			"name": "SendMouseMoveEvent",
+			"authority": "client",
+			"description": "Sends a Mouse Move Event into the WebUI programatically",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "mouse_x",
+					"description": "Position X of the mouse"
+				},
+				{
+					"type": "integer",
+					"name": "mouse_y",
+					"description": "Position Y of the mouse"
+				},
+				{
+					"type": "WebUIModifier",
+					"name": "modifiers",
+					"default": "WebUIModifier.None",
+					"description": "Supports several modifiers separating by <code>|</code> (using bit-wise operations)"
+				},
+				{
+					"type": "boolean",
+					"name": "mouse_leave",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SendMouseClickEvent",
+			"authority": "client",
+			"description": "Sends a Mouse Click into the WebUI programatically",
+			"description_long": "You must send both Down and Up to make it work properly",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "mouse_x",
+					"description": "Position X of the mouse"
+				},
+				{
+					"type": "integer",
+					"name": "mouse_y",
+					"description": "Position Y of the mouse"
+				},
+				{
+					"type": "WebUIMouseType",
+					"name": "mouse_type",
+					"description": "Which mouse button"
+				},
+				{
+					"type": "boolean",
+					"name": "is_mouse_up",
+					"description": "Whether the event was up or down"
+				},
+				{
+					"type": "WebUIModifier",
+					"name": "modifiers",
+					"default": "WebUIModifier.None",
+					"description": "Supports several modifiers separating by <code>|</code> (using bit-wise operations)"
+				},
+				{
+					"type": "integer",
+					"name": "click_count",
+					"default": "1",
+					"description": "Use 2 for double click event"
+				}
+			]
+		},
+		{
+			"name": "GetSize",
+			"authority": "client",
+			"description": "Gets the current size of this WebUI",
+			"return": [
+				{
+					"type": "Vector2D"
+				}
+			]
+		},
+		{
+			"name": "GetVisibility",
+			"authority": "client",
+			"description": "Returns the current WebUI visibility",
+			"return": [
+				{
+					"type": "WidgetVisibility"
+				}
+			]
+		},
+		{
+			"name": "IsFrozen",
+			"authority": "client",
+			"description": "Returns if this WebUI is currently frozen",
+			"return": [
+				{
+					"type": "boolean"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Fail",
+			"authority": "client",
+			"description": "Triggered when this page fails to load",
+			"arguments": [
+				{
+					"type": "integer",
+					"name": "error_code"
+				},
+				{
+					"type": "string",
+					"name": "message"
+				}
+			]
+		},
+		{
+			"name": "Ready",
+			"authority": "client",
+			"description": "Triggered when this page is fully loaded"
+		}
+	]
+}

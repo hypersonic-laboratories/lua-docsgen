@@ -1,0 +1,224 @@
+{
+	"name": "Package",
+	"description": "Class which represents the current Package",
+	"authority": "both",
+	"static_functions": [
+		{
+			"name": "Export",
+			"description": "Makes any variable available in the global scope",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "variable_name",
+					"description": "Name of the variable to export"
+				},
+				{
+					"type": "any",
+					"name": "value",
+					"description": "Value to be set in the global scope"
+				}
+			]
+		},
+		{
+			"name": "Require",
+			"description": "Includes new .lua files",
+			"description_long": "Includes new .lua files<br/><br/>We currently support 5 searchers, which are looked in the following order:<br/><ol><li>Relative to <code>current-file-path/</code></li><li>Relative to <code>current-package/Client/</code> or <code>current-package/Server/</code> (depending on your side)</li><li>Relative to <code>current-package/Shared/</code></li><li>Relative to <code>current-package/</code></li><li>Relative to <code>Packages/</code></li></ol>",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "script_file",
+					"description": "Path to the script file to require"
+				}
+			],
+			"return": [
+				{
+					"type": "any",
+					"description": "Any return values from the included file"
+				}
+			]
+		},
+		{
+			"name": "Subscribe",
+			"description": "Subscribes to an Event",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": "Event to subscribe to"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Callback to run on the event occurring"
+				}
+			],
+			"return": [
+				{
+					"type": "function",
+					"description": "The function callback"
+				}
+			]
+		},
+		{
+			"name": "Unsubscribe",
+			"description": "Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": "Event to unsubscribe to"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"default": "nil",
+					"description": "Optional callback to specifically unsubscribe to"
+				}
+			]
+		},
+		{
+			"name": "SetPersistentData",
+			"description": "Sets a Persistent Value which will be saved to disk",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key",
+					"description": "Key to index data into"
+				},
+				{
+					"type": "any",
+					"name": "value",
+					"description": "Value to set at the key"
+				}
+			]
+		},
+		{
+			"name": "GetDirectories",
+			"description": "Gets a list of all directories in this package",
+			"description_long": "Gets a list of all files in this package, optionally with filters",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "path_filter",
+					"default": "",
+					"description": "Path filter"
+				}
+			],
+			"return": [
+				{
+					"type": "string[]",
+					"description": "List of directories"
+				}
+			]
+		},
+		{
+			"name": "GetFiles",
+			"description": "Gets a list of all files in this package",
+			"description_long": "Gets a list of all files in this package, optionally with filters",
+			"authority": "both",
+			"parameters": [
+				{
+					"type": "string|table",
+					"name": "path_filter",
+					"default": "",
+					"description": "Path filter"
+				},
+				{
+					"type": "string",
+					"name": "extension_filter",
+					"default": "",
+					"description": "Example : .lua"
+				}
+			],
+			"return": [
+				{
+					"type": "string[]",
+					"description": "List of files"
+				}
+			]
+		},
+		{
+			"name": "GetName",
+			"description": "Returns the package name/path",
+			"authority": "both",
+			"return": [
+				{
+					"type": "string",
+					"description": "The package name/path"
+				}
+			]
+		},
+		{
+			"name": "GetTitle",
+			"description": "Returns the package title",
+			"authority": "both",
+			"return": [
+				{
+					"type": "string",
+					"description": "The package title"
+				}
+			]
+		},
+		{
+			"name": "GetVersion",
+			"description": "Returns the package version",
+			"authority": "both",
+			"return": [
+				{
+					"type": "string",
+					"description": "The package version"
+				}
+			]
+		},
+		{
+			"name": "GetCompatibilityVersion",
+			"description": "Returns the package compatibility version",
+			"authority": "both",
+			"return": [
+				{
+					"type": "string",
+					"description": "The package compatibility version"
+				}
+			]
+		},
+		{
+			"name": "GetPersistentData",
+			"description": "Gets the Persistent Value from the disk",
+			"description_large": "Gets a Persistent Value from the disk<br/>Pass no parameter to return the whole table, or a key to get a specific value",
+			"authority": "both",
+			"return": [
+				{
+					"type": "table",
+					"description": "Persistent values from disk"
+				}
+			],
+			"parameters": [
+				{
+					"type": "string?",
+					"name": "key",
+					"default": "",
+					"description": "The key to get the data"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Load",
+			"authority": "both",
+			"description": "Called when this package is loaded",
+			"description_long": "Called when this package is loaded<br/><br/>This event is triggered differently depending on the situation:<br/><ul><li>When the <b>server starts</b> or you run <code>package reload all</code> the event triggers only after ALL packages are loaded.</li><li>In all other cases (<code>package load/reload</code> or <code>Package.Load/Reload</code>) the event is triggered immediately after the package is loaded/reloaded.</li></ul>"
+		},
+		{
+			"name": "Unload",
+			"authority": "both",
+			"description": "Called when this package is unloaded"
+		}
+	]
+}

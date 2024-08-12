@@ -1,0 +1,664 @@
+{
+	"name": "HCharacter",
+	"description": "Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for HELIX.",
+	"authority": "server",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable",
+		"Damageable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor (Helix Avatar)",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "Player",
+					"name": "player"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				},
+				{
+					"type": "integer",
+					"name": "max_health",
+					"default": "100",
+					"description": "Current / Max Health"
+				},
+				{
+					"type": "SoundPath",
+					"name": "death_sound",
+					"default": "helix::A_Male_01_Death",
+					"description": "Played when Character dies"
+				},
+				{
+					"type": "SoundPath",
+					"name": "pain_sound",
+					"default": "helix::A_Male_01_Pain",
+					"description": "Played when Character takes damage"
+				}
+			]
+		},
+
+		{
+			"description": "Custom Mesh Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "SkeletalMeshPath",
+					"name": "skeletal_mesh"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				},
+				{
+					"type": "integer",
+					"name": "max_health",
+					"default": "100",
+					"description": "Current / Max Health"
+				},
+				{
+					"type": "SoundPath",
+					"name": "death_sound",
+					"default": "helix::A_Male_01_Death",
+					"description": "Played when Character dies"
+				},
+				{
+					"type": "SoundPath",
+					"name": "pain_sound",
+					"default": "helix::A_Male_01_Pain",
+					"description": "Played when Character takes damage"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "both",
+			"name": "AddSkeletalMeshAttached",
+			"description": "Spawns and Attaches a SkeletalMesh into this Character",
+			"description_long": "Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further.<br/><br/>For customizing the Materials specific of a SkeletalMeshAttached, please use the following syntax in the Paintable methods: <code>attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]</code>, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "id",
+					"description": "Used further for removing or applying material settings on it"
+				},
+				{
+					"type": "SkeletalMeshPath",
+					"name": "skeletal_mesh_asset",
+					"default": ""
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "AddStaticMeshAttached",
+			"description": "Spawns and Attaches a StaticMesh into this Character",
+			"description_long": "Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further<br/><br/>For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the <code>parameter_name</code> in the Paintable methods: <code>attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]</code>, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "id",
+					"description": "Used further for removing or applying material settings on it"
+				},
+				{
+					"type": "StaticMeshPath",
+					"name": "static_mesh_asset",
+					"default": ""
+				},
+				{
+					"type": "string",
+					"name": "socket",
+					"default": ""
+				},
+				{
+					"type": "Vector",
+					"name": "relative_location",
+					"default": "Vector(0, 0, 0)"
+				},
+				{
+					"type": "Rotator",
+					"name": "relative_rotation",
+					"default": "Rotator(0, 0, 0)"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Drop",
+			"description": "Drops any Pickable the Character is holding",
+			"parameters": [
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Jump",
+			"description": "Triggers this Character to jump"
+		},
+		{
+			"authority": "server",
+			"name": "PickUp",
+			"description": "Gives a Melee/Grenade/Weapon (Pickable) to the Character",
+			"parameters": [
+				{
+					"type": "Pickable",
+					"name": "pickable"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "PlayAnimation",
+			"description": "Plays an Animation Montage on this character",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_path"
+				},
+				{
+					"type": "AnimationSlotType",
+					"name": "slot_type",
+					"default": "AnimationSlotType.FullBody"
+				},
+				{
+					"type": "boolean",
+					"name": "loop_indefinitely",
+					"default": "false"
+				},
+				{
+					"type": "float",
+					"name": "blend_in_time",
+					"default": "0.25"
+				},
+				{
+					"type": "float",
+					"name": "blend_out_time",
+					"default": "0.25"
+				},
+				{
+					"type": "float",
+					"name": "play_rate",
+					"default": "1.0"
+				},
+				{
+					"type": "boolean",
+					"name": "stop_all_montages",
+					"default": "false",
+					"description": "Stops all running Montages from the same Group"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "StopAnimation",
+			"description": "Stops an Animation Montage on this character",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_asset"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "RemoveSkeletalMeshAttached",
+			"description": "Removes, if existing, a SkeletalMesh from this Character given it's custom ID",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "id"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "RemoveStaticMeshAttached",
+			"description": "Removes, if existing, a StaticMesh from this Character given it's custom ID",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "id"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "RemoveAllStaticMeshesAttached",
+			"description": "Removes all StaticMeshes attached"
+		},
+		{
+			"authority": "both",
+			"name": "RemoveAllSkeletalMeshesAttached",
+			"description": "Removes all SkeletalMeshes attached"
+		},
+		{
+			"authority": "server",
+			"name": "SetDeathSound",
+			"description": "Changes the Death sound when Character dies",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "sound_asset"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetMesh",
+			"description": "Changes the Character Mesh on the fly",
+			"parameters": [
+				{
+					"type": "SkeletalMeshPath",
+					"name": "skeletal_mesh_asset"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetInputEnabled",
+			"description": "Enables/Disables Character's Input",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "is_enabled"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetPainSound",
+			"description": "Changes the Pain sound when Character takes damage",
+			"parameters": [
+				{
+					"type": "SoundPath",
+					"name": "sound_asset"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetRagdollMode",
+			"description": "Sets Character Ragdoll Mode",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "ragdoll_enabled"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetTeam",
+			"description": "Sets a Team which will disable damaging same Team Members",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "team",
+					"description": "0 is neutral and default"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "IsInRagdollMode",
+			"description": "Gets if Character is in ragdoll mode",
+			"return": [
+				{
+					"type": "boolean"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "IsInputEnabled",
+			"description": "Gets if has input enabled",
+			"return": [
+				{
+					"type": "boolean"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetBoneTransform",
+			"description": "Gets a Bone Transform in world space given a bone name",
+			"return": [
+				{
+					"type": "table",
+					"table_properties": [
+						{
+							"name": "Location",
+							"type": "Vector"
+						},
+						{
+							"name": "Rotation",
+							"type": "Rotator"
+						}
+					]
+				}
+			],
+			"parameters": [
+				{
+					"name": "bone_name",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetMesh",
+			"description": "Gets the Skeletal Mesh Asset",
+			"return": [
+				{
+					"type": "SkeletalMeshPath"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetPlayer",
+			"description": "Gets the possessing Player",
+			"return": [
+				{
+					"type": "Player?"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetTeam",
+			"description": "Gets the Team",
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "EnterVehicle",
+			"description": "Forces a Character to enter into a vehicle",
+			"parameters": [
+				{
+					"type": "HSimpleVehicle",
+					"name": "my_HSimpleVehicle"
+				},
+				{
+					"type": "integer",
+					"name": "Seat",
+					"default": "0"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"authority": "client",
+			"name": "AnimationBeginNotify",
+			"description": "When an Animation Montage Notify begins",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "string",
+					"name": "notify_name"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "AnimationEndNotify",
+			"description": "When an Animation Montage Notify ends",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "string",
+					"name": "notify_name"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "Drop",
+			"description": "When Character drops the currently picked up Pickable",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Pickable",
+					"name": "object"
+				},
+				{
+					"type": "boolean",
+					"name": "triggered_by_player"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "Fire",
+			"description": "When Character fires a Weapon",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Weapon",
+					"name": "weapon"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GrabProp",
+			"description": "When Character grabs up a Prop",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Prop",
+					"name": "prop"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Interact",
+			"description": "Triggered when a Character interacts with a Prop or Pickable",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Prop|Pickable",
+					"name": "object"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return <code>false</code> to prevent it"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "PickUp",
+			"description": "When Character picks up anything",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Pickable",
+					"name": "object"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "Possess",
+			"description": "When Character is possessed",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Player",
+					"name": "possesser"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "RagdollModeChange",
+			"description": "When Character enters or leaves ragdoll",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "boolean",
+					"name": "old_state"
+				},
+				{
+					"type": "boolean",
+					"name": "new_state"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "AttemptReload",
+			"description": "Triggered when this Character attempts to reload",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Weapon",
+					"name": "weapon"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return <code>false</code> to prevent it"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "Reload",
+			"description": "When Character reloads a weapon",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Weapon",
+					"name": "weapon"
+				},
+				{
+					"type": "integer",
+					"name": "ammo_to_reload"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "UnPossess",
+			"description": "When Character is unpossessed",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Player",
+					"name": "old_possesser"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "PullUse",
+			"description": "Triggered when a Character presses the use button for a Pickable (i.e. clicks left mouse button with this equipped)",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self",
+					"description": "The Character that used it"
+				},
+				{
+					"type": "Pickable",
+					"name": "pickable",
+					"description": "The Pickable which has just been used"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "ReleaseUse",
+			"description": "Triggered when a Character releases the use button for a Pickable (i.e. releases left mouse button with this equipped)",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self",
+					"description": "The Character that stopped using it"
+				},
+				{
+					"type": "Pickable",
+					"name": "pickable",
+					"description": "The Pickable which has just stopped being used"
+				}
+			]
+		}
+	]
+}

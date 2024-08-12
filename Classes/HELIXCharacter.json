@@ -1,0 +1,542 @@
+{
+	"name": "HELIXCharacter",
+	"description": "Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for HELIX.",
+	"authority": "both",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable",
+		"Damageable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "SkeletalMeshPath|StaticMeshPath",
+					"name": "mesh"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				}
+			]
+		},
+        {
+			"description": "HELIX Avatar Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "Player",
+					"name": "player"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "authority",
+			"name": "PlayAnimation",
+			"description": "Plays an Animation Montage on this character",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_path"
+				},
+                {
+					"type": "boolean",
+					"name": "loop_indefinitely",
+					"default": "false"
+				},
+				{
+					"type": "string",
+					"name": "slot_name",
+					"default": ""
+				},
+				{
+					"type": "float",
+					"name": "blend_in_time",
+					"default": "0.25"
+				},
+				{
+					"type": "float",
+					"name": "blend_out_time",
+					"default": "0.25"
+				},
+				{
+					"type": "float",
+					"name": "play_rate",
+					"default": "1.0"
+				},
+				{
+					"type": "boolean",
+					"name": "stop_all_montages",
+					"default": "false",
+					"description": "Stops all running Montages from the same Group"
+				}
+			]
+		},
+		{
+			"authority": "authority",
+			"name": "StopAnimation",
+			"description": "Stops an Animation Montage on this character",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_asset"
+				}
+			]
+		},
+		{
+			"authority": "authority",
+			"name": "SetMesh",
+			"description": "Changes the Character Mesh on the fly",
+			"parameters": [
+				{
+					"type": "SkeletalMeshPath|StaticMeshPath",
+					"name": "mesh_asset"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetMesh",
+			"description": "Gets the Skeletal Mesh Asset",
+			"return": [
+				{
+					"type": "SkeletalMeshPath|StaticMeshPath"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetJumpZVelocity",
+			"description": "Sets the velocity of the jump",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "velocity",
+					"description": "Default is 450"
+				}
+			]
+		},
+		{
+			"authority": "authority",
+			"name": "SetCapsuleSize",
+			"description": "Sets this Character's Capsule size",
+			"description_long": "Sets this Character's Capsule size (will affect Camera location and Character's collision)",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "radius",
+					"description": "Default is 42"
+				},
+				{
+					"type": "integer",
+					"name": "half_height",
+					"description": "Default is 96"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetCanJump",
+			"description": "Sets if this Character is allowed to Jump",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "can_jump"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetCanCrouch",
+			"description": "Sets if this Character is allowed to Crouch and to Prone",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "can_crouch"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetBrakingSettings",
+			"description": "Sets the Movement Braking Settings of this Character",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "ground_friction",
+					"default": "2"
+				},
+				{
+					"type": "float",
+					"name": "braking_friction_factor",
+					"default": "2"
+				},
+				{
+					"type": "integer",
+					"name": "braking_walking",
+					"default": "96"
+				},
+				{
+					"type": "integer",
+					"name": "braking_flying",
+					"default": "3000"
+				},
+				{
+					"type": "integer",
+					"name": "braking_swimming",
+					"default": "10"
+				},
+				{
+					"type": "integer",
+					"name": "braking_falling",
+					"default": "0"
+				}
+			]
+		},
+        {
+			"authority": "server",
+			"name": "SetGravityScale",
+			"description": "Changes the Gravity Scale",
+			"description_long": "Changes the Gravity Scale of this Character (can be negative)",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "scale"
+				}
+			]
+		},
+        {
+			"authority": "server",
+			"name": "SetAccelerationSettings",
+			"description": "Sets the Movement Max Acceleration of this Character",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "walking",
+					"default": "768"
+				},
+				{
+					"type": "integer",
+					"name": "parachuting",
+					"default": "512"
+				},
+				{
+					"type": "integer",
+					"name": "skydiving",
+					"default": "768"
+				},
+				{
+					"type": "integer",
+					"name": "falling",
+					"default": "128"
+				},
+				{
+					"type": "integer",
+					"name": "swimming",
+					"default": "256"
+				},
+				{
+					"type": "integer",
+					"name": "swimming_surface",
+					"default": "256"
+				},
+				{
+					"type": "integer",
+					"name": "flying",
+					"default": "1024"
+				}
+			]
+		},
+        {
+			"authority": "server",
+			"name": "SetCanGrabProps",
+			"description": "Sets if this Character is allowed to Grab any Prop",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "can_grab_props"
+				}
+			]
+		},
+        {
+			"authority": "server",
+			"name": "SetCanPickupPickables",
+			"description": "Sets if this Character is allowed to Pick up any Pickable (Weapon, Grenade, Melee...)",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "can_pickup"
+				}
+			]
+		},
+        {
+			"authority": "server",
+			"name": "SetRadialDamageToRagdoll",
+			"description": "Set the minimum radial damage (e.g. explosions) taken to enter in ragdoll mode",
+			"description_long": "Set the minimum radial damage taken (e.g. explosions) to enter in ragdoll mode.<br/><br/>Setting to -1 will make the Character to do not enter ragdoll mode when getting radial damage",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "damage",
+					"description": "Default is 50"
+				}
+			]
+		},
+        {
+			"authority": "both",
+			"name": "GetWeaponAimMode",
+			"description": "Gets the Weapon Aim Mode",
+			"return": [
+				{
+					"type": "AimMode"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "StopMovement",
+			"description": "AI: Stops the movement",
+			"description_long": "AI: Stops the movement<br/><br/>Triggers event [MoveCompleted](character#movecompleted)"
+		},
+		{
+			"authority": "server",
+			"name": "MoveTo",
+			"description": "AI: Makes this Character to walk to the Location",
+			"description_long": "AI: Makes this Character to walk to the Location<br/><br/>Triggers event <a href='character#events-movecomplete'>MoveComplete</a>",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "float",
+					"name": "acceptance_radius",
+					"default": "50"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Follow",
+			"description": "AI: Makes this Character to follow another actor",
+			"description_long": "AI: Makes this Character to follow another actor<br/><br/>Triggers event <a href='character#events-movecomplete'>MoveComplete</a>",
+			"parameters": [
+				{
+					"type": "Actor",
+					"name": "actor",
+					"description": "Actor to follow"
+				},
+				{
+					"type": "float",
+					"name": "acceptance_radius",
+					"default": "50",
+					"description": "Radius to consider success"
+				},
+				{
+					"type": "boolean",
+					"name": "stop_on_succeed",
+					"default": "false",
+					"description": "Whether to stop when reaching the target"
+				},
+				{
+					"type": "boolean",
+					"name": "stop_on_fail",
+					"default": "false",
+					"description": "Whether to stop when failed to reach the target"
+				},
+				{
+					"type": "float",
+					"name": "update_rate",
+					"default": "0.25",
+					"description": "How often to recalculate the AI path"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Jump",
+			"description": "Triggers this Character to jump"
+		},
+		{
+			"authority": "both",
+			"name": "EnterVehicle",
+			"description": "When Character enters a vehicle",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Vehicle",
+					"name": "vehicle"
+				},
+				{
+					"type": "integer",
+					"name": "seat_index"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "LeaveVehicle",
+			"description": "When Character leaves a vehicle",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Vehicle",
+					"name": "vehicle"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "GrabProp",
+			"description": "Gives a Prop to the Character",
+			"parameters": [
+				{
+					"type": "Prop",
+					"name": "prop"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "UnGrabProp",
+			"description": "UnGrabs/Drops the Prop the Character is holding"
+		},
+		{
+			"authority": "both",
+			"name": "PickUp",
+			"description": "When Character picks up anything",
+			"arguments": [
+				{
+					"type": "Character",
+					"name": "self"
+				},
+				{
+					"type": "Pickable",
+					"name": "object"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "Drop",
+			"description": "Drops any Pickable the Character is holding",
+			"parameters": [
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetMovingTo",
+			"description": "Gets the Moving To location",
+			"return": [
+				{
+					"type": "Vector",
+					"description": "the moving to location or Vector(0, 0, 0) if not moving"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetControlRotation",
+			"description": "Gets the Control Rotation",
+			"return": [
+				{
+					"type": "Rotator"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetTeam",
+			"description": "Gets the Team",
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetPlayer",
+			"description": "Gets the possessing Player",
+			"return": [
+				{
+					"type": "Player?"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetVehicle",
+			"description": "Gets the entered Vehicle",
+			"return": [
+				{
+					"type": "Vehicle?"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetGrabbedProp",
+			"description": "Gets the Grabbed Prop",
+			"return": [
+				{
+					"type": "Prop?"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetPicked",
+			"description": "Gets the Pickable if picking up",
+			"return": [
+				{
+					"type": "Pickable?"
+				}
+			]
+		}
+	],
+	"events": [
+
+	]
+}

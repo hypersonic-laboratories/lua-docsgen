@@ -1,0 +1,48 @@
+{
+	"name": "Decal",
+	"description": "Decals are Materials that are projected onto meshes in your level, including Static Meshes and Skeletal Meshes.",
+	"authority": "client",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+				"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "MaterialPath",
+					"name": "material_asset",
+					"description": "Material Asset"
+				},
+				{
+					"type": "Vector",
+					"name": "size",
+					"default": "Vector(128, 256, 256)",
+					"description": "Size of the Decal"
+				},
+				{
+					"type": "float",
+					"name": "lifespan",
+					"default": "60",
+					"description": "Time until automatically destroyed in seconds"
+				},
+				{
+					"type": "float",
+					"name": "fade_screen_size",
+					"default": "0.01",
+					"description": "Size percentage in screen to fade out"
+				}
+			]
+		}
+	]
+}

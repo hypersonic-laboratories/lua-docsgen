@@ -1,0 +1,297 @@
+{
+	"name": "Client",
+	"description": "Static Class present on Client side.",
+	"authority": "client",
+	"static_functions": [
+		{
+			"name": "CopyToClipboard",
+			"description": "Copies a text to Clipboard",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "text"
+				}
+			]
+		},
+		{
+			"name": "SetNearClipPlane",
+			"description": "Sets the Near Clip Plane",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "near_clip_plane",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "GetNearClipPlane",
+			"description": "Gets the Near Clip Plane value",
+			"authority": "client",
+			"return": [
+				{
+					"type": "float"
+				}
+			]
+		},
+		{
+			"name": "GetConnectedServerIP",
+			"description": "Gets the current connected server IP:Port",
+			"authority": "client",
+			"return": [
+				{
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "SetDebugEnabled",
+			"description": "Enables/Disables Debug settings and Client Console to be used",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "enable_debug",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "SetHighlightColor",
+			"description": "Changes the Highlight Color for highlighted actors at a specific Index",
+			"description_long": "Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.<br/><br/><code>HighlightMode.Always</code> will always be visible, even behind walls<br/><code>HighlightMode.OnlyHidden</code> will only be visible if behind a wall<br/><code>HighlightMode.OnlyVisible</code> will only be visible if not behind a wall<br/><br/>Note: You can only have 3 differents indexes (0, 1 or 2).",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "Color",
+					"name": "highlight_color",
+					"description": ""
+				},
+				{
+					"type": "integer",
+					"name": "index",
+					"description": ""
+				},
+				{
+					"type": "HighlightMode",
+					"name": "mode",
+					"description": "",
+					"default": "HighlightMode.Always"
+				}
+			]
+		},
+		{
+			"name": "SetOutlineColor",
+			"description": "Changes the Outline Color for outlined actors at a specific Index",
+			"description_long": "Changes the Outline Color for outlined actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.<br/><br/>Note: You can only have 3 differents indexes (0, 1 or 2), and the default Outline color index used by the game is  <code>0</code> (when interacting with stuff).",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "Color",
+					"name": "outline_color",
+					"description": ""
+				},
+				{
+					"type": "integer",
+					"name": "index",
+					"description": "",
+					"default": "0"
+				},
+				{
+					"type": "float",
+					"name": "thickness",
+					"description": "",
+					"default": "2"
+				}
+			]
+		},
+		{
+			"name": "SetValue",
+			"description": "Sets a global value in the Client, which can be accessed from anywhere (client side)",
+			"description_long": "Sets a global value in the Client, which can be accessed from anywhere (client side)<br/><br/>Please refer to <a href=\"/docs/core-concepts/scripting/entity-values\">Entity Values</a> for more information",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key",
+					"description": ""
+				},
+				{
+					"type": "any",
+					"name": "value",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "Subscribe",
+			"description": "Subscribes for an Event",
+			"authority": "client",
+			"return": [
+				{
+					"type": "function",
+					"description": "the function callback itself"
+				}
+			],
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": ""
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "Unsubscribe",
+			"description": "Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": ""
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "",
+					"default": "nil"
+				}
+			]
+		},
+		{
+			"name": "GetLocalPlayer",
+			"description": "Gets the local Player",
+			"authority": "client",
+			"return": [
+				{
+					"type": "Player",
+					"description": "The local Player"
+				}
+			]
+		},
+		{
+			"name": "GetFrameTime",
+			"description": "Gets the current Frame Time",
+			"authority": "client",
+			"return": [
+				{
+					"type": "float",
+					"description": "The Frame Time"
+				}
+			]
+		},
+		{
+			"name": "GetTime",
+			"description": "Gets the Unix Epoch Time in milliseconds",
+			"authority": "client",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the unix timestamp"
+				}
+			]
+		},
+		{
+			"name": "GetMap",
+			"description": "Returns the current Map",
+			"authority": "client",
+			"return": [
+				{
+					"type": "string",
+					"description": "The current Map"
+				}
+			]
+		},
+		{
+			"name": "GetPackages",
+			"description": "Returns a list of Packages folder names loaded and running in the client",
+			"authority": "client",
+			"return": [
+				{
+					"type": "string[]",
+					"description": "packages folder names"
+				}
+			]
+		},
+		{
+			"name": "GetValue",
+			"description": "Gets a value given a key",
+			"authority": "client",
+			"return": [
+				{
+					"type": "any?",
+					"description": "the value"
+				}
+			],
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key",
+					"description": ""
+				},
+				{
+					"type": "any",
+					"name": "fallback",
+					"description": ""
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Tick",
+			"description": "Called Every Frame. Do not abuse",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "float",
+					"name": "delta_time",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "AttemptOpenInGameMenu",
+			"description": "Called when the client attempts to open Escape Menu",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return <code>false</code> to prevent it"
+				}
+			]
+		},
+		{
+			"name": "SpawnLocalPlayer",
+			"description": "Called when the local player spawns (just after the game has loaded)",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "Player",
+					"name": "local_player",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "WindowFocusChange",
+			"description": "Called when the game is focused/unfocused",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "boolean",
+					"name": "is_focused",
+					"description": "If it's focused"
+				}
+			]
+		}
+	]
+}

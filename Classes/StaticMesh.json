@@ -1,0 +1,69 @@
+{
+	"name": "StaticMesh",
+	"description": "A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world.",
+	"authority": "both",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "StaticMeshPath",
+					"name": "static_mesh_asset"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"name": "SetMesh",
+			"description": "Changes the mesh in runtime",
+			"return": [
+				{
+					"type": "StaticMeshPath",
+					"description": "asset"
+				}
+			],
+			"authority": "authority"
+		},
+		{
+			"name": "GetMesh",
+			"description": "Gets the Asset path mesh used",
+			"return": [
+				{
+					"type": "StaticMeshPath",
+					"description": "asset path"
+				}
+			],
+			"authority": "both"
+		},
+		{
+			"name": "IsFromLevel",
+			"description": "Gets if this StaticMesh is from the Level",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if this StaticMesh is from the level"
+				}
+			],
+			"authority": "client"
+		}
+	]
+}

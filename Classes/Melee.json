@@ -1,0 +1,226 @@
+{
+	"name": "Melee",
+	"description": "A Melee represents an Entity which can be Pickable by a Character and can be used to melee attack, Charactes can hold it with hands with pre-defined handling modes.",
+	"authority": "server",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable",
+		"Pickable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location",
+					"default": "Vector(0, 0, 0)"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation",
+					"default": "Rotator(0, 0, 0)"
+				},
+				{
+					"type": "StaticMeshPath",
+					"name": "asset",
+					"default": ""
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				},
+				{
+					"type": "HandlingMode",
+					"name": "handling_mode",
+					"default": "HandlingMode.Torch"
+				},
+				{
+					"type": "MaterialPath",
+					"name": "crosshair_material",
+					"default": ""
+				},
+				{
+					"type": "boolean",
+					"name": "can_use",
+					"default": "true"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "server",
+			"name": "AddAnimationCharacterUse",
+			"description": "Sets an Animation when attacking",
+			"description_long": "Sets an Animation when attacking<br/><br/>You can add more than one animation, which will be selected randomly when attacking",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "asset_path",
+					"description": "The Animation used when attacking"
+				},
+				{
+					"type": "float",
+					"name": "play_rate",
+					"description": "The Animation Play Rate"
+				},
+				{
+					"type": "AnimationSlotType",
+					"name": "slot_Type",
+					"description": "Whether to play it on upper body or full body"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "ClearAnimationsCharacterUse",
+			"description": "Clears the Character Attack Animation list"
+		},
+		{
+			"authority": "both",
+			"name": "SetImpactSound",
+			"description": "Sets the Sound when hitting something",
+			"description_long": "Sets the Sound when hitting something<br/><br/>Note: Surfaces <b>Water</b> and <b>Flesh</b> already have default sounds and must be explicitly set to override",
+			"parameters": [
+				{
+					"type": "SurfaceType",
+					"name": "surface_type",
+					"description": "The surface to apply the sound. Use <code>SurfaceType.Default</code> to be the default to all hits"
+				},
+				{
+					"type": "SoundPath",
+					"name": "asset_path",
+					"description": "The Sound used when attacking"
+				},
+				{
+					"type": "float",
+					"name": "volume"
+				},
+				{
+					"type": "float",
+					"name": "pitch"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "SetSoundUse",
+			"description": "Sets the Sound when attacking",
+			"parameters": [
+				{
+					"type": "SoundPath",
+					"name": "asset_path",
+					"description": "The Sound used when attacking"
+				}
+			]
+		},
+		{
+			"authority": "server",
+			"name": "SetBaseDamage",
+			"description": "Sets the Base Damage",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "damage",
+					"default": "",
+					"description": "The Base Damage value"
+				}
+			]
+		},
+
+		{
+			"authority": "server",
+			"name": "SetDamageSettings",
+			"description": "Sets the times when to start applying damage and when to end",
+			"description_long": "Sets the times when to start applying damage and when to end. During this time the collision of the melee will be enabled and the damage will be applied if it hits something",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "damage_start_time",
+					"description": "The initial time to start applying damage"
+				},
+				{
+					"type": "float",
+					"name": "damage_duration_time",
+					"description": "The duration time to stop applying damage"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "SetCooldown",
+			"description": "Sets the cooldown between attacking",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "cooldown"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetAnimationsCharacterUse",
+			"description": "Gets the Animations when Character uses it",
+			"return": [
+				{
+					"type": "AnimationPath[]"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetSoundUse",
+			"description": "Gets the Sound when Character uses it",
+			"return": [
+				{
+					"type": "SoundPath"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetBaseDamage",
+			"description": "Gets the Base Damage",
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetCooldown",
+			"description": "Gets the Cooldown between usages",
+			"return": [
+				{
+					"type": "float"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Attack",
+			"authority": "both",
+			"description": "Triggered when the Character effectively attacks with this Melee",
+			"arguments": [
+				{
+					"name": "self",
+					"type": "Melee"
+				},
+				{
+					"name": "handler",
+					"type": "Character"
+				}
+			]
+		}
+	]
+}
