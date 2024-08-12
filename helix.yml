@@ -681,45 +681,13 @@ globals:
   WidgetVisibility.VisibleNotHitTestable:
     property: read-only
 
-  Billboard:
+  Cable:
     must_use: true
     args:
-      - required: false
-        type: 
+      - type: 
           display: Vector
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: Vector2D
       - required: false
         type: boolean
-  Decal:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: number
-      - required: false
-        type: number
-  StaticMesh:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
   Blueprint:
     must_use: true
     args:
@@ -740,6 +708,24 @@ globals:
       - required: false
         type: 
           display: integer
+  Grenade:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
   Light:
     must_use: true
     args:
@@ -770,6 +756,177 @@ globals:
         type: boolean
       - required: false
         type: boolean
+  HELIXAircraft:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Billboard:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: boolean
+  Canvas:
+    must_use: true
+    args:
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector2D
+  CharacterSimple:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Melee:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: HandlingMode
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  Character:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  SceneCapture:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
   TextRender:
     must_use: true
     args:
@@ -790,7 +947,7 @@ globals:
       - required: false
         type: 
           display: TextRenderAlignCamera
-  HELIXAircraft:
+  HELIXVehicle:
     must_use: true
     args:
       - type: 
@@ -803,13 +960,322 @@ globals:
           display: CollisionType
       - required: false
         type: boolean
-  Cable:
+  Entity.GetAll:
+    args:[]
+  Entity.GetByIndex:
+    args:
+      - type: 
+          display: integer
+  Entity.GetCount:
+    args:[]
+  Entity.GetPairs:
+    args:[]
+  Entity.Inherit:
+    args:
+      - type: string
+      - required: false
+        type: table
+  Entity.GetInheritedClasses:
+    args:
+      - required: false
+        type: boolean
+  Entity.GetParentClass:
+    args:[]
+  Entity.IsChildOf:
+    args:
+      - type: table
+  Entity.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  StaticMesh:
     must_use: true
     args:
       - type: 
           display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+  Prop:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
       - required: false
         type: boolean
+      - required: false
+        type: 
+          display: GrabMode
+      - required: false
+        type: 
+          display: CCDMode
+  Decal:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Widget:
+    must_use: true
+    args:
+      - type: string
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: NativeWidget
+  File:
+    must_use: true
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  File.Time:
+    args:
+      - type: string
+  File.CreateDirectory:
+    args:
+      - type: string
+  File.Remove:
+    args:
+      - type: string
+  File.Exists:
+    args:
+      - type: string
+  File.IsDirectory:
+    args:
+      - type: string
+  File.IsRegularFile:
+    args:
+      - type: string
+  Assets.GetAssetPacks:
+    args:[]
+  Assets.GetAnimations:
+    args:
+      - type: string
+  Assets.GetBlueprints:
+    args:
+      - type: string
+  Assets.GetMaps:
+    args:
+      - type: string
+  Assets.GetMaterials:
+    args:
+      - type: string
+  Assets.GetParticles:
+    args:
+      - type: string
+  Assets.GetSounds:
+    args:
+      - type: string
+  Assets.GetSkeletalMeshes:
+    args:
+      - type: string
+  Assets.GetStaticMeshes:
+    args:
+      - type: string
+  Assets.GetOthers:
+    args:
+      - type: string
+  Assets.Precache:
+    args:
+      - type: string
+      - type: 
+          display: AssetType
+  Events.Call:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemoteDimension:
+    args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Events.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  Events.Unsubscribe:
+    args:
+      - type: string
+      - required: false
+        type: function
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HSimpleVehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Blueprint Reference
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  WebUI:
+    must_use: true
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: 
+          display: WidgetVisibility
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+  Sound:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundType
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: AttenuationFunction
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundLoopMode
+  Level.LoadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Level.UnloadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Level.SetStreamLevelVisibility:
+    args:
+      - type: string
+      - type: boolean
+  Level.GetStreamLevels:
+    args:[]
+  Level.CallLevelBlueprintEvent:
+    args:
+      - type: string
+  Level.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Level.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Discord.Initialize:
+    args:
+      - type: 
+          display: integer
+  Discord.SetActivity:
+    args:
+      - type: string
+      - type: string
+      - type: string
+      - type: string
+      - required: false
+        type: string
   Particle:
     must_use: true
     args:
@@ -867,212 +1333,250 @@ globals:
     args:
       - type: string
       - type: function
-  Sound:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundType
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: AttenuationFunction
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundLoopMode
-  Assets.GetAssetPacks:
-    args:[]
-  Assets.GetAnimations:
-    args:
-      - type: string
-  Assets.GetBlueprints:
-    args:
-      - type: string
-  Assets.GetMaps:
-    args:
-      - type: string
-  Assets.GetMaterials:
-    args:
-      - type: string
-  Assets.GetParticles:
-    args:
-      - type: string
-  Assets.GetSounds:
-    args:
-      - type: string
-  Assets.GetSkeletalMeshes:
-    args:
-      - type: string
-  Assets.GetStaticMeshes:
-    args:
-      - type: string
-  Assets.GetOthers:
-    args:
-      - type: string
-  Assets.Precache:
-    args:
-      - type: string
-      - type: 
-          display: AssetType
-  HELIXCharacter:
+  Weapon:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: any
+      - type: string
       - required: false
         type: 
           display: CollisionType
       - required: false
         type: boolean
-  HELIXCharacter:
-    must_use: true
+  HTTP.RequestAsync:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+      - required: false
+        type: function
+  HTTP.Request:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+  HTTP.SetConnectionTimeout:
     args:
       - type: 
-          display: Vector
+          display: integer
+  HTTP.SetReadWriteTimeout:
+    args:
       - type: 
-          display: Rotator
+          display: integer
+  PersistentDatabase.Create:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.Insert:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Update:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Delete:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetByKey:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetAll:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.GetSummary:
+    args:
+      - required: false
+        type: function
+  PostProcess.SetBloom:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetChromaticAberration:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetImageEffects:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetExposure:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetFilm:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetGlobalSaturation:
+    args:
+      - type: 
+          display: Color
+  PostProcess.SetLookupTable:
+    args:
+      - type: string
+  PostProcess.SetMaterial:
+    args:
+      - type: string
+  PostProcess.RemoveMaterial:
+    args:[]
+  PostProcess.SetSunAngle:
+    args:
+      - type: number
+  Client.CopyToClipboard:
+    args:
+      - type: string
+  Client.SetNearClipPlane:
+    args:
+      - type: number
+  Client.GetNearClipPlane:
+    args:[]
+  Client.GetConnectedServerIP:
+    args:[]
+  Client.SetDebugEnabled:
+    args:
+      - type: boolean
+  Client.SetHighlightColor:
+    args:
+      - type: 
+          display: Color
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: HighlightMode
+  Client.SetOutlineColor:
+    args:
+      - type: 
+          display: Color
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+  Client.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.GetLocalPlayer:
+    args:[]
+  Client.GetFrameTime:
+    args:[]
+  Client.GetTime:
+    args:[]
+  Client.GetMap:
+    args:[]
+  Client.GetPackages:
+    args:[]
+  Client.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Client.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.JoinMatchmaking:
+    args:
+      - type: string
       - type: 
           display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Melee:
-    must_use: true
-    args:
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: HandlingMode
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-  Prop:
-    must_use: true
-    args:
       - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: GrabMode
-      - required: false
-        type: 
-          display: CCDMode
-  Widget:
-    must_use: true
-    args:
-      - type: string
-  Widget:
-    must_use: true
-    args:
-      - type: 
-          display: NativeWidget
-  File:
-    must_use: true
-    args:
-      - type: string
-      - required: false
-        type: boolean
-  File.Time:
-    args:
-      - type: string
-  File.CreateDirectory:
-    args:
-      - type: string
-  File.Remove:
-    args:
-      - type: string
-  File.Exists:
-    args:
-      - type: string
-  File.IsDirectory:
-    args:
-      - type: string
-  File.IsRegularFile:
-    args:
-      - type: string
-  SceneCapture:
-    must_use: true
-    args:
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-      - required: false
-        type: 
           display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-  Grenade:
-    must_use: true
+      - type: function
+  Matchmaking.CheckMatchmakingStatus:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.LeaveMatchmaking:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - type: function
+  Matchmaking.LeaveAllMatchmaking:
+    args:
+      - type: 
+          display: Player
+      - type: function
+  Navigation.GetRandomReachablePointInRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: number
+  Navigation.GetRandomPointInNavigableRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: number
+  Navigation.FindPathToLocation:
     args:
       - type: 
           display: Vector
       - type: 
-          display: Rotator
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
+          display: Vector
   Debug.DrawBox:
     args:
       - type: 
@@ -1177,395 +1681,76 @@ globals:
       - type: number
       - type: boolean
       - type: number
-  Entity.GetAll:
-    args:[]
-  Entity.GetByIndex:
+  Input.Bind:
     args:
+      - type: string
       - type: 
-          display: integer
-  Entity.GetCount:
-    args:[]
-  Entity.GetPairs:
-    args:[]
-  Entity.Inherit:
-    args:
-      - type: string
-      - required: false
-        type: table
-  Entity.GetInheritedClasses:
-    args:
-      - required: false
-        type: boolean
-  Entity.GetParentClass:
-    args:[]
-  Entity.IsChildOf:
-    args:
-      - type: table
-  Entity.SubscribeRemote:
-    args:
-      - type: string
+          display: InputEvent
       - type: function
-  Canvas:
-    must_use: true
-    args:
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: Color
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: Vector2D
-  Client.CopyToClipboard:
+  Input.Unbind:
     args:
       - type: string
-  Client.SetNearClipPlane:
+      - type: 
+          display: InputEvent
+  Input.Register:
     args:
-      - type: number
-  Client.GetNearClipPlane:
+      - type: string
+      - type: string
+  Input.Unregister:
+    args:
+      - type: string
+      - type: string
+  Input.GetKeyIcon:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Input.GetKeyCode:
+    args:
+      - type: string
+  Input.GetModifierKeys:
     args:[]
-  Client.GetConnectedServerIP:
+  Input.GetMappedKeys:
+    args:
+      - type: string
+  Input.ResetBindings:
     args:[]
-  Client.SetDebugEnabled:
+  Input.GetScriptingKeyBindings:
+    args:[]
+  Input.GetGameKeyBindings:
+    args:[]
+  Input.SetInputEnabled:
     args:
       - type: boolean
-  Client.SetHighlightColor:
+  Input.SetMouseEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseCursor:
     args:
       - type: 
-          display: Color
-      - type: 
-          display: integer
-      - required: false
-        type: 
-          display: HighlightMode
-  Client.SetOutlineColor:
+          display: CursorType
+  Input.InputKey:
     args:
+      - type: string
       - type: 
-          display: Color
-      - required: false
-        type: 
-          display: integer
+          display: InputEvent
       - required: false
         type: number
-  Client.SetValue:
+  Input.IsKeyDown:
     args:
       - type: string
-      - type: 
-          display: any
-  Client.GetLocalPlayer:
+  Input.IsMouseEnabled:
     args:[]
-  Client.GetFrameTime:
+  Input.IsInputEnabled:
     args:[]
-  Client.GetTime:
-    args:[]
-  Client.GetMap:
-    args:[]
-  Client.GetPackages:
-    args:[]
-  Client.GetValue:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Client.Subscribe:
+  Input.Subscribe:
     args:
       - type: string
       - type: function
-  Client.Unsubscribe:
+  Input.Unsubscribe:
     args:
       - type: string
       - type: function
-  Timer.SetTimeout:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.SetInterval:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.ClearTimeout:
-    args:
-      - type: 
-          display: integer
-  Timer.ClearInterval:
-    args:
-      - type: 
-          display: integer
-  Timer.Bind:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: Actor
-  Timer.IsValid:
-    args:
-      - type: 
-          display: integer
-  Timer.GetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  Timer.GetRemainingTime:
-    args:
-      - type: 
-          display: integer
-  Timer.Pause:
-    args:
-      - type: 
-          display: integer
-  Timer.Resume:
-    args:
-      - type: 
-          display: integer
-  Timer.ResetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  CharacterSimple:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: any
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  HCharacter:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: string
-      - required: false
-        type: string
-  HCharacter:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: string
-      - required: false
-        type: string
-  Weapon:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Matrix:
-    must_use: true
-    args:
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
-  HELIXVehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Vehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: string
-  Console.Log:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Warn:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Error:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.RegisterCommand:
-    args:
-      - type: string
-      - type: function
-      - type: string
-      - type: string[]
-  Console.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Console.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Trigger:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
-      - required: false
-        type: 
-          display: TriggerType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: Color
-      - required: false
-        type: string[]
-  Character:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: string
-      - required: false
-        type: string
-  HSimpleVehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Blueprint Reference
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  WebUI:
-    must_use: true
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: 
-          display: WidgetVisibility
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
   Payment.ChargePlayer:
     args:
       - type: 
@@ -1594,216 +1779,32 @@ globals:
     args:
       - type: string
       - type: function
-  Color:
+  Matrix:
     must_use: true
     args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Color.RandomPalette:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+  Trigger:
+    must_use: true
     args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: TriggerType
       - required: false
         type: boolean
-  Color.Random:
-    args:[]
-  Color.FromRGBA:
-    args:
       - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Color.FromCYMK:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Color.FromHSL:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Color.FromHSV:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Color.FromHEX:
-    args:
-      - type: string
-  Discord.Initialize:
-    args:
-      - type: 
-          display: integer
-  Discord.SetActivity:
-    args:
-      - type: string
-      - type: string
-      - type: string
-      - type: string
-      - required: false
-        type: string
-  Vector:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Quat:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Matchmaking.JoinMatchmaking:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - type: 
-          display: integer
-      - type: function
-  Matchmaking.CheckMatchmakingStatus:
-    args:
-      - type: string
-      - type: function
-  Matchmaking.LeaveMatchmaking:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - type: function
-  Matchmaking.LeaveAllMatchmaking:
-    args:
-      - type: 
-          display: Player
-      - type: function
-  Sky.Spawn:
-    args:
-      - required: false
-        type: boolean
-  Sky.DestroyAllSky:
-    args:[]
-  Sky.Reconstruct:
-    args:[]
-  Sky.SetMoonTexture:
-    args:
-      - type: string
-  Sky.SetMoonTextureRotation:
-    args:
-      - type: number
-  Sky.SetMoonVerticalOffset:
-    args:
-      - type: number
-  Sky.SetMoonScale:
-    args:
-      - type: number
-  Sky.SetMoonPhase:
-    args:
-      - type: number
-  Sky.SetMoonGlowIntensity:
-    args:
-      - type: number
-  Sky.SetMoonLightIntensity:
-    args:
-      - type: number
-  Sky.SetSunAngle:
-    args:
-      - type: number
-  Sky.SetSunRadius:
-    args:
-      - type: number
-  Sky.SetSunLightIntensity:
-    args:
-      - type: number
-  Sky.SetSkyMode:
-    args:
-      - type: 
-          display: SkyMode
-  Sky.SetVolumetricCloudColor:
-    args:
-      - type: 
+        type: 
           display: Color
-  Sky.SetCloudCoverage:
-    args:
-      - type: number
-  Sky.SetFog:
-    args:
-      - type: number
-  Sky.SetContrast:
-    args:
-      - type: number
-  Sky.SetOverallIntensity:
-    args:
-      - type: number
-  Sky.SetNightBrightness:
-    args:
-      - type: number
-  Sky.SetAnimateTimeOfDay:
-    args:
-      - type: boolean
       - required: false
-        type: number
-      - required: false
-        type: number
-  Sky.SetTimeOfDay:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-  Sky.GetTimeOfDay:
-    args:[]
-  Sky.IsSpawned:
-    args:
-      - type: boolean
-  Sky.GetWeather:
-    args:[]
-  Sky.ChangeWeather:
-    args:
-      - type: 
-          display: WeatherType
-      - type: number
-  HELIXUtils.IsEntityValid:
-    args:
-      - type: 
-          display: any
-  HELIXUtils.Benchmark:
-    args:
-      - type: string
-      - type: number
-      - type: function
-      - type: 
-          display: any
+        type: string[]
   Server.ChangeMap:
     args:
       - type: string
@@ -1899,6 +1900,135 @@ globals:
       - type: string
       - type: function
   Server.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Sky.Spawn:
+    args:
+      - required: false
+        type: boolean
+  Sky.DestroyAllSky:
+    args:[]
+  Sky.Reconstruct:
+    args:[]
+  Sky.SetMoonTexture:
+    args:
+      - type: string
+  Sky.SetMoonTextureRotation:
+    args:
+      - type: number
+  Sky.SetMoonVerticalOffset:
+    args:
+      - type: number
+  Sky.SetMoonScale:
+    args:
+      - type: number
+  Sky.SetMoonPhase:
+    args:
+      - type: number
+  Sky.SetMoonGlowIntensity:
+    args:
+      - type: number
+  Sky.SetMoonLightIntensity:
+    args:
+      - type: number
+  Sky.SetSunAngle:
+    args:
+      - type: number
+  Sky.SetSunRadius:
+    args:
+      - type: number
+  Sky.SetSunLightIntensity:
+    args:
+      - type: number
+  Sky.SetSkyMode:
+    args:
+      - type: 
+          display: SkyMode
+  Sky.SetVolumetricCloudColor:
+    args:
+      - type: 
+          display: Color
+  Sky.SetCloudCoverage:
+    args:
+      - type: number
+  Sky.SetFog:
+    args:
+      - type: number
+  Sky.SetContrast:
+    args:
+      - type: number
+  Sky.SetOverallIntensity:
+    args:
+      - type: number
+  Sky.SetNightBrightness:
+    args:
+      - type: number
+  Sky.SetAnimateTimeOfDay:
+    args:
+      - type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Sky.SetTimeOfDay:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+  Sky.GetTimeOfDay:
+    args:[]
+  Sky.IsSpawned:
+    args:
+      - type: boolean
+  Sky.GetWeather:
+    args:[]
+  Sky.ChangeWeather:
+    args:
+      - type: 
+          display: WeatherType
+      - type: number
+  Package.Export:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.Require:
+    args:
+      - type: string
+  Package.SetPersistentData:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.GetDirectories:
+    args:
+      - required: false
+        type: string
+  Package.GetFiles:
+    args:
+      - required: false
+        type: any
+      - required: false
+        type: string
+  Package.GetName:
+    args:[]
+  Package.GetTitle:
+    args:[]
+  Package.GetVersion:
+    args:[]
+  Package.GetCompatibilityVersion:
+    args:[]
+  Package.GetPersistentData:
+    args:
+      - required: false
+        type: string
+  Package.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Package.Unsubscribe:
     args:
       - type: string
       - type: function
@@ -2043,353 +2173,77 @@ globals:
         type: number
       - required: false
         type: number
-  HTTP.RequestAsync:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-      - required: false
-        type: function
-  HTTP.Request:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-  HTTP.SetConnectionTimeout:
+  HELIXUtils.IsEntityValid:
     args:
       - type: 
-          display: integer
-  HTTP.SetReadWriteTimeout:
-    args:
-      - type: 
-          display: integer
-  Events.Call:
-    args:
-      - type: string
-      - required: false
-        type: 
           display: any
-  Events.CallRemote:
+  HELIXUtils.Benchmark:
     args:
       - type: string
-      - required: false
-        type: 
-          display: any
-  Events.CallRemote:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemote:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemoteDimension:
-    args:
-      - type: 
-          display: integer
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Events.SubscribeRemote:
-    args:
-      - type: string
-      - type: function
-  Events.Unsubscribe:
-    args:
-      - type: string
-      - required: false
-        type: function
-  Viewport.ProjectWorldToScreen:
-    args:
-      - type: 
-          display: Vector
-  Viewport.DeprojectScreenToWorld:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.SetHardwareCursor:
-    args:
-      - type: 
-          display: CursorType
-      - type: string
-      - required: false
-        type: 
-          display: Vector2D
-  Viewport.GetViewportSize:
-    args:[]
-  Viewport.SetMousePosition:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.GetMousePosition:
-    args:[]
-  Viewport.SetCrosshairEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenIntensity:
-    args:
       - type: number
-  Viewport.Subscribe:
-    args:
-      - type: string
       - type: function
-  Viewport.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Input.Bind:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
-      - type: function
-  Input.Unbind:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
-  Input.Register:
-    args:
-      - type: string
-      - type: string
-  Input.Unregister:
-    args:
-      - type: string
-      - type: string
-  Input.GetKeyIcon:
-    args:
-      - type: string
-      - required: false
-        type: boolean
-  Input.GetKeyCode:
-    args:
-      - type: string
-  Input.GetModifierKeys:
-    args:[]
-  Input.GetMappedKeys:
-    args:
-      - type: string
-  Input.ResetBindings:
-    args:[]
-  Input.GetScriptingKeyBindings:
-    args:[]
-  Input.GetGameKeyBindings:
-    args:[]
-  Input.SetInputEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseCursor:
-    args:
-      - type: 
-          display: CursorType
-  Input.InputKey:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
-      - required: false
-        type: number
-  Input.IsKeyDown:
-    args:
-      - type: string
-  Input.IsMouseEnabled:
-    args:[]
-  Input.IsInputEnabled:
-    args:[]
-  Input.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Input.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  PersistentDatabase.Create:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.Insert:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Update:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Delete:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetByKey:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetAll:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.GetSummary:
-    args:
-      - required: false
-        type: function
-  Package.Export:
-    args:
-      - type: string
       - type: 
           display: any
-  Package.Require:
-    args:
-      - type: string
-  Package.SetPersistentData:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Package.GetDirectories:
+  Color:
+    must_use: true
     args:
       - required: false
-        type: string
-  Package.GetFiles:
-    args:
+        type: number
       - required: false
-        type: any
+        type: number
       - required: false
-        type: string
-  Package.GetName:
-    args:[]
-  Package.GetTitle:
-    args:[]
-  Package.GetVersion:
-    args:[]
-  Package.GetCompatibilityVersion:
-    args:[]
-  Package.GetPersistentData:
-    args:
+        type: number
       - required: false
-        type: string
-  Package.Subscribe:
+        type: number
+  Color.RandomPalette:
     args:
-      - type: string
-      - type: function
-  Package.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  JSON.stringify:
-    args:
-      - type: table
-  JSON.parse:
-    args:
-      - type: string
-  Level.LoadStreamLevel:
-    args:
-      - type: string
       - required: false
         type: boolean
-      - required: false
-        type: boolean
-  Level.UnloadStreamLevel:
-    args:
-      - type: string
-      - required: false
-        type: boolean
-  Level.SetStreamLevelVisibility:
-    args:
-      - type: string
-      - type: boolean
-  Level.GetStreamLevels:
+  Color.Random:
     args:[]
-  Level.CallLevelBlueprintEvent:
+  Color.FromRGBA:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromCYMK:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSL:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSV:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHEX:
     args:
       - type: string
-  Level.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Level.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Navigation.GetRandomReachablePointInRadius:
-    args:
-      - type: 
-          display: Vector
-      - type: number
-  Navigation.GetRandomPointInNavigableRadius:
-    args:
-      - type: 
-          display: Vector
-      - type: number
-  Navigation.FindPathToLocation:
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Vector
-  PostProcess.SetBloom:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-  PostProcess.SetChromaticAberration:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-  PostProcess.SetImageEffects:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  PostProcess.SetExposure:
+  Quat:
+    must_use: true
     args:
       - required: false
         type: number
@@ -2399,41 +2253,6 @@ globals:
         type: number
       - required: false
         type: number
-      - required: false
-        type: number
-  PostProcess.SetFilm:
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  PostProcess.SetGlobalSaturation:
-    args:
-      - type: 
-          display: Color
-  PostProcess.SetLookupTable:
-    args:
-      - type: string
-  PostProcess.SetMaterial:
-    args:
-      - type: string
-  PostProcess.RemoveMaterial:
-    args:[]
-  PostProcess.SetSunAngle:
-    args:
-      - type: number
-  HELIXTable.Dump:
-    args:
-      - type: table
-  HELIXTable.ShallowCopy:
-    args:
-      - type: table
   HELIXMath.Round:
     args:
       - type: number
@@ -2494,6 +2313,47 @@ globals:
           display: Vector
       - type: number
       - type: number
+  Viewport.ProjectWorldToScreen:
+    args:
+      - type: 
+          display: Vector
+  Viewport.DeprojectScreenToWorld:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.SetHardwareCursor:
+    args:
+      - type: 
+          display: CursorType
+      - type: string
+      - required: false
+        type: 
+          display: Vector2D
+  Viewport.GetViewportSize:
+    args:[]
+  Viewport.SetMousePosition:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.GetMousePosition:
+    args:[]
+  Viewport.SetCrosshairEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenIntensity:
+    args:
+      - type: number
+  Viewport.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Viewport.Unsubscribe:
+    args:
+      - type: string
+      - type: function
   Rotator:
     must_use: true
     args:
@@ -2507,9 +2367,392 @@ globals:
     args:
       - required: false
         type: boolean
+  JSON.stringify:
+    args:
+      - type: table
+  JSON.parse:
+    args:
+      - type: string
+  HELIXTable.Dump:
+    args:
+      - type: table
+  HELIXTable.ShallowCopy:
+    args:
+      - type: table
+  Vector:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Console.Log:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Warn:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Error:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.RegisterCommand:
+    args:
+      - type: string
+      - type: function
+      - type: string
+      - type: string[]
+  Console.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Timer.SetTimeout:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.SetInterval:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.ClearTimeout:
+    args:
+      - type: 
+          display: integer
+  Timer.ClearInterval:
+    args:
+      - type: 
+          display: integer
+  Timer.Bind:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: Actor
+  Timer.IsValid:
+    args:
+      - type: 
+          display: integer
+  Timer.GetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Timer.GetRemainingTime:
+    args:
+      - type: 
+          display: integer
+  Timer.Pause:
+    args:
+      - type: 
+          display: integer
+  Timer.Resume:
+    args:
+      - type: 
+          display: integer
+  Timer.ResetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Vehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: string
 structs:
-    Damageable:
-    Damageable:ApplyDamage:
+  Paintable:
+    SetMaterial:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: integer
+    SetMaterialFromCanvas:
+      args:
+      - type: 
+          display: Canvas
+      - required: false
+        type: 
+          display: integer
+    SetMaterialFromSceneCapture:
+      args:
+      - type: 
+          display: SceneCapture
+      - required: false
+        type: 
+          display: integer
+    SetMaterialFromWebUI:
+      args:
+      - type: 
+          display: WebUI
+      - required: false
+        type: 
+          display: integer
+    ResetMaterial:
+      args:
+      - required: false
+        type: 
+          display: integer
+    SetMaterialColorParameter:
+      args:
+      - type: string
+      - type: 
+          display: Color
+    SetMaterialScalarParameter:
+      args:
+      - type: string
+      - type: number
+    SetMaterialTextureParameter:
+      args:
+      - type: string
+      - type: string
+    SetMaterialVectorParameter:
+      args:
+      - type: string
+      - type: 
+          display: Vector
+    SetPhysicalMaterial:
+      args:
+      - type: string
+  Cable:
+    AttachStartTo:
+      args:
+      - type: 
+          display: Actor
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: string
+    AttachEndTo:
+      args:
+      - type: 
+          display: Actor
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: string
+    DetachEnd:
+      args:[]
+    DetachStart:
+      args:[]
+    SetCableSettings:
+      args:
+      - type: number
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetForces:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: number
+    SetAngularLimits:
+      args:
+      - type: 
+          display: ConstraintMotion
+      - type: 
+          display: ConstraintMotion
+      - type: 
+          display: ConstraintMotion
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetLinearLimits:
+      args:
+      - type: 
+          display: ConstraintMotion
+      - type: 
+          display: ConstraintMotion
+      - type: 
+          display: ConstraintMotion
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetRenderingSettings:
+      args:
+      - type: number
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    GetAttachedStartTo:
+      args:[]
+    GetAttachedEndTo:
+      args:[]
+  Blueprint:
+    CallBlueprintEvent:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+    BindBlueprintEventDispatcher:
+      args:
+      - type: string
+      - type: function
+    UnbindBlueprintEventDispatcher:
+      args:
+      - type: string
+      - type: function
+    SetBlueprintPropertyValue:
+      args:
+      - type: string
+      - type: 
+          display: any
+    GetBlueprintPropertyValue:
+      args:
+      - type: string
+  Pickable:
+    AddSkeletalMeshAttached:
+      args:
+      - type: string
+      - type: string
+    AddStaticMeshAttached:
+      args:
+      - type: string
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+    PullUse:
+      args:
+      - required: false
+        type: number
+    ReleaseUse:
+      args:[]
+    RemoveSkeletalMeshAttached:
+      args:
+      - type: string
+    RemoveStaticMeshAttached:
+      args:
+      - type: string
+    SetAttachmentSettings:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: string
+    SetCrosshairMaterial:
+      args:
+      - type: string
+    SetPickable:
+      args:
+      - type: boolean
+    GetMesh:
+      args:[]
+    GetHandler:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  Database:
+    Close:
+      args:[]
+    ExecuteAsync:
+      args:
+      - type: string
+      - required: false
+        type: function
+      - required: false
+        type: 
+          display: any
+    Execute:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+    SelectAsync:
+      args:
+      - type: string
+      - required: false
+        type: function
+      - required: false
+        type: 
+          display: any
+    Select:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Damageable:
+    ApplyDamage:
       args:
       - type: 
           display: integer
@@ -2527,11 +2770,11 @@ structs:
       - required: false
         type: 
           display: any
-    Damageable:GetHealth:
+    GetHealth:
       args:[]
-    Damageable:GetMaxHealth:
+    GetMaxHealth:
       args:[]
-    Damageable:Respawn:
+    Respawn:
       args:
       - required: false
         type: 
@@ -2539,11 +2782,11 @@ structs:
       - required: false
         type: 
           display: Rotator
-    Damageable:SetHealth:
+    SetHealth:
       args:
       - type: 
           display: integer
-    Damageable:SetMaxHealth:
+    SetMaxHealth:
       args:
       - type: 
           display: integer
@@ -2555,1090 +2798,84 @@ structs:
       args:
         - type: string
         - type: function
-    Paintable:
-    Paintable:SetMaterial:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: integer
-    Paintable:SetMaterialFromCanvas:
-      args:
-      - type: 
-          display: Canvas
-      - required: false
-        type: 
-          display: integer
-    Paintable:SetMaterialFromSceneCapture:
-      args:
-      - type: 
-          display: SceneCapture
-      - required: false
-        type: 
-          display: integer
-    Paintable:SetMaterialFromWebUI:
-      args:
-      - type: 
-          display: WebUI
-      - required: false
-        type: 
-          display: integer
-    Paintable:ResetMaterial:
+  Grenade:
+    Explode:
+      args:[]
+    SetDamage:
       args:
       - required: false
         type: 
           display: integer
-    Paintable:SetMaterialColorParameter:
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+    SetTimeToExplode:
       args:
-      - type: string
-      - type: 
-          display: Color
-    Paintable:SetMaterialScalarParameter:
-      args:
-      - type: string
       - type: number
-    Paintable:SetMaterialTextureParameter:
+    SetThrowForce:
       args:
-      - type: string
-      - type: string
-    Paintable:SetMaterialVectorParameter:
-      args:
-      - type: string
       - type: 
-          display: Vector
-    Paintable:SetPhysicalMaterial:
-      args:
-      - type: string
-    Billboard:
-    Decal:
-    StaticMesh:
-    StaticMesh:SetMesh:
+          display: integer
+    GetBaseDamage:
       args:[]
-    StaticMesh:GetMesh:
+    GetDamageFalloff:
       args:[]
-    StaticMesh:IsFromLevel:
+    GetDamageInnerRadius:
       args:[]
-    Blueprint:
-    Blueprint:CallBlueprintEvent:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Blueprint:BindBlueprintEventDispatcher:
-      args:
-      - type: string
-      - type: function
-    Blueprint:UnbindBlueprintEventDispatcher:
-      args:
-      - type: string
-      - type: function
-    Blueprint:SetBlueprintPropertyValue:
-      args:
-      - type: string
-      - type: 
-          display: any
-    Blueprint:GetBlueprintPropertyValue:
-      args:
-      - type: string
-    Database:
-    Database:Close:
+    GetDamageOuterRadius:
       args:[]
-    Database:ExecuteAsync:
+    GetMinimumDamage:
+      args:[]
+    GetTimeToExplode:
+      args:[]
+    GetThrowForce:
+      args:[]
+    Subscribe:
       args:
-      - type: string
-      - required: false
-        type: function
-      - required: false
-        type: 
-          display: any
-    Database:Execute:
+        - type: string
+        - type: function
+    Unsubscribe:
       args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Database:SelectAsync:
-      args:
-      - type: string
-      - required: false
-        type: function
-      - required: false
-        type: 
-          display: any
-    Database:Select:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Light:
-    Light:SetColor:
+        - type: string
+        - type: function
+  Light:
+    SetColor:
       args:
       - type: 
           display: Color
-    Light:SetTextureLightProfile:
+    SetTextureLightProfile:
       args:
       - type: 
           display: LightProfile
-    Light:SetCastShadows:
+    SetCastShadows:
       args:
       - type: boolean
-    Light:SetIntensity:
+    SetIntensity:
       args:
       - type: number
-    Light:SetAttenuationRadius:
+    SetAttenuationRadius:
       args:
       - type: number
-    Light:GetCastShadows:
+    GetCastShadows:
       args:[]
-    Light:GetIntensity:
+    GetIntensity:
       args:[]
-    Light:GetAttenuationRadius:
+    GetAttenuationRadius:
       args:[]
-    Light:GetColor:
+    GetColor:
       args:[]
-    TextRender:
-    TextRender:SetColor:
-      args:
-      - type: 
-          display: Color
-    TextRender:SetFont:
-      args:
-      - type: 
-          display: FontType
-    TextRender:SetFreeze:
-      args:
-      - type: boolean
-    TextRender:SetGlyphSettings:
-      args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: TextRenderBevelType
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: boolean
-    TextRender:SetMaxSize:
-      args:
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: boolean
-    TextRender:SetText:
-      args:
-      - type: string
-    TextRender:SetTextSettings:
-      args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: TextRenderHorizontalAlignment
-      - required: false
-        type: 
-          display: TextRenderVerticalAlignment
-    HELIXAircraft:
-    Pickable:
-    Pickable:AddSkeletalMeshAttached:
-      args:
-      - type: string
-      - type: string
-    Pickable:AddStaticMeshAttached:
-      args:
-      - type: string
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-    Pickable:PullUse:
-      args:
-      - required: false
-        type: number
-    Pickable:ReleaseUse:
-      args:[]
-    Pickable:RemoveSkeletalMeshAttached:
-      args:
-      - type: string
-    Pickable:RemoveStaticMeshAttached:
-      args:
-      - type: string
-    Pickable:SetAttachmentSettings:
-      args:
-      - type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-      - required: false
-        type: string
-    Pickable:SetCrosshairMaterial:
-      args:
-      - type: string
-    Pickable:SetPickable:
-      args:
-      - type: boolean
-    Pickable:GetMesh:
-      args:[]
-    Pickable:GetHandler:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Cable:
-    Cable:AttachStartTo:
-      args:
-      - type: 
-          display: Actor
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: string
-    Cable:AttachEndTo:
-      args:
-      - type: 
-          display: Actor
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: string
-    Cable:DetachEnd:
-      args:[]
-    Cable:DetachStart:
-      args:[]
-    Cable:SetCableSettings:
-      args:
-      - type: number
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    Cable:SetForces:
-      args:
-      - type: 
-          display: Vector
-      - required: false
-        type: number
-    Cable:SetAngularLimits:
-      args:
-      - type: 
-          display: ConstraintMotion
-      - type: 
-          display: ConstraintMotion
-      - type: 
-          display: ConstraintMotion
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Cable:SetLinearLimits:
-      args:
-      - type: 
-          display: ConstraintMotion
-      - type: 
-          display: ConstraintMotion
-      - type: 
-          display: ConstraintMotion
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Cable:SetRenderingSettings:
-      args:
-      - type: number
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    Cable:GetAttachedStartTo:
-      args:[]
-    Cable:GetAttachedEndTo:
-      args:[]
-    Particle:
-    Particle:Activate:
-      args:
-      - type: boolean
-    Particle:Deactivate:
-      args:[]
-    Particle:SetParameterFloat:
-      args:
-      - type: string
-      - type: number
-    Particle:SetParameterInt:
-      args:
-      - type: string
-      - type: 
-          display: integer
-    Particle:SetParameterBool:
-      args:
-      - type: string
-      - type: boolean
-    Particle:SetParameterVector:
-      args:
-      - type: string
-      - type: 
-          display: Vector
-    Particle:SetParameterColor:
-      args:
-      - type: string
-      - type: 
-          display: Color
-    Particle:SetParameterMaterial:
-      args:
-      - type: string
-      - type: string
-    Particle:SetParameterMaterialFromTexture:
-      args:
-      - type: string
-      - type: string
-    Particle:SetParameterMaterialFromCanvas:
-      args:
-      - type: string
-      - type: 
-          display: Canvas
-    Particle:SetParameterMaterialFromWebUI:
-      args:
-      - type: string
-      - type: 
-          display: WebUI
-    Chat:
-    Sound:
-    Sound:FadeIn:
-      args:
-      - type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Sound:FadeOut:
-      args:
-      - type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    Sound:Play:
-      args:
-      - required: false
-        type: number
-    Sound:SetFalloffDistance:
-      args:
-      - type: number
-    Sound:SetInnerRadius:
-      args:
-      - type: number
-    Sound:SetLowPassFilter:
-      args:
-      - type: number
-    Sound:SetPaused:
-      args:
-      - required: false
-        type: boolean
-    Sound:SetPitch:
-      args:
-      - type: number
-    Sound:SetVolume:
-      args:
-      - type: number
-    Sound:Stop:
-      args:[]
-    Sound:StopDelayed:
-      args:
-      - type: number
-    Sound:Is2D:
-      args:[]
-    Sound:IsPlaying:
-      args:[]
-    Sound:GetDuration:
-      args:[]
-    Sound:GetPitch:
-      args:[]
-    Sound:GetVolume:
-      args:[]
-    Sound:GetLowPassFilter:
-      args:[]
-    Sound:GetInnerRadius:
-      args:[]
-    Sound:GetFalloffDistance:
-      args:[]
-    Sound:GetSoundType:
-      args:[]
-    Assets:
-    HELIXCharacter:
-    HELIXCharacter:PlayAnimation:
-      args:
-      - type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    HELIXCharacter:StopAnimation:
-      args:
-      - type: string
-    HELIXCharacter:SetMesh:
-      args:
-      - type: any
-    HELIXCharacter:GetMesh:
-      args:[]
-    HELIXCharacter:SetJumpZVelocity:
-      args:
-      - type: 
-          display: integer
-    HELIXCharacter:SetCapsuleSize:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    HELIXCharacter:SetCanJump:
-      args:
-      - type: boolean
-    HELIXCharacter:SetCanCrouch:
-      args:
-      - type: boolean
-    HELIXCharacter:SetBrakingSettings:
-      args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-    HELIXCharacter:SetGravityScale:
-      args:
-      - type: number
-    HELIXCharacter:SetAccelerationSettings:
-      args:
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-    HELIXCharacter:SetCanGrabProps:
-      args:
-      - type: boolean
-    HELIXCharacter:SetCanPickupPickables:
-      args:
-      - type: boolean
-    HELIXCharacter:SetRadialDamageToRagdoll:
-      args:
-      - type: 
-          display: integer
-    HELIXCharacter:GetWeaponAimMode:
-      args:[]
-    HELIXCharacter:StopMovement:
-      args:[]
-    HELIXCharacter:MoveTo:
-      args:
-      - type: 
-          display: Vector
-      - required: false
-        type: number
-    HELIXCharacter:Follow:
-      args:
-      - type: 
-          display: Actor
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-    HELIXCharacter:Jump:
-      args:[]
-    HELIXCharacter:EnterVehicle:
-      args:[]
-    HELIXCharacter:LeaveVehicle:
-      args:[]
-    HELIXCharacter:GrabProp:
-      args:
-      - type: 
-          display: Prop
-    HELIXCharacter:UnGrabProp:
-      args:[]
-    HELIXCharacter:PickUp:
-      args:[]
-    HELIXCharacter:Drop:
-      args:
-    HELIXCharacter:GetMovingTo:
-      args:[]
-    HELIXCharacter:GetControlRotation:
-      args:[]
-    HELIXCharacter:GetTeam:
-      args:[]
-    HELIXCharacter:GetPlayer:
-      args:[]
-    HELIXCharacter:GetVehicle:
-      args:[]
-    HELIXCharacter:GetGrabbedProp:
-      args:[]
-    HELIXCharacter:GetPicked:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Player:
-    Player:Ban:
-      args:
-      - type: string
-    Player:Connect:
-      args:
-      - type: string
-      - required: false
-        type: string
-    Player:Kick:
-      args:
-      - type: string
-    Player:Possess:
-      args:
-      - type: 
-          display: Character
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Player:StartCameraFade:
-      args:
-      - type: number
-      - type: number
-      - type: number
-      - type: 
-          display: Color
-      - type: boolean
-      - type: boolean
-    Player:SetManualCameraFade:
-      args:
-      - type: number
-      - type: 
-          display: Color
-      - type: boolean
-    Player:StopCameraFade:
-      args:[]
-    Player:SetCameraLocation:
-      args:
-      - type: 
-          display: Vector
-    Player:SetCameraRotation:
-      args:
-      - type: 
-          display: Rotator
-    Player:TranslateCameraTo:
-      args:
-      - type: 
-          display: Vector
-      - type: number
-      - required: false
-        type: number
-    Player:RotateCameraTo:
-      args:
-      - type: 
-          display: Rotator
-      - type: number
-      - required: false
-        type: number
-    Player:SetCameraSocketOffset:
-      args:
-      - type: 
-          display: Vector
-    Player:SetCameraArmLength:
-      args:
-      - type: number
-      - type: boolean
-    Player:AttachCameraTo:
-      args:
-      - type: 
-          display: Actor
-      - type: 
-          display: Vector
-      - type: number
-    Player:ResetCamera:
-      args:[]
-    Player:Spectate:
-      args:
-      - type: 
-          display: Player
-      - required: false
-        type: number
-    Player:SetName:
-      args:
-      - type: string
-    Player:SetVOIPChannel:
-      args:
-      - type: 
-          display: integer
-    Player:SetVOIPSetting:
-      args:
-      - type: 
-          display: VOIPSetting
-    Player:SetVOIPVolume:
-      args:
-      - type: number
-    Player:UnPossess:
-      args:[]
-    Player:GetAccountID:
-      args:[]
-    Player:GetAccountName:
-      args:[]
-    Player:GetAccountIconURL:
-      args:[]
-    Player:GetCameraLocation:
-      args:[]
-    Player:GetCameraArmLength:
-      args:
-      - required: false
-        type: boolean
-    Player:GetCameraRotation:
-      args:[]
-    Player:GetControlledCharacter:
-      args:[]
-    Player:GetIP:
-      args:[]
-    Player:GetDimension:
-      args:[]
-    Player:GetName:
-      args:[]
-    Player:GetPing:
-      args:[]
-    Player:GetVOIPChannel:
-      args:[]
-    Player:GetValue:
-      args:
-      - type: string
-      - type: 
-          display: any
-    Player:IsHost:
-      args:[]
-    Player:IsLocalPlayer:
-      args:[]
-    Player:GetVOIPSetting:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Melee:
-    Melee:AddAnimationCharacterUse:
-      args:
-      - type: string
-      - type: number
-      - type: 
-          display: AnimationSlotType
-    Melee:ClearAnimationsCharacterUse:
-      args:[]
-    Melee:SetImpactSound:
-      args:
-      - type: 
-          display: SurfaceType
-      - type: string
-      - type: number
-      - type: number
-    Melee:SetSoundUse:
-      args:
-      - type: string
-    Melee:SetBaseDamage:
-      args:
-      - required: false
-        type: 
-          display: integer
-    Melee:SetDamageSettings:
-      args:
-      - type: number
-      - type: number
-    Melee:SetCooldown:
-      args:
-      - type: number
-    Melee:GetAnimationsCharacterUse:
-      args:[]
-    Melee:GetSoundUse:
-      args:[]
-    Melee:GetBaseDamage:
-      args:[]
-    Melee:GetCooldown:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Prop:
-    Prop:SetGrabMode:
-      args:
-      - type: 
-          display: GrabMode
-    Prop:SetPhysicsDamping:
-      args:
-      - type: number
-      - type: number
-    Prop:SetMesh:
-      args:[]
-    Prop:GetMesh:
-      args:[]
-    Prop:GetHandler:
-      args:[]
-    Prop:GetGrabMode:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Widget:
-    Widget:SetVisibility:
-      args:
-      - type: 
-          display: WidgetVisibility
-    Widget:GetVisibility:
-      args:[]
-    Widget:SetFocus:
-      args:[]
-    Widget:BringToFront:
-      args:[]
-    Widget:AddToViewport:
-      args:[]
-    Widget:AddChild:
-      args:
-      - type: any
-    Widget:SetContentForSlot:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: Widget
-    Widget:SetCanvasLayout:
-      args:
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-    Widget:CallBlueprintEvent:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Widget:BindBlueprintEventDispatcher:
-      args:
-      - type: string
-      - type: function
-    Widget:UnbindBlueprintEventDispatcher:
-      args:
-      - type: string
-      - type: function
-    Widget:SetBlueprintPropertyValue:
-      args:
-      - type: string
-      - type: 
-          display: any
-    Widget:GetBlueprintPropertyValue:
-      args:
-      - type: string
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    File:
-    File:Close:
-      args:[]
-    File:Flush:
-      args:[]
-    File:IsEOF:
-      args:[]
-    File:IsBad:
-      args:[]
-    File:IsGood:
-      args:[]
-    File:HasFailed:
-      args:[]
-    File:Read:
-      args:
-      - required: false
-        type: 
-          display: integer
-    File:ReadAsync:
-      args:
-      - type: 
-          display: integer
-      - type: function
-    File:ReadLine:
-      args:[]
-    File:ReadJSON:
-      args:[]
-    File:ReadJSONAsync:
-      args:
-      - type: function
-    File:Seek:
-      args:
-      - type: 
-          display: integer
-    File:Size:
-      args:[]
-    File:Skip:
-      args:
-      - type: 
-          display: integer
-    File:Tell:
-      args:[]
-    File:Write:
-      args:
-      - type: string
-    SceneCapture:
-    SceneCapture:AddRenderActor:
-      args:
-      - type: 
-          display: Actor
-    SceneCapture:RemoveRenderActor:
-      args:
-      - type: 
-          display: Actor
-    SceneCapture:ClearRenderActors:
-      args:[]
-    SceneCapture:SetFreeze:
-      args:
-      - type: boolean
-    SceneCapture:EncodeToBase64:
-      args:
-      - required: false
-        type: 
-          display: ImageFormat
-    SceneCapture:EncodeToBase64Async:
-      args:
-      - required: false
-        type: 
-          display: ImageFormat
-      - type: function
-    SceneCapture:SetFOVAngle:
-      args:
-      - type: number
-    SceneCapture:SetShowFlag:
-      args:
-      - type: string
-      - type: boolean
-    SceneCapture:Resize:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    SceneCapture:SetRenderRate:
-      args:
-      - type: number
-    SceneCapture:SetDistanceOptimizationEnabled:
-      args:
-      - type: boolean
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Grenade:
-    Grenade:Explode:
-      args:[]
-    Grenade:SetDamage:
-      args:
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-    Grenade:SetTimeToExplode:
-      args:
-      - type: number
-    Grenade:SetThrowForce:
-      args:
-      - type: 
-          display: integer
-    Grenade:GetBaseDamage:
-      args:[]
-    Grenade:GetDamageFalloff:
-      args:[]
-    Grenade:GetDamageInnerRadius:
-      args:[]
-    Grenade:GetDamageOuterRadius:
-      args:[]
-    Grenade:GetMinimumDamage:
-      args:[]
-    Grenade:GetTimeToExplode:
-      args:[]
-    Grenade:GetThrowForce:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Debug:
-    Entity:
-    Entity:GetID:
-      args:[]
-    Entity:GetClass:
-      args:[]
-    Entity:IsA:
-      args:
-      - type: table
-    Entity:SubscribeRemote:
-      args:
-      - type: string
-      - type: function
-    Entity:SetValue:
-      args:
-      - type: string
-      - type: 
-          display: any
-      - required: false
-        type: boolean
-    Entity:GetValue:
-      args:
-      - type: string
-      - type: 
-          display: any
-    Entity:Destroy:
-      args:[]
-    Entity:IsValid:
-      args:[]
-    Entity:CallRemoteEvent:
-      args:
-      - type: string
-      - type: 
-          display: Player
-      - required: false
-        type: 
-          display: any
-    Entity:CallRemoteEvent:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Entity:BroadcastRemoteEvent:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Canvas:
-    Canvas:DrawBox:
+  HELIXAircraft:
+  Billboard:
+  Canvas:
+    DrawBox:
       args:
       - type: 
           display: Vector2D
@@ -3651,7 +2888,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawLine:
+    DrawLine:
       args:
       - type: 
           display: Vector2D
@@ -3663,7 +2900,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawMaterial:
+    DrawMaterial:
       args:
       - type: string
       - type: 
@@ -3683,7 +2920,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawMaterialFromWebUI:
+    DrawMaterialFromWebUI:
       args:
       - type: 
           display: WebUI
@@ -3704,7 +2941,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawMaterialFromSceneCapture:
+    DrawMaterialFromSceneCapture:
       args:
       - type: 
           display: SceneCapture
@@ -3725,7 +2962,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawText:
+    DrawText:
       args:
       - type: string
       - type: 
@@ -3756,7 +2993,7 @@ structs:
       - required: false
         type: 
           display: Color
-    Canvas:DrawTexture:
+    DrawTexture:
       args:
       - type: string
       - type: 
@@ -3779,7 +3016,7 @@ structs:
       - required: false
         type: 
           display: Vector2D
-    Canvas:DrawPolygon:
+    DrawPolygon:
       args:
       - type: string
       - type: 
@@ -3796,7 +3033,7 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:DrawRect:
+    DrawRect:
       args:
       - type: string
       - type: 
@@ -3809,30 +3046,30 @@ structs:
       - required: false
         type: 
           display: BlendMode
-    Canvas:SetAutoRepaintRate:
+    SetAutoRepaintRate:
       args:
       - type: boolean
-    Canvas:GetSize:
+    GetSize:
       args:[]
-    Canvas:Resize:
+    Resize:
       args:
       - type: 
           display: integer
       - type: 
           display: integer
-    Canvas:SetScreenPosition:
+    SetScreenPosition:
       args:
       - type: 
           display: Vector2D
-    Canvas:SetAutoResize:
+    SetAutoResize:
       args:
       - type: boolean
-    Canvas:SetVisibility:
+    SetVisibility:
       args:
       - type: boolean
-    Canvas:Repaint:
+    Repaint:
       args:[]
-    Canvas:Clear:
+    Clear:
       args:
       - type: 
           display: Color
@@ -3844,16 +3081,180 @@ structs:
       args:
         - type: string
         - type: function
-    Client:
-    Timer:
-    Actor:
-    Actor:AddImpulse:
+  CharacterSimple:
+    PlayAnimation:
+      args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    StopAnimation:
+      args:
+      - type: string
+    AddSkeletalMeshAttached:
+      args:
+      - type: string
+      - required: false
+        type: string
+    AddStaticMeshAttached:
+      args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+    RemoveSkeletalMeshAttached:
+      args:
+      - type: string
+    RemoveStaticMeshAttached:
+      args:
+      - type: string
+    RemoveAllStaticMeshesAttached:
+      args:[]
+    RemoveAllSkeletalMeshesAttached:
+      args:[]
+    SetMesh:
+      args:
+      - type: any
+      - type: boolean
+    GetMesh:
+      args:[]
+    GetMovingTo:
+      args:[]
+    MoveTo:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: number
+    Follow:
+      args:
+      - type: 
+          display: Actor
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+    StopMovement:
+      args:[]
+    GetPlayer:
+      args:[]
+    GetControlRotation:
+      args:[]
+    HideBone:
+      args:
+      - required: false
+        type: string
+    UnHideBone:
+      args:
+      - type: string
+    IsBoneHidden:
+      args:
+      - type: string
+    Jump:
+      args:[]
+    SetJumpZVelocity:
+      args:
+      - type: 
+          display: integer
+    SetMaxAcceleration:
+      args:
+      - type: 
+          display: integer
+    SetCapsuleSize:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetCanJump:
+      args:
+      - type: boolean
+    SetCanCrouch:
+      args:
+      - type: boolean
+    SetBrakingSettings:
+      args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+    SetSpringArmSettings:
+      args:
+      - type: 
+          display: Vector
+      - type: number
+      - type: 
+          display: Vector
+      - type: boolean
+      - type: number
+    SetRotationSettings:
+      args:
+      - type: 
+          display: Rotator
+      - type: boolean
+      - type: boolean
+    SetSpeedSettings:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetPawnSettings:
+      args:
+      - type: boolean
+      - type: boolean
+      - type: boolean
+    SetAnimationBlueprint:
+      args:
+      - type: string
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  Actor:
+    AddImpulse:
       args:
       - type: 
           display: Vector
       - required: false
         type: boolean
-    Actor:AttachTo:
+    AttachTo:
       args:
       - type: 
           display: Actor
@@ -3866,138 +3267,138 @@ structs:
         type: number
       - required: false
         type: boolean
-    Actor:Detach:
+    Detach:
       args:[]
-    Actor:SetCollision:
+    SetCollision:
       args:
       - type: 
           display: CollisionType
-    Actor:SetDimension:
+    SetDimension:
       args:
       - type: 
           display: integer
-    Actor:SetForce:
+    SetForce:
       args:
       - type: 
           display: Vector
       - required: false
         type: boolean
-    Actor:SetGravityEnabled:
+    SetGravityEnabled:
       args:
       - type: boolean
-    Actor:SetVisibility:
+    SetVisibility:
       args:
       - type: boolean
-    Actor:SetHighlightEnabled:
-      args:
-      - type: boolean
-      - required: false
-        type: 
-          display: integer
-    Actor:SetOutlineEnabled:
+    SetHighlightEnabled:
       args:
       - type: boolean
       - required: false
         type: 
           display: integer
-    Actor:SetLifeSpan:
+    SetOutlineEnabled:
+      args:
+      - type: boolean
+      - required: false
+        type: 
+          display: integer
+    SetLifeSpan:
       args:
       - type: number
-    Actor:SetLocation:
+    SetLocation:
       args:
       - type: 
           display: Vector
-    Actor:SetRotation:
+    SetRotation:
       args:
       - type: 
           display: Rotator
-    Actor:SetRelativeLocation:
+    SetRelativeLocation:
       args:
       - type: 
           display: Vector
-    Actor:SetRelativeRotation:
+    SetRelativeRotation:
       args:
       - type: 
           display: Rotator
-    Actor:SetScale:
+    SetScale:
       args:
       - type: 
           display: Vector
-    Actor:SetNetworkAuthority:
+    SetNetworkAuthority:
       args:
       - required: false
         type: 
           display: Player
-    Actor:SetNetworkAuthorityAutoDistributed:
+    SetNetworkAuthorityAutoDistributed:
       args:
       - type: boolean
-    Actor:TranslateTo:
+    TranslateTo:
       args:
       - type: 
           display: Vector
       - type: number
       - required: false
         type: number
-    Actor:RotateTo:
+    RotateTo:
       args:
       - type: 
           display: Rotator
       - type: number
       - required: false
         type: number
-    Actor:IsBeingDestroyed:
+    IsBeingDestroyed:
       args:[]
-    Actor:IsVisible:
+    IsVisible:
       args:[]
-    Actor:IsGravityEnabled:
+    IsGravityEnabled:
       args:[]
-    Actor:IsInWater:
+    IsInWater:
       args:[]
-    Actor:IsNetworkDistributed:
+    IsNetworkDistributed:
       args:[]
-    Actor:GetAttachedEntities:
+    GetAttachedEntities:
       args:[]
-    Actor:GetAttachedTo:
+    GetAttachedTo:
       args:[]
-    Actor:GetBounds:
+    GetBounds:
       args:[]
-    Actor:GetCollision:
+    GetCollision:
       args:[]
-    Actor:GetLocation:
+    GetLocation:
       args:[]
-    Actor:GetRelativeLocation:
+    GetRelativeLocation:
       args:[]
-    Actor:GetNetworkAuthority:
+    GetNetworkAuthority:
       args:[]
-    Actor:GetRotation:
+    GetRotation:
       args:[]
-    Actor:GetRelativeRotation:
+    GetRelativeRotation:
       args:[]
-    Actor:GetForce:
+    GetForce:
       args:[]
-    Actor:GetDimension:
+    GetDimension:
       args:[]
-    Actor:HasNetworkAuthority:
+    HasNetworkAuthority:
       args:[]
-    Actor:HasAuthority:
+    HasAuthority:
       args:[]
-    Actor:GetScale:
+    GetScale:
       args:[]
-    Actor:GetVelocity:
+    GetVelocity:
       args:[]
-    Actor:AddActorTag:
+    AddActorTag:
       args:
       - type: string
-    Actor:RemoveActorTag:
+    RemoveActorTag:
       args:
       - type: string
-    Actor:GetActorTags:
+    GetActorTags:
       args:[]
-    Actor:WasRecentlyRendered:
+    WasRecentlyRendered:
       args:[]
-    Actor:GetDistanceFromCamera:
+    GetDistanceFromCamera:
       args:[]
-    Actor:GetScreenPercentage:
+    GetScreenPercentage:
       args:[]
     Subscribe:
       args:
@@ -4007,164 +3408,45 @@ structs:
       args:
         - type: string
         - type: function
-    CharacterSimple:
-    CharacterSimple:PlayAnimation:
+  Melee:
+    AddAnimationCharacterUse:
       args:
       - type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    CharacterSimple:StopAnimation:
-      args:
-      - type: string
-    CharacterSimple:AddSkeletalMeshAttached:
-      args:
-      - type: string
-      - required: false
-        type: string
-    CharacterSimple:AddStaticMeshAttached:
-      args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-    CharacterSimple:RemoveSkeletalMeshAttached:
-      args:
-      - type: string
-    CharacterSimple:RemoveStaticMeshAttached:
-      args:
-      - type: string
-    CharacterSimple:RemoveAllStaticMeshesAttached:
-      args:[]
-    CharacterSimple:RemoveAllSkeletalMeshesAttached:
-      args:[]
-    CharacterSimple:SetMesh:
-      args:
-      - type: any
-      - type: boolean
-    CharacterSimple:GetMesh:
-      args:[]
-    CharacterSimple:GetMovingTo:
-      args:[]
-    CharacterSimple:MoveTo:
-      args:
-      - type: 
-          display: Vector
-      - required: false
-        type: number
-    CharacterSimple:Follow:
-      args:
-      - type: 
-          display: Actor
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-    CharacterSimple:StopMovement:
-      args:[]
-    CharacterSimple:GetPlayer:
-      args:[]
-    CharacterSimple:GetControlRotation:
-      args:[]
-    CharacterSimple:HideBone:
-      args:
-      - required: false
-        type: string
-    CharacterSimple:UnHideBone:
-      args:
-      - type: string
-    CharacterSimple:IsBoneHidden:
-      args:
-      - type: string
-    CharacterSimple:Jump:
-      args:[]
-    CharacterSimple:SetJumpZVelocity:
-      args:
-      - type: 
-          display: integer
-    CharacterSimple:SetMaxAcceleration:
-      args:
-      - type: 
-          display: integer
-    CharacterSimple:SetCapsuleSize:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    CharacterSimple:SetCanJump:
-      args:
-      - type: boolean
-    CharacterSimple:SetCanCrouch:
-      args:
-      - type: boolean
-    CharacterSimple:SetBrakingSettings:
-      args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-    CharacterSimple:SetSpringArmSettings:
-      args:
-      - type: 
-          display: Vector
       - type: number
       - type: 
-          display: Vector
-      - type: boolean
+          display: AnimationSlotType
+    ClearAnimationsCharacterUse:
+      args:[]
+    SetImpactSound:
+      args:
+      - type: 
+          display: SurfaceType
+      - type: string
       - type: number
-    CharacterSimple:SetRotationSettings:
-      args:
-      - type: 
-          display: Rotator
-      - type: boolean
-      - type: boolean
-    CharacterSimple:SetSpeedSettings:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    CharacterSimple:SetPawnSettings:
-      args:
-      - type: boolean
-      - type: boolean
-      - type: boolean
-    CharacterSimple:SetAnimationBlueprint:
+      - type: number
+    SetSoundUse:
       args:
       - type: string
+    SetBaseDamage:
+      args:
+      - required: false
+        type: 
+          display: integer
+    SetDamageSettings:
+      args:
+      - type: number
+      - type: number
+    SetCooldown:
+      args:
+      - type: number
+    GetAnimationsCharacterUse:
+      args:[]
+    GetSoundUse:
+      args:[]
+    GetBaseDamage:
+      args:[]
+    GetCooldown:
+      args:[]
     Subscribe:
       args:
         - type: string
@@ -4173,13 +3455,13 @@ structs:
       args:
         - type: string
         - type: function
-    HCharacter:
-    HCharacter:AddSkeletalMeshAttached:
+  HCharacter:
+    AddSkeletalMeshAttached:
       args:
       - type: string
       - required: false
         type: string
-    HCharacter:AddStaticMeshAttached:
+    AddStaticMeshAttached:
       args:
       - type: string
       - required: false
@@ -4192,15 +3474,15 @@ structs:
       - required: false
         type: 
           display: Rotator
-    HCharacter:Drop:
+    Drop:
       args:
-    HCharacter:Jump:
+    Jump:
       args:[]
-    HCharacter:PickUp:
+    PickUp:
       args:
       - type: 
           display: Pickable
-    HCharacter:PlayAnimation:
+    PlayAnimation:
       args:
       - type: string
       - required: false
@@ -4216,52 +3498,52 @@ structs:
         type: number
       - required: false
         type: boolean
-    HCharacter:StopAnimation:
+    StopAnimation:
       args:
       - type: string
-    HCharacter:RemoveSkeletalMeshAttached:
+    RemoveSkeletalMeshAttached:
       args:
       - type: string
-    HCharacter:RemoveStaticMeshAttached:
+    RemoveStaticMeshAttached:
       args:
       - type: string
-    HCharacter:RemoveAllStaticMeshesAttached:
+    RemoveAllStaticMeshesAttached:
       args:[]
-    HCharacter:RemoveAllSkeletalMeshesAttached:
+    RemoveAllSkeletalMeshesAttached:
       args:[]
-    HCharacter:SetDeathSound:
+    SetDeathSound:
       args:
       - type: string
-    HCharacter:SetMesh:
+    SetMesh:
       args:
       - type: string
-    HCharacter:SetInputEnabled:
+    SetInputEnabled:
       args:
       - type: boolean
-    HCharacter:SetPainSound:
+    SetPainSound:
       args:
       - type: string
-    HCharacter:SetRagdollMode:
+    SetRagdollMode:
       args:
       - type: boolean
-    HCharacter:SetTeam:
+    SetTeam:
       args:
       - type: 
           display: integer
-    HCharacter:IsInRagdollMode:
+    IsInRagdollMode:
       args:[]
-    HCharacter:IsInputEnabled:
+    IsInputEnabled:
       args:[]
-    HCharacter:GetBoneTransform:
+    GetBoneTransform:
       args:
       - type: string
-    HCharacter:GetMesh:
+    GetMesh:
       args:[]
-    HCharacter:GetPlayer:
+    GetPlayer:
       args:[]
-    HCharacter:GetTeam:
+    GetTeam:
       args:[]
-    HCharacter:EnterVehicle:
+    EnterVehicle:
       args:
       - type: 
           display: HSimpleVehicle
@@ -4276,348 +3558,13 @@ structs:
       args:
         - type: string
         - type: function
-    Weapon:
-    Weapon:Reload:
-      args:[]
-    Weapon:SetAmmoBag:
-      args:
-      - type: 
-          display: integer
-    Weapon:SetAmmoClip:
-      args:
-      - type: 
-          display: integer
-    Weapon:SetAmmoSettings:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-    Weapon:SetAnimationFire:
-      args:
-      - type: string
-      - required: false
-        type: number
-    Weapon:SetAnimationCharacterFire:
-      args:
-      - type: string
-      - required: false
-        type: number
-    Weapon:SetAnimationReload:
-      args:
-      - type: string
-      - required: false
-        type: number
-    Weapon:GetAnimationReload:
-      args:[]
-    Weapon:SetAutoReload:
-      args:
-      - type: boolean
-    Weapon:SetBulletColor:
-      args:
-      - type: 
-          display: Color
-    Weapon:SetAutoReload:
-      args:
-      - type: boolean
-    Weapon:SetBulletSettings:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-      - type: 
-          display: Color
-    Weapon:SetCadence:
-      args:
-      - type: number
-    Weapon:SetClipCapacity:
-      args:
-      - type: 
-          display: integer
-    Weapon:SetDamage:
-      args:
-      - type: 
-          display: integer
-    Weapon:SetHandlingMode:
-      args:
-      - type: 
-          display: HandlingMode
-    Weapon:SetLeftHandTransform:
-      args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-    Weapon:SetMagazineMesh:
+  Character:
+    AddSkeletalMeshAttached:
       args:
       - type: string
       - required: false
         type: string
-    Weapon:PlayAnimation:
-      args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    Weapon:SetParticlesBulletTrail:
-      args:
-      - type: string
-    Weapon:SetParticlesBarrel:
-      args:
-      - type: string
-    Weapon:SetParticlesShells:
-      args:
-      - type: string
-    Weapon:SetRightHandOffset:
-      args:
-      - type: 
-          display: Vector
-    Weapon:SetSightFOVMultiplier:
-      args:
-      - type: number
-    Weapon:SetSightTransform:
-      args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-    Weapon:SetSoundDry:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundLoad:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundUnload:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundZooming:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundFire:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundAim:
-      args:
-      - type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Weapon:SetSoundFireLastBullets:
-      args:
-      - type: string
-      - required: false
-        type: 
-          display: integer
-    Weapon:SetSpread:
-      args:
-      - type: number
-    Weapon:SetRecoil:
-      args:
-      - type: number
-    Weapon:SetUsageSettings:
-      args:
-      - type: boolean
-      - type: boolean
-    Weapon:SetWallbangSettings:
-      args:
-      - type: 
-          display: integer
-      - type: number
-    Weapon:GetAmmoBag:
-      args:[]
-    Weapon:GetAmmoClip:
-      args:[]
-    Weapon:GetAmmoToReload:
-      args:[]
-    Weapon:GetHandlingMode:
-      args:[]
-    Weapon:GetAnimationCharacterFire:
-      args:[]
-    Weapon:GetAnimationFire:
-      args:[]
-    Weapon:GetMagazineMesh:
-      args:[]
-    Weapon:GetParticlesBulletTrail:
-      args:[]
-    Weapon:GetParticlesShells:
-      args:[]
-    Weapon:GetSoundDry:
-      args:[]
-    Weapon:GetSoundLoad:
-      args:[]
-    Weapon:GetSoundUnload:
-      args:[]
-    Weapon:GetSoundZooming:
-      args:[]
-    Weapon:GetSoundAim:
-      args:[]
-    Weapon:GetSoundFire:
-      args:[]
-    Weapon:GetCanHoldUse:
-      args:[]
-    Weapon:GetHoldReleaseUse:
-      args:[]
-    Weapon:GetBoneTransform:
-      args:
-      - type: string
-    Weapon:GetBulletCount:
-      args:[]
-    Weapon:GetBulletColor:
-      args:[]
-    Weapon:GetCadence:
-      args:[]
-    Weapon:GetClipCapacity:
-      args:[]
-    Weapon:GetDamage:
-      args:[]
-    Weapon:GetRightHandOffset:
-      args:[]
-    Weapon:GetLeftHandLocation:
-      args:[]
-    Weapon:GetLeftHandRotation:
-      args:[]
-    Weapon:GetSightLocation:
-      args:[]
-    Weapon:GetSightRotation:
-      args:[]
-    Weapon:GetSightFOVMultiplier:
-      args:[]
-    Weapon:GetSpread:
-      args:[]
-    Weapon:GetRecoil:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Matrix:
-    Matrix:TransformVector:
-      args:
-      - type: 
-          display: Vector
-    Matrix:GetTransposed:
-      args:[]
-    HELIXVehicle:
-    HELIXVehicle:SetDoorAnimation:
-      args:
-      - type: 
-          display: integer
-      - type: string
-      - type: string
-    HELIXVehicle:SetDoor:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: Vector
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    HELIXVehicle:PlayAnimation:
-      args:
-      - type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: string
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    HELIXVehicle:StopAnimation:
-      args:
-      - type: string
-    HELIXVehicle:GetMesh:
-      args:[]
-    HELIXVehicle:GetPassenger:
-      args:
-      - type: 
-          display: integer
-    HELIXVehicle:GetPassengers:
-      args:[]
-    HELIXVehicle:GetRPM:
-      args:[]
-    HELIXVehicle:GetGear:
-      args:[]
-    HELIXVehicle:GetBoneTransform:
-      args:
-      - type: string
-    HELIXVehicle:SetCameraOffset:
-      args:
-      - type: 
-          display: Vector
-    HELIXVehicle:GetDoors:
-      args:[]
-    HELIXVehicle:SetExplosionSettings:
-      args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Vector
-      - type: 
-          display: Vector
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Vehicle:
-    Vehicle:AddStaticMeshAttached:
+    AddStaticMeshAttached:
       args:
       - type: string
       - required: false
@@ -4630,298 +3577,44 @@ structs:
       - required: false
         type: 
           display: Rotator
-    Vehicle:Horn:
+    Drop:
       args:
-      - type: boolean
-    Vehicle:RecreatePhysics:
-      args:[]
-    Vehicle:RemoveStaticMeshAttached:
-      args:
-      - type: string
-    Vehicle:RemoveAllStaticMeshesAttached:
-      args:[]
-    Vehicle:SetCameraOffset:
-      args:
-      - type: 
-          display: Vector
-    Vehicle:SetAutoStartEngine:
-      args:
-      - type: boolean
-    Vehicle:SetEngineStarted:
-      args:
-      - type: boolean
-    Vehicle:SetSteeringSetup:
-      args:
-      - type: 
-          display: SteeringType
-      - required: false
-        type: number
-    Vehicle:SetEngineSetup:
-      args:
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-    Vehicle:SetAerodynamicsSetup:
-      args:
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: Vector
-    Vehicle:SetTransmissionSetup:
-      args:
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: number
-    Vehicle:SetWheel:
-      args:
-      - type: 
-          display: integer
-      - type: string
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Vector
-    Vehicle:SetDoor:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: Vector
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    Vehicle:SetSteeringWheelSetup:
-      args:
-      - type: 
-          display: Vector
-      - type: 
-          display: integer
-    Vehicle:SetHeadlightsSetup:
-      args:
-      - type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Color
-    Vehicle:SetTaillightsSetup:
-      args:
-      - type: 
-          display: Vector
-    Vehicle:PlayAnimation:
-      args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: boolean
-    Vehicle:GetMesh:
-      args:[]
-    Vehicle:GetDoors:
-      args:[]
-    Vehicle:GetBoneTransform:
-      args:
-      - type: string
-    Vehicle:GetPassenger:
-      args:
-      - type: 
-          display: integer
-    Vehicle:GetPassengers:
-      args:[]
-    Vehicle:GetRPM:
-      args:[]
-    Vehicle:GetGear:
-      args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Console:
-    Trigger:
-    Trigger:ForceOverlapChecking:
-      args:[]
-    Trigger:SetExtent:
-      args:
-      - type: 
-          display: Vector
-    Trigger:SetColor:
-      args:
-      - type: 
-          display: Color
-    Trigger:SetOverlapOnlyClasses:
-      args:
-      - type: string[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    Character:
-    Character:AddSkeletalMeshAttached:
-      args:
-      - type: string
-      - required: false
-        type: string
-    Character:AddStaticMeshAttached:
-      args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-    Character:Drop:
-      args:
-    Character:EnterVehicle:
+    EnterVehicle:
       args:
       - type: 
           display: Vehicle
       - required: false
         type: 
           display: integer
-    Character:GrabProp:
+    GrabProp:
       args:
       - type: 
           display: Prop
-    Character:HideBone:
+    HideBone:
       args:
       - required: false
         type: string
-    Character:UnHideBone:
+    UnHideBone:
       args:
       - type: string
-    Character:IsBoneHidden:
+    IsBoneHidden:
       args:
       - type: string
-    Character:Jump:
+    Jump:
       args:[]
-    Character:LeaveVehicle:
+    LeaveVehicle:
       args:[]
-    Character:LookAt:
+    LookAt:
       args:
       - type: 
           display: Vector
-    Character:MoveTo:
+    MoveTo:
       args:
       - type: 
           display: Vector
       - required: false
         type: number
-    Character:Follow:
+    Follow:
       args:
       - type: 
           display: Actor
@@ -4933,13 +3626,13 @@ structs:
         type: boolean
       - required: false
         type: number
-    Character:StopMovement:
+    StopMovement:
       args:[]
-    Character:PickUp:
+    PickUp:
       args:
       - type: 
           display: Pickable
-    Character:PlayAnimation:
+    PlayAnimation:
       args:
       - type: string
       - required: false
@@ -4955,48 +3648,48 @@ structs:
         type: number
       - required: false
         type: boolean
-    Character:StopAnimation:
+    StopAnimation:
       args:
       - type: string
-    Character:RemoveSkeletalMeshAttached:
+    RemoveSkeletalMeshAttached:
       args:
       - type: string
-    Character:RemoveStaticMeshAttached:
+    RemoveStaticMeshAttached:
       args:
       - type: string
-    Character:RemoveAllStaticMeshesAttached:
+    RemoveAllStaticMeshesAttached:
       args:[]
-    Character:RemoveAllSkeletalMeshesAttached:
+    RemoveAllSkeletalMeshesAttached:
       args:[]
-    Character:SetAnimationIdleWalkRunStanding:
+    SetAnimationIdleWalkRunStanding:
       args:
       - type: 
           display: Animation
       - required: false
         type: boolean
-    Character:SetAnimationIdleWalkRunCrouching:
+    SetAnimationIdleWalkRunCrouching:
       args:
       - type: 
           display: Animation
       - required: false
         type: boolean
-    Character:SetAnimationIdleWalkRunProning:
+    SetAnimationIdleWalkRunProning:
       args:
       - type: 
           display: Animation
-    Character:SetAnimationsTransitionStandingCrouching:
-      args:
-      - type: 
-          display: Animation
-      - type: 
-          display: Animation
-    Character:SetAnimationsTransitionCrouchingProning:
+    SetAnimationsTransitionStandingCrouching:
       args:
       - type: 
           display: Animation
       - type: 
           display: Animation
-    Character:SetAccelerationSettings:
+    SetAnimationsTransitionCrouchingProning:
+      args:
+      - type: 
+          display: Animation
+      - type: 
+          display: Animation
+    SetAccelerationSettings:
       args:
       - required: false
         type: 
@@ -5019,7 +3712,7 @@ structs:
       - required: false
         type: 
           display: integer
-    Character:SetBrakingSettings:
+    SetBrakingSettings:
       args:
       - required: false
         type: number
@@ -5037,110 +3730,110 @@ structs:
       - required: false
         type: 
           display: integer
-    Character:SetCameraMode:
+    SetCameraMode:
       args:
       - type: 
           display: CameraMode
-    Character:SetCameraOffset:
+    SetCameraOffset:
       args:
       - type: 
           display: Vector
-    Character:SetCanCrouch:
+    SetCanCrouch:
       args:
       - type: boolean
-    Character:SetCanAim:
+    SetCanAim:
       args:
       - type: boolean
-    Character:SetCanDrop:
+    SetCanDrop:
       args:
       - type: boolean
-    Character:SetCanJump:
+    SetCanJump:
       args:
       - type: boolean
-    Character:SetCanDive:
+    SetCanDive:
       args:
       - type: boolean
-    Character:SetCanSprint:
+    SetCanSprint:
       args:
       - type: boolean
-    Character:SetCanGrabProps:
+    SetCanGrabProps:
       args:
       - type: boolean
-    Character:SetCanPickupPickables:
+    SetCanPickupPickables:
       args:
       - type: boolean
-    Character:SetCanPunch:
+    SetCanPunch:
       args:
       - type: boolean
-    Character:SetCanDeployParachute:
+    SetCanDeployParachute:
       args:
       - type: boolean
-    Character:SetCapsuleSize:
+    SetCapsuleSize:
       args:
       - type: 
           display: integer
       - type: 
           display: integer
-    Character:SetDamageMultiplier:
+    SetDamageMultiplier:
       args:
       - type: string
       - type: number
-    Character:SetDeathSound:
+    SetDeathSound:
       args:
       - type: string
-    Character:SetFallDamageTaken:
+    SetFallDamageTaken:
       args:
       - type: 
           display: integer
-    Character:SetFlyingMode:
+    SetFlyingMode:
       args:
       - type: boolean
-    Character:SetFOVMultiplier:
+    SetFOVMultiplier:
       args:
       - type: number
-    Character:SetHighFallingTime:
+    SetHighFallingTime:
       args:
       - type: number
-    Character:SetGaitMode:
+    SetGaitMode:
       args:
       - type: 
           display: GaitMode
-    Character:SetGravityScale:
+    SetGravityScale:
       args:
       - type: number
-    Character:SetImpactDamageTaken:
+    SetImpactDamageTaken:
       args:
       - type: 
           display: integer
-    Character:SetRadialDamageToRagdoll:
+    SetRadialDamageToRagdoll:
       args:
       - type: 
           display: integer
-    Character:SetFootstepVolumeMultiplier:
+    SetFootstepVolumeMultiplier:
       args:
       - type: number
-    Character:SetInvulnerable:
+    SetInvulnerable:
       args:
       - type: boolean
-    Character:SetJumpZVelocity:
+    SetJumpZVelocity:
       args:
       - type: 
           display: integer
-    Character:SetMesh:
+    SetMesh:
       args:
       - type: string
-    Character:SetMorphTarget:
+    SetMorphTarget:
       args:
       - type: string
       - type: number
-    Character:GetMorphTarget:
+    GetMorphTarget:
       args:
       - type: string
-    Character:ClearMorphTargets:
+    ClearMorphTargets:
       args:[]
-    Character:GetAllMorphTargetNames:
+    GetAllMorphTargetNames:
       args:[]
-    Character:SetPhysicalAnimationSettings:
+    SetPhysicalAnimationSettings:
       args:
       - type: string
       - type: boolean
@@ -5157,119 +3850,119 @@ structs:
         type: number
       - required: false
         type: number
-    Character:ResetPhysicalAnimationSettings:
+    ResetPhysicalAnimationSettings:
       args:[]
-    Character:SetInputEnabled:
+    SetInputEnabled:
       args:
       - type: boolean
-    Character:SetParachuteTexture:
+    SetParachuteTexture:
       args:
       - type: string
-    Character:SetPainSound:
+    SetPainSound:
       args:
       - type: string
-    Character:SetPunchDamage:
+    SetPunchDamage:
       args:
       - type: 
           display: integer
-    Character:SetRagdollMode:
+    SetRagdollMode:
       args:
       - type: boolean
-    Character:SetSimulatePhysics:
+    SetSimulatePhysics:
       args:
       - type: boolean
-    Character:SetSpeedMultiplier:
+    SetSpeedMultiplier:
       args:
       - type: number
-    Character:SetStanceMode:
+    SetStanceMode:
       args:
       - type: 
           display: StanceMode
-    Character:SetTeam:
+    SetTeam:
       args:
       - type: 
           display: integer
-    Character:SetViewMode:
+    SetViewMode:
       args:
       - type: 
           display: ViewMode
-    Character:SetWeaponAimMode:
+    SetWeaponAimMode:
       args:
       - type: 
           display: AimMode
-    Character:UnGrabProp:
+    UnGrabProp:
       args:[]
-    Character:IsInRagdollMode:
+    IsInRagdollMode:
       args:[]
-    Character:IsInvulnerable:
+    IsInvulnerable:
       args:[]
-    Character:IsInputEnabled:
+    IsInputEnabled:
       args:[]
-    Character:GetCameraMode:
+    GetCameraMode:
       args:[]
-    Character:GetCanDrop:
+    GetCanDrop:
       args:[]
-    Character:GetCanPunch:
+    GetCanPunch:
       args:[]
-    Character:GetCanAim:
+    GetCanAim:
       args:[]
-    Character:GetCanCrouch:
+    GetCanCrouch:
       args:[]
-    Character:GetCanSprint:
+    GetCanSprint:
       args:[]
-    Character:GetCanGrabProps:
+    GetCanGrabProps:
       args:[]
-    Character:GetCanPickupPickables:
+    GetCanPickupPickables:
       args:[]
-    Character:GetCapsuleSize:
+    GetCapsuleSize:
       args:[]
-    Character:GetBoneTransform:
+    GetBoneTransform:
       args:
       - type: string
-    Character:GetControlRotation:
+    GetControlRotation:
       args:[]
-    Character:GetDamageMultiplier:
+    GetDamageMultiplier:
       args:
       - type: string
-    Character:GetFallDamageTaken:
+    GetFallDamageTaken:
       args:[]
-    Character:GetFallingMode:
+    GetFallingMode:
       args:[]
-    Character:GetFlyingMode:
+    GetFlyingMode:
       args:[]
-    Character:GetGaitMode:
+    GetGaitMode:
       args:[]
-    Character:GetGrabbedProp:
+    GetGrabbedProp:
       args:[]
-    Character:GetGravityScale:
+    GetGravityScale:
       args:[]
-    Character:GetImpactDamageTaken:
+    GetImpactDamageTaken:
       args:[]
-    Character:GetJumpZVelocity:
+    GetJumpZVelocity:
       args:[]
-    Character:GetMesh:
+    GetMesh:
       args:[]
-    Character:GetMovingTo:
+    GetMovingTo:
       args:[]
-    Character:GetPicked:
+    GetPicked:
       args:[]
-    Character:GetPlayer:
+    GetPlayer:
       args:[]
-    Character:GetPunchDamage:
+    GetPunchDamage:
       args:[]
-    Character:GetSpeedMultiplier:
+    GetSpeedMultiplier:
       args:[]
-    Character:GetStanceMode:
+    GetStanceMode:
       args:[]
-    Character:GetSwimmingMode:
+    GetSwimmingMode:
       args:[]
-    Character:GetTeam:
+    GetTeam:
       args:[]
-    Character:GetVehicle:
+    GetVehicle:
       args:[]
-    Character:GetViewMode:
+    GetViewMode:
       args:[]
-    Character:GetWeaponAimMode:
+    GetWeaponAimMode:
       args:[]
     Subscribe:
       args:
@@ -5279,202 +3972,885 @@ structs:
       args:
         - type: string
         - type: function
-    HSimpleVehicle:
-    HSimpleVehicle:SetSiren:
-      args:
-      - type: boolean
-    HSimpleVehicle:SetHorn:
-      args:
-      - type: boolean
-    HSimpleVehicle:SetDoorState:
+  SceneCapture:
+    AddRenderActor:
       args:
       - type: 
-          display: integer
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    HSimpleVehicle:SetIsDrifting:
-      args:
-      - type: boolean
-    HSimpleVehicle:SetHoodState:
+          display: Actor
+    RemoveRenderActor:
       args:
       - type: 
-          display: integer
-      - type: boolean
-    HSimpleVehicle:SetTrunkState:
-      args:
-      - type: 
-          display: integer
-      - type: boolean
-    HSimpleVehicle:SetWheelState:
-      args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-    HSimpleVehicle:PrintData:
+          display: Actor
+    ClearRenderActors:
       args:[]
-    HSimpleVehicle:SetVehicleHealthState:
+    SetFreeze:
+      args:
+      - type: boolean
+    EncodeToBase64:
+      args:
+      - required: false
+        type: 
+          display: ImageFormat
+    EncodeToBase64Async:
+      args:
+      - required: false
+        type: 
+          display: ImageFormat
+      - type: function
+    SetFOVAngle:
+      args:
+      - type: number
+    SetShowFlag:
+      args:
+      - type: string
+      - type: boolean
+    Resize:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetRenderRate:
+      args:
+      - type: number
+    SetDistanceOptimizationEnabled:
+      args:
+      - type: boolean
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  TextRender:
+    SetColor:
+      args:
+      - type: 
+          display: Color
+    SetFont:
+      args:
+      - type: 
+          display: FontType
+    SetFreeze:
+      args:
+      - type: boolean
+    SetGlyphSettings:
+      args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: TextRenderBevelType
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: boolean
+    SetMaxSize:
       args:
       - required: false
         type: 
           display: integer
-    HSimpleVehicle:SetAllowEnterExitFromInteraction:
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: boolean
+    SetText:
+      args:
+      - type: string
+    SetTextSettings:
+      args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: TextRenderHorizontalAlignment
+      - required: false
+        type: 
+          display: TextRenderVerticalAlignment
+  Player:
+    Ban:
+      args:
+      - type: string
+    Connect:
+      args:
+      - type: string
+      - required: false
+        type: string
+    Kick:
+      args:
+      - type: string
+    Possess:
+      args:
+      - type: 
+          display: Character
+      - required: false
+        type: number
+      - required: false
+        type: number
+    StartCameraFade:
+      args:
+      - type: number
+      - type: number
+      - type: number
+      - type: 
+          display: Color
+      - type: boolean
+      - type: boolean
+    SetManualCameraFade:
+      args:
+      - type: number
+      - type: 
+          display: Color
+      - type: boolean
+    StopCameraFade:
+      args:[]
+    SetCameraLocation:
+      args:
+      - type: 
+          display: Vector
+    SetCameraRotation:
+      args:
+      - type: 
+          display: Rotator
+    TranslateCameraTo:
+      args:
+      - type: 
+          display: Vector
+      - type: number
+      - required: false
+        type: number
+    RotateCameraTo:
+      args:
+      - type: 
+          display: Rotator
+      - type: number
+      - required: false
+        type: number
+    SetCameraSocketOffset:
+      args:
+      - type: 
+          display: Vector
+    SetCameraArmLength:
+      args:
+      - type: number
+      - type: boolean
+    AttachCameraTo:
+      args:
+      - type: 
+          display: Actor
+      - type: 
+          display: Vector
+      - type: number
+    ResetCamera:
+      args:[]
+    Spectate:
+      args:
+      - type: 
+          display: Player
+      - required: false
+        type: number
+    SetName:
+      args:
+      - type: string
+    SetVOIPChannel:
+      args:
+      - type: 
+          display: integer
+    SetVOIPSetting:
+      args:
+      - type: 
+          display: VOIPSetting
+    SetVOIPVolume:
+      args:
+      - type: number
+    UnPossess:
+      args:[]
+    GetAccountID:
+      args:[]
+    GetAccountName:
+      args:[]
+    GetAccountIconURL:
+      args:[]
+    GetCameraLocation:
+      args:[]
+    GetCameraArmLength:
       args:
       - required: false
         type: boolean
-    HSimpleVehicle:SetVehicleOwner:
-      args:
-      - type: string
-    HSimpleVehicle:SetOnlyOwnerCanInteract:
-      args:
-      - type: boolean
-    HSimpleVehicle:SetDrift_DriftLateralForceFront:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_DriftLateralForceRear:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_BaseLateralForceFront:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_BaseLateralForceRear:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_DriftTorque:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_BaseDriftTorque:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetDrift_LowSpeedLateralForce:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetTransmission_Efficiency:
-      args:
-      - type: number
-    HSimpleVehicle:SetTransmission_ShiftDelay:
-      args:
-      - type: number
-    HSimpleVehicle:SetTransmission_DifferentialRatio:
-      args:
-      - type: number
-    HSimpleVehicle:SetTransmission_UpshiftRatio:
-      args:
-      - type: number
-    HSimpleVehicle:SetTransmission_DownshiftRatio:
-      args:
-      - type: number
-    HSimpleVehicle:SetEngine_MaxTorque:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetEngine_MaxRPM:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetEngine_MaxReverseSpeed:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetEngine_BrakeForce:
-      args:
-      - type: 
-          display: integer
-    HSimpleVehicle:SetEngine_BrakeCoefficient:
-      args:
-      - type: number
-    HSimpleVehicle:SetAerodynamics_DragCoefficient:
-      args:
-      - type: number
-    HSimpleVehicle:SetAerodynamics_CrossSectionArea:
-      args:
-      - type: number
-    HSimpleVehicle:SetWheelRadius:
-      args:
-      - type: 
-          display: integer
-      - type: number
-      - type: number
-    HSimpleVehicle:SetGearRatios:
-      args:
-      - type: string
-    HSimpleVehicle:NumOfAllowedPassanger:
+    GetCameraRotation:
       args:[]
-    HSimpleVehicle:NumOfCurrentPassanger:
+    GetControlledCharacter:
       args:[]
-    HSimpleVehicle:GetVehicleSpeed:
+    GetIP:
       args:[]
-    HSimpleVehicle:GetVehicleAcceleration:
+    GetDimension:
       args:[]
-    HSimpleVehicle:GetVehicleRPM:
+    GetName:
       args:[]
-    HSimpleVehicle:GetVehicleGear:
+    GetPing:
       args:[]
-    Subscribe:
-      args:
-        - type: string
-        - type: function
-    Unsubscribe:
-      args:
-        - type: string
-        - type: function
-    WebUI:
-    WebUI:BringToFront:
+    GetVOIPChannel:
       args:[]
-    WebUI:CallEvent:
+    GetValue:
       args:
       - type: string
       - type: 
           display: any
-    WebUI:LoadURL:
+    IsHost:
+      args:[]
+    IsLocalPlayer:
+      args:[]
+    GetVOIPSetting:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  HELIXVehicle:
+    SetDoorAnimation:
+      args:
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+    SetDoor:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    PlayAnimation:
       args:
       - type: string
-    WebUI:LoadHTML:
+      - required: false
+        type: boolean
+      - required: false
+        type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    StopAnimation:
       args:
       - type: string
-    WebUI:GetName:
+    GetMesh:
       args:[]
-    WebUI:ExecuteJavaScript:
+    GetPassenger:
+      args:
+      - type: 
+          display: integer
+    GetPassengers:
+      args:[]
+    GetRPM:
+      args:[]
+    GetGear:
+      args:[]
+    GetBoneTransform:
       args:
       - type: string
-    WebUI:SetFocus:
-      args:[]
-    WebUI:RemoveFocus:
-      args:[]
-    WebUI:SetLayout:
+    SetCameraOffset:
       args:
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-    WebUI:SetFreeze:
+      - type: 
+          display: Vector
+    GetDoors:
+      args:[]
+    SetExplosionSettings:
       args:
-      - type: boolean
-    WebUI:SetVisibility:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  Entity:
+    GetID:
+      args:[]
+    GetClass:
+      args:[]
+    IsA:
+      args:
+      - type: table
+    SubscribeRemote:
+      args:
+      - type: string
+      - type: function
+    SetValue:
+      args:
+      - type: string
+      - type: 
+          display: any
+      - required: false
+        type: boolean
+    GetValue:
+      args:
+      - type: string
+      - type: 
+          display: any
+    Destroy:
+      args:[]
+    IsValid:
+      args:[]
+    CallRemoteEvent:
+      args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+    CallRemoteEvent:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+    BroadcastRemoteEvent:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  StaticMesh:
+    SetMesh:
+      args:[]
+    GetMesh:
+      args:[]
+    IsFromLevel:
+      args:[]
+  Prop:
+    SetGrabMode:
+      args:
+      - type: 
+          display: GrabMode
+    SetPhysicsDamping:
+      args:
+      - type: number
+      - type: number
+    SetMesh:
+      args:[]
+    GetMesh:
+      args:[]
+    GetHandler:
+      args:[]
+    GetGrabMode:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  Decal:
+  Widget:
+    SetVisibility:
       args:
       - type: 
           display: WidgetVisibility
-    WebUI:SpawnSound:
+    GetVisibility:
+      args:[]
+    SetFocus:
+      args:[]
+    BringToFront:
+      args:[]
+    AddToViewport:
+      args:[]
+    AddChild:
+      args:
+      - type: any
+    SetContentForSlot:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: Widget
+    SetCanvasLayout:
+      args:
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+    CallBlueprintEvent:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+    BindBlueprintEventDispatcher:
+      args:
+      - type: string
+      - type: function
+    UnbindBlueprintEventDispatcher:
+      args:
+      - type: string
+      - type: function
+    SetBlueprintPropertyValue:
+      args:
+      - type: string
+      - type: 
+          display: any
+    GetBlueprintPropertyValue:
+      args:
+      - type: string
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  File:
+    Close:
+      args:[]
+    Flush:
+      args:[]
+    IsEOF:
+      args:[]
+    IsBad:
+      args:[]
+    IsGood:
+      args:[]
+    HasFailed:
+      args:[]
+    Read:
+      args:
+      - required: false
+        type: 
+          display: integer
+    ReadAsync:
+      args:
+      - type: 
+          display: integer
+      - type: function
+    ReadLine:
+      args:[]
+    ReadJSON:
+      args:[]
+    ReadJSONAsync:
+      args:
+      - type: function
+    Seek:
+      args:
+      - type: 
+          display: integer
+    Size:
+      args:[]
+    Skip:
+      args:
+      - type: 
+          display: integer
+    Tell:
+      args:[]
+    Write:
+      args:
+      - type: string
+  Assets:
+  Events:
+  HELIXCharacter:
+    PlayAnimation:
+      args:
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    StopAnimation:
+      args:
+      - type: string
+    SetMesh:
+      args:
+      - type: any
+    GetMesh:
+      args:[]
+    SetJumpZVelocity:
+      args:
+      - type: 
+          display: integer
+    SetCapsuleSize:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetCanJump:
+      args:
+      - type: boolean
+    SetCanCrouch:
+      args:
+      - type: boolean
+    SetBrakingSettings:
+      args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+    SetGravityScale:
+      args:
+      - type: number
+    SetAccelerationSettings:
+      args:
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+    SetCanGrabProps:
+      args:
+      - type: boolean
+    SetCanPickupPickables:
+      args:
+      - type: boolean
+    SetRadialDamageToRagdoll:
+      args:
+      - type: 
+          display: integer
+    GetWeaponAimMode:
+      args:[]
+    StopMovement:
+      args:[]
+    MoveTo:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: number
+    Follow:
+      args:
+      - type: 
+          display: Actor
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+    Jump:
+      args:[]
+    EnterVehicle:
+      args:[]
+    LeaveVehicle:
+      args:[]
+    GrabProp:
+      args:
+      - type: 
+          display: Prop
+    UnGrabProp:
+      args:[]
+    PickUp:
+      args:[]
+    Drop:
+      args:
+    GetMovingTo:
+      args:[]
+    GetControlRotation:
+      args:[]
+    GetTeam:
+      args:[]
+    GetPlayer:
+      args:[]
+    GetVehicle:
+      args:[]
+    GetGrabbedProp:
+      args:[]
+    GetPicked:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  HSimpleVehicle:
+    SetSiren:
+      args:
+      - type: boolean
+    SetHorn:
+      args:
+      - type: boolean
+    SetDoorState:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetIsDrifting:
+      args:
+      - type: boolean
+    SetHoodState:
+      args:
+      - type: 
+          display: integer
+      - type: boolean
+    SetTrunkState:
+      args:
+      - type: 
+          display: integer
+      - type: boolean
+    SetWheelState:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    PrintData:
+      args:[]
+    SetVehicleHealthState:
+      args:
+      - required: false
+        type: 
+          display: integer
+    SetAllowEnterExitFromInteraction:
+      args:
+      - required: false
+        type: boolean
+    SetVehicleOwner:
+      args:
+      - type: string
+    SetOnlyOwnerCanInteract:
+      args:
+      - type: boolean
+    SetDrift_DriftLateralForceFront:
+      args:
+      - type: 
+          display: integer
+    SetDrift_DriftLateralForceRear:
+      args:
+      - type: 
+          display: integer
+    SetDrift_BaseLateralForceFront:
+      args:
+      - type: 
+          display: integer
+    SetDrift_BaseLateralForceRear:
+      args:
+      - type: 
+          display: integer
+    SetDrift_DriftTorque:
+      args:
+      - type: 
+          display: integer
+    SetDrift_BaseDriftTorque:
+      args:
+      - type: 
+          display: integer
+    SetDrift_LowSpeedLateralForce:
+      args:
+      - type: 
+          display: integer
+    SetTransmission_Efficiency:
+      args:
+      - type: number
+    SetTransmission_ShiftDelay:
+      args:
+      - type: number
+    SetTransmission_DifferentialRatio:
+      args:
+      - type: number
+    SetTransmission_UpshiftRatio:
+      args:
+      - type: number
+    SetTransmission_DownshiftRatio:
+      args:
+      - type: number
+    SetEngine_MaxTorque:
+      args:
+      - type: 
+          display: integer
+    SetEngine_MaxRPM:
+      args:
+      - type: 
+          display: integer
+    SetEngine_MaxReverseSpeed:
+      args:
+      - type: 
+          display: integer
+    SetEngine_BrakeForce:
+      args:
+      - type: 
+          display: integer
+    SetEngine_BrakeCoefficient:
+      args:
+      - type: number
+    SetAerodynamics_DragCoefficient:
+      args:
+      - type: number
+    SetAerodynamics_CrossSectionArea:
+      args:
+      - type: number
+    SetWheelRadius:
+      args:
+      - type: 
+          display: integer
+      - type: number
+      - type: number
+    SetGearRatios:
+      args:
+      - type: string
+    NumOfAllowedPassanger:
+      args:[]
+    NumOfCurrentPassanger:
+      args:[]
+    GetVehicleSpeed:
+      args:[]
+    GetVehicleAcceleration:
+      args:[]
+    GetVehicleRPM:
+      args:[]
+    GetVehicleGear:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  WebUI:
+    BringToFront:
+      args:[]
+    CallEvent:
+      args:
+      - type: string
+      - type: 
+          display: any
+    LoadURL:
+      args:
+      - type: string
+    LoadHTML:
+      args:
+      - type: string
+    GetName:
+      args:[]
+    ExecuteJavaScript:
+      args:
+      - type: string
+    SetFocus:
+      args:[]
+    RemoveFocus:
+      args:[]
+    SetLayout:
+      args:
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+    SetFreeze:
+      args:
+      - type: boolean
+    SetVisibility:
+      args:
+      - type: 
+          display: WidgetVisibility
+    SpawnSound:
       args:
       - required: false
         type: 
@@ -5492,7 +4868,7 @@ structs:
       - required: false
         type: 
           display: AttenuationFunction
-    WebUI:SendMouseWheelEvent:
+    SendMouseWheelEvent:
       args:
       - type: 
           display: integer
@@ -5500,7 +4876,7 @@ structs:
           display: integer
       - type: number
       - type: number
-    WebUI:SendKeyEvent:
+    SendKeyEvent:
       args:
       - type: 
           display: WebUIKeyType
@@ -5509,7 +4885,7 @@ structs:
       - required: false
         type: 
           display: WebUIModifier
-    WebUI:SendMouseMoveEvent:
+    SendMouseMoveEvent:
       args:
       - type: 
           display: integer
@@ -5520,7 +4896,7 @@ structs:
           display: WebUIModifier
       - required: false
         type: boolean
-    WebUI:SendMouseClickEvent:
+    SendMouseClickEvent:
       args:
       - type: 
           display: integer
@@ -5535,11 +4911,11 @@ structs:
       - required: false
         type: 
           display: integer
-    WebUI:GetSize:
+    GetSize:
       args:[]
-    WebUI:GetVisibility:
+    GetVisibility:
       args:[]
-    WebUI:IsFrozen:
+    IsFrozen:
       args:[]
     Subscribe:
       args:
@@ -5549,127 +4925,751 @@ structs:
       args:
         - type: string
         - type: function
-    Payment:
-    Color:
-    Color.R:
-      property: read-only
-    Color.G:
-      property: read-only
-    Color.B:
-      property: read-only
-    Color.A:
-      property: read-only
-    Color:ToHex:
+  Sound:
+    FadeIn:
+      args:
+      - type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+    FadeOut:
+      args:
+      - type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    Play:
+      args:
+      - required: false
+        type: number
+    SetFalloffDistance:
+      args:
+      - type: number
+    SetInnerRadius:
+      args:
+      - type: number
+    SetLowPassFilter:
+      args:
+      - type: number
+    SetPaused:
       args:
       - required: false
         type: boolean
-    Discord:
-    Vector:
-    Vector.X:
-      property: read-only
-    Vector.Y:
-      property: read-only
-    Vector.Z:
-      property: read-only
-    Vector:Equals:
+    SetPitch:
       args:
+      - type: number
+    SetVolume:
+      args:
+      - type: number
+    Stop:
+      args:[]
+    StopDelayed:
+      args:
+      - type: number
+    Is2D:
+      args:[]
+    IsPlaying:
+      args:[]
+    GetDuration:
+      args:[]
+    GetPitch:
+      args:[]
+    GetVolume:
+      args:[]
+    GetLowPassFilter:
+      args:[]
+    GetInnerRadius:
+      args:[]
+    GetFalloffDistance:
+      args:[]
+    GetSoundType:
+      args:[]
+  Level:
+  Discord:
+  Particle:
+    Activate:
+      args:
+      - type: boolean
+    Deactivate:
+      args:[]
+    SetParameterFloat:
+      args:
+      - type: string
+      - type: number
+    SetParameterInt:
+      args:
+      - type: string
+      - type: 
+          display: integer
+    SetParameterBool:
+      args:
+      - type: string
+      - type: boolean
+    SetParameterVector:
+      args:
+      - type: string
       - type: 
           display: Vector
+    SetParameterColor:
+      args:
+      - type: string
+      - type: 
+          display: Color
+    SetParameterMaterial:
+      args:
+      - type: string
+      - type: string
+    SetParameterMaterialFromTexture:
+      args:
+      - type: string
+      - type: string
+    SetParameterMaterialFromCanvas:
+      args:
+      - type: string
+      - type: 
+          display: Canvas
+    SetParameterMaterialFromWebUI:
+      args:
+      - type: string
+      - type: 
+          display: WebUI
+  Chat:
+  Weapon:
+    Reload:
+      args:[]
+    SetAmmoBag:
+      args:
+      - type: 
+          display: integer
+    SetAmmoClip:
+      args:
+      - type: 
+          display: integer
+    SetAmmoSettings:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+    SetAnimationFire:
+      args:
+      - type: string
       - required: false
         type: number
-    Vector:Distance:
+    SetAnimationCharacterFire:
       args:
-      - type: 
-          display: Vector
-    Vector:DistanceSquared:
-      args:
-      - type: 
-          display: Vector
-    Vector:GetUnsafeNormal:
-      args:
-    Vector:GetSafeNormal:
-      args:
-    Vector:IsNearlyZero:
-      args:
+      - type: string
       - required: false
         type: number
-    Vector:IsZero:
+    SetAnimationReload:
+      args:
+      - type: string
+      - required: false
+        type: number
+    GetAnimationReload:
       args:[]
-    Vector:Normalize:
+    SetAutoReload:
+      args:
+      - type: boolean
+    SetBulletColor:
+      args:
+      - type: 
+          display: Color
+    SetAutoReload:
+      args:
+      - type: boolean
+    SetBulletSettings:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+      - type: 
+          display: Color
+    SetCadence:
+      args:
+      - type: number
+    SetClipCapacity:
+      args:
+      - type: 
+          display: integer
+    SetDamage:
+      args:
+      - type: 
+          display: integer
+    SetHandlingMode:
+      args:
+      - type: 
+          display: HandlingMode
+    SetLeftHandTransform:
+      args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+    SetMagazineMesh:
+      args:
+      - type: string
+      - required: false
+        type: string
+    PlayAnimation:
+      args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    SetParticlesBulletTrail:
+      args:
+      - type: string
+    SetParticlesBarrel:
+      args:
+      - type: string
+    SetParticlesShells:
+      args:
+      - type: string
+    SetRightHandOffset:
+      args:
+      - type: 
+          display: Vector
+    SetSightFOVMultiplier:
+      args:
+      - type: number
+    SetSightTransform:
+      args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+    SetSoundDry:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundLoad:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundUnload:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundZooming:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundFire:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundAim:
+      args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetSoundFireLastBullets:
+      args:
+      - type: string
+      - required: false
+        type: 
+          display: integer
+    SetSpread:
+      args:
+      - type: number
+    SetRecoil:
+      args:
+      - type: number
+    SetUsageSettings:
+      args:
+      - type: boolean
+      - type: boolean
+    SetWallbangSettings:
+      args:
+      - type: 
+          display: integer
+      - type: number
+    GetAmmoBag:
       args:[]
-    Vector:Size:
+    GetAmmoClip:
       args:[]
-    Vector:SizeSquared:
+    GetAmmoToReload:
       args:[]
-    Vector:Rotation:
+    GetHandlingMode:
       args:[]
-    Quat:
-    Quat.X:
+    GetAnimationCharacterFire:
+      args:[]
+    GetAnimationFire:
+      args:[]
+    GetMagazineMesh:
+      args:[]
+    GetParticlesBulletTrail:
+      args:[]
+    GetParticlesShells:
+      args:[]
+    GetSoundDry:
+      args:[]
+    GetSoundLoad:
+      args:[]
+    GetSoundUnload:
+      args:[]
+    GetSoundZooming:
+      args:[]
+    GetSoundAim:
+      args:[]
+    GetSoundFire:
+      args:[]
+    GetCanHoldUse:
+      args:[]
+    GetHoldReleaseUse:
+      args:[]
+    GetBoneTransform:
+      args:
+      - type: string
+    GetBulletCount:
+      args:[]
+    GetBulletColor:
+      args:[]
+    GetCadence:
+      args:[]
+    GetClipCapacity:
+      args:[]
+    GetDamage:
+      args:[]
+    GetRightHandOffset:
+      args:[]
+    GetLeftHandLocation:
+      args:[]
+    GetLeftHandRotation:
+      args:[]
+    GetSightLocation:
+      args:[]
+    GetSightRotation:
+      args:[]
+    GetSightFOVMultiplier:
+      args:[]
+    GetSpread:
+      args:[]
+    GetRecoil:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  HTTP:
+  PersistentDatabase:
+  PostProcess:
+  Client:
+  Matchmaking:
+  Navigation:
+  Debug:
+  Input:
+  Payment:
+  Matrix:
+    TransformVector:
+      args:
+      - type: 
+          display: Vector
+    GetTransposed:
+      args:[]
+  Trigger:
+    ForceOverlapChecking:
+      args:[]
+    SetExtent:
+      args:
+      - type: 
+          display: Vector
+    SetColor:
+      args:
+      - type: 
+          display: Color
+    SetOverlapOnlyClasses:
+      args:
+      - type: string[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
+  Server:
+  Sky:
+  Package:
+  Trace:
+  Vector2D:
+    X:
       property: read-only
-    Quat.Y:
+    Y:
       property: read-only
-    Quat.Z:
+  HELIXUtils:
+  Color:
+    R:
       property: read-only
-    Quat.W:
+    G:
       property: read-only
-    Quat:Normalize:
+    B:
+      property: read-only
+    A:
+      property: read-only
+    ToHex:
+      args:
+      - required: false
+        type: boolean
+  Quat:
+    X:
+      property: read-only
+    Y:
+      property: read-only
+    Z:
+      property: read-only
+    W:
+      property: read-only
+    Normalize:
       args:[]
-    Quat:Rotator:
-      args:[]
-    Quat:Inverse:
-      args:[]
-    Matchmaking:
-    Sky:
-    HELIXUtils:
-    Server:
-    Trace:
-    Vector2D:
-    Vector2D.X:
-      property: read-only
-    Vector2D.Y:
-      property: read-only
-    HTTP:
-    Events:
-    Viewport:
-    Input:
-    PersistentDatabase:
-    Package:
-    JSON:
-    Level:
-    Navigation:
-    PostProcess:
-    HELIXTable:
-    HELIXMath:
     Rotator:
-    Rotator.Pitch:
-      property: read-only
-    Rotator.Yaw:
-      property: read-only
-    Rotator.Roll:
-      property: read-only
-    Rotator:GetForwardVector:
       args:[]
-    Rotator:GetRightVector:
+    Inverse:
       args:[]
-    Rotator:GetUpVector:
+  HELIXMath:
+  Viewport:
+  Rotator:
+    Pitch:
+      property: read-only
+    Yaw:
+      property: read-only
+    Roll:
+      property: read-only
+    GetForwardVector:
       args:[]
-    Rotator:RotateVector:
+    GetRightVector:
+      args:[]
+    GetUpVector:
+      args:[]
+    RotateVector:
       args:
       - type: 
           display: Vector
-    Rotator:Normalize:
+    Normalize:
       args:[]
-    Rotator:UnrotateVector:
+    UnrotateVector:
       args:
       - type: 
           display: Vector
-    Rotator:Quaternion:
+    Quaternion:
       args:[]
-    Rotator:GetNormalized:
+    GetNormalized:
       args:[]
-    Rotator:IsNearlyZero:
+    IsNearlyZero:
       args:
       - required: false
         type: number
-    Rotator:IsZero:
+    IsZero:
       args:[]
+  JSON:
+  HELIXTable:
+  Vector:
+    X:
+      property: read-only
+    Y:
+      property: read-only
+    Z:
+      property: read-only
+    Equals:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: number
+    Distance:
+      args:
+      - type: 
+          display: Vector
+    DistanceSquared:
+      args:
+      - type: 
+          display: Vector
+    GetUnsafeNormal:
+      args:
+    GetSafeNormal:
+      args:
+    IsNearlyZero:
+      args:
+      - required: false
+        type: number
+    IsZero:
+      args:[]
+    Normalize:
+      args:[]
+    Size:
+      args:[]
+    SizeSquared:
+      args:[]
+    Rotation:
+      args:[]
+  Console:
+  Timer:
+  Vehicle:
+    AddStaticMeshAttached:
+      args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+    Horn:
+      args:
+      - type: boolean
+    RecreatePhysics:
+      args:[]
+    RemoveStaticMeshAttached:
+      args:
+      - type: string
+    RemoveAllStaticMeshesAttached:
+      args:[]
+    SetCameraOffset:
+      args:
+      - type: 
+          display: Vector
+    SetAutoStartEngine:
+      args:
+      - type: boolean
+    SetEngineStarted:
+      args:
+      - type: boolean
+    SetSteeringSetup:
+      args:
+      - type: 
+          display: SteeringType
+      - required: false
+        type: number
+    SetEngineSetup:
+      args:
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+    SetAerodynamicsSetup:
+      args:
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: Vector
+    SetTransmissionSetup:
+      args:
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: number
+    SetWheel:
+      args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Vector
+    SetDoor:
+      args:
+      - type: 
+          display: integer
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+    SetSteeringWheelSetup:
+      args:
+      - type: 
+          display: Vector
+      - type: 
+          display: integer
+    SetHeadlightsSetup:
+      args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+    SetTaillightsSetup:
+      args:
+      - type: 
+          display: Vector
+    PlayAnimation:
+      args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+    GetMesh:
+      args:[]
+    GetDoors:
+      args:[]
+    GetBoneTransform:
+      args:
+      - type: string
+    GetPassenger:
+      args:
+      - type: 
+          display: integer
+    GetPassengers:
+      args:[]
+    GetRPM:
+      args:[]
+    GetGear:
+      args:[]
+    Subscribe:
+      args:
+        - type: string
+        - type: function
+    Unsubscribe:
+      args:
+        - type: string
+        - type: function
