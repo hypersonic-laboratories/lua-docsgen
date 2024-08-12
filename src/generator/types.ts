@@ -36,7 +36,7 @@ export class ComplexType {
 	}
 
 	public containsLuaType() {
-		return this.typenames.some((type) => ComplexType.LUA_TYPE.includes(type.name));
+		return this.typenames.some((type) => ComplexType.IsLuaType(type.name));
 	}
 
 	protected mapTypename(name: string) {

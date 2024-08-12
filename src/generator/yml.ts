@@ -5,17 +5,18 @@ export class ComplexType extends OriginalComplexType {
 	public toString = (): string => {
 		let ret = "";
         if (this.typenames.length == 1) {
-            let type = this.typenames[0];
-            if (type.name.startsWith("{")) {
+            let isArray = this.typenames[0].array;
+            let type = this.mapTypename(this.typenames[0].name);
+            if (type.startsWith("{")) {
                 ret += "any";
-                if (type.array) ret += "[]";
+                if (isArray) ret += "[]";
                 return ret;
-            } else if (this.containsLuaType()) {
-                ret += this.mapTypename(type.name);
-                if (type.array) ret += "[]";
+            } else if (ComplexType.IsLuaType(type)) {
+                ret += type;
+                if (isArray) ret += "[]";
                 return ret;
             } else {
-                ret += `\n          display: ${type.name}${type.array ? "[]" : ""}`;
+                ret += `\n          display: ${type}${isArray ? "[]" : ""}`;
             }
         } else {
             ret = "any";
