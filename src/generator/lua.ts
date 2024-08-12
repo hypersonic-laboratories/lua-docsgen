@@ -7,14 +7,14 @@ export class LuaGenerator implements CodeGenerator {
     static generateAuthorityString(authority: Authority) {
         switch (authority) {
             case Authority.Server:
-                return '<img src="https://github.com/Derpius/nanosworld-vscode/blob/master/assets/server-only.png?raw=true" height="10"> `Server Side`';
+                return '<img src="https://static.helix-cdn.com/docs/server-only.png" height="10"> `Server Side`';
             case Authority.Client:
-                return '<img src="https://github.com/Derpius/nanosworld-vscode/blob/master/assets/client-only.png?raw=true" height="10"> `Client Side`';
+                return '<img src="https://static.helix-cdn.com/docs/client-only.png" height="10"> `Client Side`';
             case Authority.Authority:
-                return '<img src="https://github.com/Derpius/nanosworld-vscode/blob/master/assets/authority-only.png?raw=true" height="10"> `Authority Side`';
+                return '<img src="https://static.helix-cdn.com/docs/authority-only.png" height="10"> `Authority Side`';
             case Authority.Both:
             default:
-                return '<img src="https://github.com/Derpius/nanosworld-vscode/blob/master/assets/both.png?raw=true" height="10"> `Client/Server Side`';
+                return '<img src="https://static.helix-cdn.com/docs/both.png" height="10"> `Client/Server Side`';
         }
     }
 
