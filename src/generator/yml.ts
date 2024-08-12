@@ -71,7 +71,7 @@ export class YmlGenerator implements CodeGenerator {
     }
 
     static generateParams(params?: DocParameter[]): string {
-        if (params === undefined) return "[]";
+        if (params === undefined) return " []";
     
         let ret = "";
         params.forEach(function (param) {
