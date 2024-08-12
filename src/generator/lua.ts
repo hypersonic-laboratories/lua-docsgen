@@ -183,10 +183,10 @@ export class LuaGenerator implements CodeGenerator {
         const params = LuaGenerator.generateParams(fun.parameters);
         return `
     
-    ---${LuaGenerator.generateAuthorityString(fun.authority)}
-    ---
-    ---${LuaGenerator.generateDocstring(fun)}${params.string}${LuaGenerator.generateReturns(fun.return)}
-    function ${accessor}${fun.name}(${params.names}) end`;
+---${LuaGenerator.generateAuthorityString(fun.authority)}
+---
+---${LuaGenerator.generateDocstring(fun)}${params.string}${LuaGenerator.generateReturns(fun.return)}
+function ${accessor}${fun.name}(${params.names}) end`;
     }
 
     static generateConstructor(
@@ -298,18 +298,18 @@ export class LuaGenerator implements CodeGenerator {
     
             events = `
     
-    ---Subscribe to an event
-    ---@param event_name string @Name of the event to subscribe to
-    ---@param callback function @Function to call when the event is triggered
-    ---@return function @The callback function passed${subOverloads}
-    function ${cls.name}${
+---Subscribe to an event
+---@param event_name string @Name of the event to subscribe to
+---@param callback function @Function to call when the event is triggered
+---@return function @The callback function passed${subOverloads}
+function ${cls.name}${
                 cls.staticClass ? "." : ":"
             }Subscribe(event_name, callback) end
     
-    ---Unsubscribe from an event
-    ---@param event_name string @Name of the event to unsubscribe from
-    ---@param callback? function @Optional callback to unsubscribe (if no callback is passed then all callbacks in this Package will be unsubscribed from this event)${unsubOverloads}
-    function ${cls.name}${
+---Unsubscribe from an event
+---@param event_name string @Name of the event to unsubscribe from
+---@param callback? function @Optional callback to unsubscribe (if no callback is passed then all callbacks in this Package will be unsubscribed from this event)${unsubOverloads}
+function ${cls.name}${
                 cls.staticClass ? "." : ":"
             }Unsubscribe(event_name, callback) end`;
         }
@@ -338,12 +338,12 @@ export class LuaGenerator implements CodeGenerator {
         }
     
         return `
-    
-    ---${LuaGenerator.generateAuthorityString(cls.authority)}
-    ---
-    ---${LuaGenerator.generateDocstring(cls)}
-    ---@class ${cls.name}${inheritance}${fields}${operators}${constructors}
-    ${cls.name} = {}${staticFields}${staticFunctions}${functions}${events}`;
+
+---${LuaGenerator.generateAuthorityString(cls.authority)}
+---
+---${LuaGenerator.generateDocstring(cls)}
+---@class ${cls.name}${inheritance}${fields}${operators}${constructors}
+${cls.name} = {}${staticFields}${staticFunctions}${functions}${events}`;
     }
 
     generateEnum(name: string, values: DocEnumValue[]): string {
@@ -354,8 +354,8 @@ export class LuaGenerator implements CodeGenerator {
     
         return `
     
-    ---@enum ${name}
-    ${name} = {${valuesString.slice(0, -1)}
-    }`;
+---@enum ${name}
+${name} = {${valuesString.slice(0, -1)}
+}`;
     }
 }
