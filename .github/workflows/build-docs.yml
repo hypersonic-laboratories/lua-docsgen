@@ -2,10 +2,11 @@ name: Build Documentation
 on:
   push:
     branches:
-      - docgen
+      - docs
+      - main
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
+  # schedule:
+  #   - cron: "0 0 * * *"
 
 jobs:
   run-action:
