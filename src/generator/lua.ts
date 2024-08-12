@@ -36,7 +36,7 @@ class ComplexType {
 	};
 }
 
-export class LuaGenerator implements CodeGenerator {
+export default class LuaGenerator implements CodeGenerator {
     docsName: string = "annotations.lua";
     
     static generateAuthorityString(authority: Authority) {

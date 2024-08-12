@@ -6,7 +6,7 @@ export interface SupportedLanguages {
 }
 
 export const SUPPORTED_LANGUAGES: SupportedLanguages = {
-	lua: require("./lua").default,
+	lua: require("./lua").default(),
 }
 
 export const OPERATORS: { [key: string]: string } = {
