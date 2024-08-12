@@ -1,4 +1,4 @@
-import { CodeGenerator, OPERATORS, Type, ComplexType } from ".";
+import { CodeGenerator, OPERATORS, Type, ComplexType } from "./types";
 import { Authority, DocClass, DocConstructor, DocDescriptive, DocEnumValue, DocEvent, DocFunction, DocParameter, DocReturn, Docs, DocTyped } from "../schema";
 
 export class LuaGenerator implements CodeGenerator {

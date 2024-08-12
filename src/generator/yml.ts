@@ -1,4 +1,4 @@
-import { CodeGenerator, OPERATORS, Type, ComplexType as OriginalComplexType} from ".";
+import { CodeGenerator, OPERATORS, Type, ComplexType as OriginalComplexType } from "./types";
 import { Authority, DocClass, DocConstructor, DocDescriptive, DocEnumValue, DocEvent, DocFunction, DocParameter, DocReturn, Docs, DocTyped } from "../schema";
 
 export class ComplexType extends OriginalComplexType {
