@@ -2,681 +2,4579 @@
 base: lua52
 name: helix
 globals:
-  None.0:
+  AimMode.None:
     property: read-only
-  ADS.1:
+  AimMode.ADS:
     property: read-only
-  ZoomedZoom.2:
+  AimMode.ZoomedZoom:
     property: read-only
-  Zoomed.3:
+  AimMode.Zoomed:
     property: read-only
-  ZoomedFar.4:
+  AimMode.ZoomedFar:
     property: read-only
-  FullBody.0:
+  AnimationSlotType.FullBody:
     property: read-only
-  UpperBody.1:
+  AnimationSlotType.UpperBody:
     property: read-only
-  Map.2:
+  AssetType.Map:
     property: read-only
-  StaticMesh.4:
+  AssetType.StaticMesh:
     property: read-only
-  SkeletalMesh.8:
+  AssetType.SkeletalMesh:
     property: read-only
-  Sound.16:
+  AssetType.Sound:
     property: read-only
-  Animation.32:
+  AssetType.Animation:
     property: read-only
-  Particle.64:
+  AssetType.Particle:
     property: read-only
-  Material.128:
+  AssetType.Material:
     property: read-only
-  Blueprint.256:
+  AssetType.Blueprint:
     property: read-only
-  KeepRelative.0:
+  AttachmentRule.KeepRelative:
     property: read-only
-  KeepWorld.1:
+  AttachmentRule.KeepWorld:
     property: read-only
-  SnapToTarget.2:
+  AttachmentRule.SnapToTarget:
     property: read-only
-  Linear.0:
+  AttenuationFunction.Linear:
     property: read-only
-  Logarithmic.1:
+  AttenuationFunction.Logarithmic:
     property: read-only
-  Inverse.2:
+  AttenuationFunction.Inverse:
     property: read-only
-  LogReverse.3:
+  AttenuationFunction.LogReverse:
     property: read-only
-  NaturalSound.4:
+  AttenuationFunction.NaturalSound:
     property: read-only
-  Opaque.0:
+  BlendMode.Opaque:
     property: read-only
-  Masked.1:
+  BlendMode.Masked:
     property: read-only
-  Translucent.2:
+  BlendMode.Translucent:
     property: read-only
-  Additive.3:
+  BlendMode.Additive:
     property: read-only
-  Modulate.4:
+  BlendMode.Modulate:
     property: read-only
-  MaskedDistanceField.5:
+  BlendMode.MaskedDistanceField:
     property: read-only
-  MaskedDistanceFieldShadowed.6:
+  BlendMode.MaskedDistanceFieldShadowed:
     property: read-only
-  TranslucentDistanceField.7:
+  BlendMode.TranslucentDistanceField:
     property: read-only
-  TranslucentDistanceFieldShadowed.8:
+  BlendMode.TranslucentDistanceFieldShadowed:
     property: read-only
-  AlphaComposite.9:
+  BlendMode.AlphaComposite:
     property: read-only
-  AlphaHoldout.10:
+  BlendMode.AlphaHoldout:
     property: read-only
-  AlphaBlend.11:
+  BlendMode.AlphaBlend:
     property: read-only
-  TranslucentAlphaOnly.12:
+  BlendMode.TranslucentAlphaOnly:
     property: read-only
-  TranslucentAlphaOnlyWriteAlpha.13:
+  BlendMode.TranslucentAlphaOnlyWriteAlpha:
     property: read-only
-  FPSTPS.0:
+  CameraMode.FPSTPS:
     property: read-only
-  FPSOnly.1:
+  CameraMode.FPSOnly:
     property: read-only
-  TPSOnly.2:
+  CameraMode.TPSOnly:
     property: read-only
-  Auto.0:
+  CCDMode.Auto:
     property: read-only
-  Disabled.1:
+  CCDMode.Disabled:
     property: read-only
-  Enabled.2:
+  CCDMode.Enabled:
     property: read-only
-  WorldStatic.1 << 0:
+  CollisionChannel.WorldStatic:
     property: read-only
-  WorldDynamic.1 << 1:
+  CollisionChannel.WorldDynamic:
     property: read-only
-  Pawn.1 << 2:
+  CollisionChannel.Pawn:
     property: read-only
-  PhysicsBody.1 << 5:
+  CollisionChannel.PhysicsBody:
     property: read-only
-  Mesh.1 << 17:
+  CollisionChannel.Mesh:
     property: read-only
-  Water.1 << 19:
+  CollisionChannel.Water:
     property: read-only
-  Foliage.1 << 20:
+  CollisionChannel.Foliage:
     property: read-only
-  Vehicle.1 << 22:
+  CollisionChannel.Vehicle:
     property: read-only
-  Normal.0:
+  CollisionType.Normal:
     property: read-only
-  StaticOnly.1:
+  CollisionType.StaticOnly:
     property: read-only
-  NoCollision.2:
+  CollisionType.NoCollision:
     property: read-only
-  IgnoreOnlyPawn.3:
+  CollisionType.IgnoreOnlyPawn:
     property: read-only
-  Auto.4:
+  CollisionType.Auto:
     property: read-only
-  None.0:
+  CursorType.None:
     property: read-only
-  Default.1:
+  CursorType.Default:
     property: read-only
-  TextEditBeam.2:
+  CursorType.TextEditBeam:
     property: read-only
-  ResizeLeftRight.3:
+  CursorType.ResizeLeftRight:
     property: read-only
-  ResizeUpDown.4:
+  CursorType.ResizeUpDown:
     property: read-only
-  ResizeSouthEast.5:
+  CursorType.ResizeSouthEast:
     property: read-only
-  ResizeSouthWest.6:
+  CursorType.ResizeSouthWest:
     property: read-only
-  CardinalCross.7:
+  CursorType.CardinalCross:
     property: read-only
-  Crosshairs.8:
+  CursorType.Crosshairs:
     property: read-only
-  Hand.9:
+  CursorType.Hand:
     property: read-only
-  GrabHand.10:
+  CursorType.GrabHand:
     property: read-only
-  GrabHandClosed.11:
+  CursorType.GrabHandClosed:
     property: read-only
-  SlashedCircle.12:
+  CursorType.SlashedCircle:
     property: read-only
-  EyeDropper.13:
+  CursorType.EyeDropper:
     property: read-only
-  Free.0:
+  ConstraintMotion.Free:
     property: read-only
-  Limited.1:
+  ConstraintMotion.Limited:
     property: read-only
-  Locked.2:
+  ConstraintMotion.Locked:
     property: read-only
-  Shot.0:
+  DamageType.Shot:
     property: read-only
-  Explosion.1:
+  DamageType.Explosion:
     property: read-only
-  Punch.2:
+  DamageType.Punch:
     property: read-only
-  Fall.3:
+  DamageType.Fall:
     property: read-only
-  RunOverProp.4:
+  DamageType.RunOverProp:
     property: read-only
-  RunOverVehicle.5:
+  DamageType.RunOverVehicle:
     property: read-only
-  Melee.6:
+  DamageType.Melee:
     property: read-only
-  Unknown.7:
+  DamageType.Unknown:
     property: read-only
-  SQLite.0:
+  DatabaseEngine.SQLite:
     property: read-only
-  MySQL.1:
+  DatabaseEngine.MySQL:
     property: read-only
-  PostgreSQL.2:
+  DatabaseEngine.PostgreSQL:
     property: read-only
-  None.0:
+  FallingMode.None:
     property: read-only
-  Jumping.1:
+  FallingMode.Jumping:
     property: read-only
-  Climbing.2:
+  FallingMode.Climbing:
     property: read-only
-  Vaulting.3:
+  FallingMode.Vaulting:
     property: read-only
-  Falling.4:
+  FallingMode.Falling:
     property: read-only
-  HighFalling.5:
+  FallingMode.HighFalling:
     property: read-only
-  Parachuting.6:
+  FallingMode.Parachuting:
     property: read-only
-  SkyDiving.7:
+  FallingMode.SkyDiving:
     property: read-only
-  Roboto.0:
+  FontType.Roboto:
     property: read-only
-  GothicA1.1:
+  FontType.GothicA1:
     property: read-only
-  PoiretOne.2:
+  FontType.PoiretOne:
     property: read-only
-  Oswald.3:
+  FontType.Oswald:
     property: read-only
-  RobotoMono.4:
+  FontType.RobotoMono:
     property: read-only
-  OpenSans.5:
+  FontType.OpenSans:
     property: read-only
-  None.0:
+  GaitMode.None:
     property: read-only
-  Walking.1:
+  GaitMode.Walking:
     property: read-only
-  Sprinting.2:
+  GaitMode.Sprinting:
     property: read-only
-  Disabled.0:
+  GrabMode.Disabled:
     property: read-only
-  Auto.1:
+  GrabMode.Auto:
     property: read-only
-  Enabled.2:
+  GrabMode.Enabled:
     property: read-only
-  Always.0:
+  HighlightMode.Always:
     property: read-only
-  OnlyHidden.1:
+  HighlightMode.OnlyHidden:
     property: read-only
-  OnlyVisible.2:
+  HighlightMode.OnlyVisible:
     property: read-only
-  SingleHandedWeapon.0:
+  HandlingMode.SingleHandedWeapon:
     property: read-only
-  DoubleHandedWeapon.1:
+  HandlingMode.DoubleHandedWeapon:
     property: read-only
-  SingleHandedMelee.2:
+  HandlingMode.SingleHandedMelee:
     property: read-only
-  DoubleHandedMelee.3:
+  HandlingMode.DoubleHandedMelee:
     property: read-only
-  Throwable.4:
+  HandlingMode.Throwable:
     property: read-only
-  Torch.5:
+  HandlingMode.Torch:
     property: read-only
-  Barrel.6:
+  HandlingMode.Barrel:
     property: read-only
-  Box.7:
+  HandlingMode.Box:
     property: read-only
-  JPEG.0:
+  ImageFormat.JPEG:
     property: read-only
-  PNG.1:
+  ImageFormat.PNG:
     property: read-only
-  BMP.2:
+  ImageFormat.BMP:
     property: read-only
-  Pressed.0:
+  InputEvent.Pressed:
     property: read-only
-  Released.1:
+  InputEvent.Released:
     property: read-only
-  None.0:
+  KeyModifier.None:
     property: read-only
-  LeftShiftDown.1 << 0:
+  KeyModifier.LeftShiftDown:
     property: read-only
-  RightShiftDown.1 << 1:
+  KeyModifier.RightShiftDown:
     property: read-only
-  LeftControlDown.1 << 2:
+  KeyModifier.LeftControlDown:
     property: read-only
-  RightControlDown.1 << 3:
+  KeyModifier.RightControlDown:
     property: read-only
-  LeftAltDown.1 << 4:
+  KeyModifier.LeftAltDown:
     property: read-only
-  RightAltDown.1 << 5:
+  KeyModifier.RightAltDown:
     property: read-only
-  LeftCommandDown.1 << 6:
+  KeyModifier.LeftCommandDown:
     property: read-only
-  RightCommandDown.1 << 7:
+  KeyModifier.RightCommandDown:
     property: read-only
-  CapsLocked.1 << 8:
+  KeyModifier.CapsLocked:
     property: read-only
-  None.0:
+  LightProfile.None:
     property: read-only
-  Arrow_Star.1:
+  LightProfile.Arrow_Star:
     property: read-only
-  Arrow_Up.2:
+  LightProfile.Arrow_Up:
     property: read-only
-  Beam_01.3:
+  LightProfile.Beam_01:
     property: read-only
-  Beam_02.4:
+  LightProfile.Beam_02:
     property: read-only
-  Beam_03.5:
+  LightProfile.Beam_03:
     property: read-only
-  Beam_04.6:
+  LightProfile.Beam_04:
     property: read-only
-  Beam_05.7:
+  LightProfile.Beam_05:
     property: read-only
-  Beam_06.8:
+  LightProfile.Beam_06:
     property: read-only
-  Beam_07.9:
+  LightProfile.Beam_07:
     property: read-only
-  Beam_08.10:
+  LightProfile.Beam_08:
     property: read-only
-  Beam_LED_01.11:
+  LightProfile.Beam_LED_01:
     property: read-only
-  Beam_LED_02.12:
+  LightProfile.Beam_LED_02:
     property: read-only
-  Beam_LED_03.13:
+  LightProfile.Beam_LED_03:
     property: read-only
-  Beam_LED_04.14:
+  LightProfile.Beam_LED_04:
     property: read-only
-  Beam_LED_05.15:
+  LightProfile.Beam_LED_05:
     property: read-only
-  Beam_LED_06.16:
+  LightProfile.Beam_LED_06:
     property: read-only
-  Beam_LED_07.17:
+  LightProfile.Beam_LED_07:
     property: read-only
-  Bow.18:
+  LightProfile.Bow:
     property: read-only
-  Capped_01.19:
+  LightProfile.Capped_01:
     property: read-only
-  Capped_02.20:
+  LightProfile.Capped_02:
     property: read-only
-  Shattered_01.21:
+  LightProfile.Shattered_01:
     property: read-only
-  Shattered_02.22:
+  LightProfile.Shattered_02:
     property: read-only
-  Shattered_03.23:
+  LightProfile.Shattered_03:
     property: read-only
-  Shattered_04.24:
+  LightProfile.Shattered_04:
     property: read-only
-  Shattered_05.25:
+  LightProfile.Shattered_05:
     property: read-only
-  SpotLight_01.26:
+  LightProfile.SpotLight_01:
     property: read-only
-  SpotLight_02.27:
+  LightProfile.SpotLight_02:
     property: read-only
-  SpotLight_03.28:
+  LightProfile.SpotLight_03:
     property: read-only
-  SpotLight_04.29:
+  LightProfile.SpotLight_04:
     property: read-only
-  Spreadout_01.30:
+  LightProfile.Spreadout_01:
     property: read-only
-  Spreadout_02.31:
+  LightProfile.Spreadout_02:
     property: read-only
-  Spreadout_03.32:
+  LightProfile.Spreadout_03:
     property: read-only
-  Spreadout_04.33:
+  LightProfile.Spreadout_04:
     property: read-only
-  Star_Bow.34:
+  LightProfile.Star_Bow:
     property: read-only
-  Star_Burst_01.35:
+  LightProfile.Star_Burst_01:
     property: read-only
-  Star_Burst_02.36:
+  LightProfile.Star_Burst_02:
     property: read-only
-  Star_Burst_03.37:
+  LightProfile.Star_Burst_03:
     property: read-only
-  Star_Burst_04.38:
+  LightProfile.Star_Burst_04:
     property: read-only
-  Star_Burst_05.39:
+  LightProfile.Star_Burst_05:
     property: read-only
-  Star_Burst_06.40:
+  LightProfile.Star_Burst_06:
     property: read-only
-  Star_Burst_07.41:
+  LightProfile.Star_Burst_07:
     property: read-only
-  Star_Burst_08.42:
+  LightProfile.Star_Burst_08:
     property: read-only
-  Star_X_01.43:
+  LightProfile.Star_X_01:
     property: read-only
-  Star_X_02.44:
+  LightProfile.Star_X_02:
     property: read-only
-  Wall_Boomerang.45:
+  LightProfile.Wall_Boomerang:
     property: read-only
-  Wall_Inverted_V.46:
+  LightProfile.Wall_Inverted_V:
     property: read-only
-  Wall_Star_T.47:
+  LightProfile.Wall_Star_T:
     property: read-only
-  Wing_6.48:
+  LightProfile.Wing_6:
     property: read-only
-  Wing_V_01.49:
+  LightProfile.Wing_V_01:
     property: read-only
-  Wing_V_02.50:
+  LightProfile.Wing_V_02:
     property: read-only
-  Display.0:
+  LogType.Display:
     property: read-only
-  Warning.1:
+  LogType.Warning:
     property: read-only
-  Error.2:
+  LogType.Error:
     property: read-only
-  Debug.3:
+  LogType.Debug:
     property: read-only
-  Verbose.4:
+  LogType.Verbose:
     property: read-only
-  Scripting.5:
+  LogType.Scripting:
     property: read-only
-  ScriptingWarn.6:
+  LogType.ScriptingWarn:
     property: read-only
-  ScriptingError.7:
+  LogType.ScriptingError:
     property: read-only
-  Chat.8:
+  LogType.Chat:
     property: read-only
-  WebUI.9:
+  LogType.WebUI:
     property: read-only
-  Success.10:
+  LogType.Success:
     property: read-only
-  Fatal.11:
+  LogType.Fatal:
     property: read-only
-  Point.0:
+  LightType.Point:
     property: read-only
-  Spot.1:
+  LightType.Spot:
     property: read-only
-  React.2:
+  LightType.React:
     property: read-only
-  Border.0:
+  NativeWidget.Border:
     property: read-only
-  Button.1:
+  NativeWidget.Button:
     property: read-only
-  CheckBox.2:
+  NativeWidget.CheckBox:
     property: read-only
-  Image.3:
+  NativeWidget.Image:
     property: read-only
-  ProgressBar.4:
+  NativeWidget.ProgressBar:
     property: read-only
-  RichTextBlock.5:
+  NativeWidget.RichTextBlock:
     property: read-only
-  Slider.6:
+  NativeWidget.Slider:
     property: read-only
-  Text.7:
+  NativeWidget.Text:
     property: read-only
-  ComboBox.8:
+  NativeWidget.ComboBox:
     property: read-only
-  EditableText.9:
+  NativeWidget.EditableText:
     property: read-only
-  EditableTextMultiLine.10:
+  NativeWidget.EditableTextMultiLine:
     property: read-only
-  SpinBox.11:
+  NativeWidget.SpinBox:
     property: read-only
-  TextBox.12:
+  NativeWidget.TextBox:
     property: read-only
-  TextBoxMultiLine.13:
+  NativeWidget.TextBoxMultiLine:
     property: read-only
-  CanvasPanel.14:
+  NativeWidget.CanvasPanel:
     property: read-only
-  GridPanel.15:
+  NativeWidget.GridPanel:
     property: read-only
-  HorizontalBox.16:
+  NativeWidget.HorizontalBox:
     property: read-only
-  Overlay.17:
+  NativeWidget.Overlay:
     property: read-only
-  ScaleBox.18:
+  NativeWidget.ScaleBox:
     property: read-only
-  ScrollBox.19:
+  NativeWidget.ScrollBox:
     property: read-only
-  SizeBox.20:
+  NativeWidget.SizeBox:
     property: read-only
-  UniformGridPanel.21:
+  NativeWidget.UniformGridPanel:
     property: read-only
-  VerticalBox.22:
+  NativeWidget.VerticalBox:
     property: read-only
-  WrapBox.23:
+  NativeWidget.WrapBox:
     property: read-only
-  BackgroundBlur.24:
+  NativeWidget.BackgroundBlur:
     property: read-only
-  Script.0:
+  PackageType.Script:
     property: read-only
-  GameMode.1:
+  PackageType.GameMode:
     property: read-only
-  LoadingScreen.2:
+  PackageType.LoadingScreen:
     property: read-only
-  Map.4:
+  PackageType.Map:
     property: read-only
-  VolumetricClouds.0:
+  SkyMode.VolumetricClouds:
     property: read-only
-  StaticClouds.1:
+  SkyMode.StaticClouds:
     property: read-only
-  DynamicClouds2D.2:
+  SkyMode.DynamicClouds2D:
     property: read-only
-  NoClouds.3:
+  SkyMode.NoClouds:
     property: read-only
-  VolumetricAurora.4:
+  SkyMode.VolumetricAurora:
     property: read-only
-  Space.5:
+  SkyMode.Space:
     property: read-only
-  SFX.0:
+  SoundType.SFX:
     property: read-only
-  Music.1:
+  SoundType.Music:
     property: read-only
-  UI.2:
+  SoundType.UI:
     property: read-only
-  Default.0:
+  SoundLoopMode.Default:
     property: read-only
-  Forever.1:
+  SoundLoopMode.Forever:
     property: read-only
-  Never.2:
+  SoundLoopMode.Never:
     property: read-only
-  None.0:
+  StanceMode.None:
     property: read-only
-  Standing.1:
+  StanceMode.Standing:
     property: read-only
-  Crouching.2:
+  StanceMode.Crouching:
     property: read-only
-  Proning.3:
+  StanceMode.Proning:
     property: read-only
-  SingleAngle.0:
+  SteeringType.SingleAngle:
     property: read-only
-  AngleRatio.1:
+  SteeringType.AngleRatio:
     property: read-only
-  Ackermann.2:
+  SteeringType.Ackermann:
     property: read-only
-  Default.0:
+  SurfaceType.Default:
     property: read-only
-  Carpet.1:
+  SurfaceType.Carpet:
     property: read-only
-  Concrete.2:
+  SurfaceType.Concrete:
     property: read-only
-  Grass.3:
+  SurfaceType.Grass:
     property: read-only
-  Gravel.4:
+  SurfaceType.Gravel:
     property: read-only
-  Ground.5:
+  SurfaceType.Ground:
     property: read-only
-  MetalLight.6:
+  SurfaceType.MetalLight:
     property: read-only
-  Plastic.7:
+  SurfaceType.Plastic:
     property: read-only
-  Sand.8:
+  SurfaceType.Sand:
     property: read-only
-  Snow.9:
+  SurfaceType.Snow:
     property: read-only
-  Water.10:
+  SurfaceType.Water:
     property: read-only
-  WoodLight.11:
+  SurfaceType.WoodLight:
     property: read-only
-  Flesh.12:
+  SurfaceType.Flesh:
     property: read-only
-  MetalHeavy.13:
+  SurfaceType.MetalHeavy:
     property: read-only
-  WoodHeavy.14:
+  SurfaceType.WoodHeavy:
     property: read-only
-  Ice.15:
+  SurfaceType.Ice:
     property: read-only
-  Mud.16:
+  SurfaceType.Mud:
     property: read-only
-  Rock.17:
+  SurfaceType.Rock:
     property: read-only
-  Thump.18:
+  SurfaceType.Thump:
     property: read-only
-  Glass.19:
+  SurfaceType.Glass:
     property: read-only
-  Rubber.20:
+  SurfaceType.Rubber:
     property: read-only
-  Air.21:
+  SurfaceType.Air:
     property: read-only
-  None.0:
+  SwimmingMode.None:
     property: read-only
-  Surface.1:
+  SwimmingMode.Surface:
     property: read-only
-  Underwater.2:
+  SwimmingMode.Underwater:
     property: read-only
-  Unaligned.0:
+  TextRenderAlignCamera.Unaligned:
     property: read-only
-  AlignCameraRotation.1:
+  TextRenderAlignCamera.AlignCameraRotation:
     property: read-only
-  FaceCamera.2:
+  TextRenderAlignCamera.FaceCamera:
     property: read-only
-  Linear.0:
+  TextRenderBevelType.Linear:
     property: read-only
-  HalfCircle.1:
+  TextRenderBevelType.HalfCircle:
     property: read-only
-  Convex.2:
+  TextRenderBevelType.Convex:
     property: read-only
-  Concave.3:
+  TextRenderBevelType.Concave:
     property: read-only
-  OneStep.4:
+  TextRenderBevelType.OneStep:
     property: read-only
-  TwoSteps.5:
+  TextRenderBevelType.TwoSteps:
     property: read-only
-  Engraved.6:
+  TextRenderBevelType.Engraved:
     property: read-only
-  Left.0:
+  TextRenderHorizontalAlignment.Left:
     property: read-only
-  Center.1:
+  TextRenderHorizontalAlignment.Center:
     property: read-only
-  Right.2:
+  TextRenderHorizontalAlignment.Right:
     property: read-only
-  Top.0:
+  TextRenderVerticalAlignment.Top:
     property: read-only
-  Center.1:
+  TextRenderVerticalAlignment.Center:
     property: read-only
-  Bottom.2:
+  TextRenderVerticalAlignment.Bottom:
     property: read-only
-  QuadTop.3:
+  TextRenderVerticalAlignment.QuadTop:
     property: read-only
-  Sphere.0:
+  TriggerType.Sphere:
     property: read-only
-  Box.1:
+  TriggerType.Box:
     property: read-only
-  DrawDebug.1 << 0:
+  TraceMode.DrawDebug:
     property: read-only
-  TraceComplex.1 << 1:
+  TraceMode.TraceComplex:
     property: read-only
-  ReturnPhysicalMaterial.1 << 2:
+  TraceMode.ReturnPhysicalMaterial:
     property: read-only
-  ReturnEntity.1 << 3:
+  TraceMode.ReturnEntity:
     property: read-only
-  ReturnNames.1 << 4:
+  TraceMode.ReturnNames:
     property: read-only
-  ReturnUV.1 << 5:
+  TraceMode.ReturnUV:
     property: read-only
-  FPS.0:
+  ViewMode.FPS:
     property: read-only
-  TPS1.1:
+  ViewMode.TPS1:
     property: read-only
-  TPS2.2:
+  ViewMode.TPS2:
     property: read-only
-  TPS3.3:
+  ViewMode.TPS3:
     property: read-only
-  TopDown.4:
+  ViewMode.TopDown:
     property: read-only
-  Local.0:
+  VOIPSetting.Local:
     property: read-only
-  Global.1:
+  VOIPSetting.Global:
     property: read-only
-  Muted.2:
+  VOIPSetting.Muted:
     property: read-only
-  ClearSkies.1:
+  WeatherType.ClearSkies:
     property: read-only
-  Cloudy.2:
+  WeatherType.Cloudy:
     property: read-only
-  Foggy.3:
+  WeatherType.Foggy:
     property: read-only
-  Overcast.4:
+  WeatherType.Overcast:
     property: read-only
-  PartlyCloudy.5:
+  WeatherType.PartlyCloudy:
     property: read-only
-  Rain.6:
+  WeatherType.Rain:
     property: read-only
-  RainLight.7:
+  WeatherType.RainLight:
     property: read-only
-  RainThunderstorm.8:
+  WeatherType.RainThunderstorm:
     property: read-only
-  SandDustCalm.9:
+  WeatherType.SandDustCalm:
     property: read-only
-  SandDustStorm.10:
+  WeatherType.SandDustStorm:
     property: read-only
-  Snow.11:
+  WeatherType.Snow:
     property: read-only
-  SnowBlizzard.12:
+  WeatherType.SnowBlizzard:
     property: read-only
-  SnowLight.13:
+  WeatherType.SnowLight:
     property: read-only
-  None.0:
+  WebUIModifier.None:
     property: read-only
-  CapsLockOn.1 << 0:
+  WebUIModifier.CapsLockOn:
     property: read-only
-  ShiftDown.1 << 1:
+  WebUIModifier.ShiftDown:
     property: read-only
-  ControlDown.1 << 2:
+  WebUIModifier.ControlDown:
     property: read-only
-  AltDown.1 << 3:
+  WebUIModifier.AltDown:
     property: read-only
-  LeftMouseButton.1 << 4:
+  WebUIModifier.LeftMouseButton:
     property: read-only
-  MiddleMouseButton.1 << 5:
+  WebUIModifier.MiddleMouseButton:
     property: read-only
-  RightMouseButton.1 << 6:
+  WebUIModifier.RightMouseButton:
     property: read-only
-  CommandDown.1 << 7:
+  WebUIModifier.CommandDown:
     property: read-only
-  NumLockOn.1 << 8:
+  WebUIModifier.NumLockOn:
     property: read-only
-  IsKeyPad.1 << 9:
+  WebUIModifier.IsKeyPad:
     property: read-only
-  IsLeft.1 << 10:
+  WebUIModifier.IsLeft:
     property: read-only
-  IsRight.1 << 11:
+  WebUIModifier.IsRight:
     property: read-only
-  AltgrDown.1 << 12:
+  WebUIModifier.AltgrDown:
     property: read-only
-  IsRepeat.1 << 13:
+  WebUIModifier.IsRepeat:
     property: read-only
-  Down.0:
+  WebUIKeyType.Down:
     property: read-only
-  Up.1:
+  WebUIKeyType.Up:
     property: read-only
-  Char.2:
+  WebUIKeyType.Char:
     property: read-only
-  Left.0:
+  WebUIMouseType.Left:
     property: read-only
-  Right.1:
+  WebUIMouseType.Right:
     property: read-only
-  Middle.2:
+  WebUIMouseType.Middle:
     property: read-only
-  Hidden.0:
+  WidgetVisibility.Hidden:
     property: read-only
-  Visible.1:
+  WidgetVisibility.Visible:
     property: read-only
-  VisibleNotHitTestable.2:
+  WidgetVisibility.VisibleNotHitTestable:
     property: read-only
+
+  Decal:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: MaterialPath
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  Billboard:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: MaterialPath
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: boolean
+  Blueprint:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: BlueprintPath
+  HELIXAircraft:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: BlueprintPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  SceneCapture:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+  Cable:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: boolean
+  Database:
+    must_use: true
+    args:
+      - type: 
+          display: DatabaseEngine
+      - type: string
+      - required: false
+        type: 
+          display: integer
+  Light:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: LightType
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Trigger:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: TriggerType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: string[]
+  Events.Call:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemoteDimension:
+    args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Events.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  Events.Unsubscribe:
+    args:
+      - type: string
+      - required: false
+        type: function
+  Debug.DrawBox:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCoordinateSystem:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCrosshairs:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCylinder:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawDirectionalArrow:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawLine:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawPoint:
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawSphere:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawString:
+    args:
+      - type: 
+          display: Vector
+      - type: string
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: boolean
+      - type: 
+          display: float
+  Discord.Initialize:
+    args:
+      - type: 
+          display: integer
+  Discord.SetActivity:
+    args:
+      - type: string
+      - type: string
+      - type: string
+      - type: string
+      - required: false
+        type: string
+  StaticMesh:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+  Melee:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: HandlingMode
+      - required: false
+        type: 
+          display: MaterialPath
+      - required: false
+        type: boolean
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: BlueprintPath
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: NativeWidget
+  Sound:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: SoundPath
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundType
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: AttenuationFunction
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundLoopMode
+  Entity.GetAll:
+    args:[]
+  Entity.GetByIndex:
+    args:
+      - type: 
+          display: integer
+  Entity.GetCount:
+    args:[]
+  Entity.GetPairs:
+    args:[]
+  Entity.Inherit:
+    args:
+      - type: string
+      - required: false
+        type: table
+  Entity.GetInheritedClasses:
+    args:
+      - required: false
+        type: boolean
+  Entity.GetParentClass:
+    args:[]
+  Entity.IsChildOf:
+    args:
+      - type: table
+  Entity.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  CharacterSimple:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: 
+          display: BlueprintPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Canvas:
+    must_use: true
+    args:
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector2D
+  Prop:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: GrabMode
+      - required: false
+        type: 
+          display: CCDMode
+  File:
+    must_use: true
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  File.Time:
+    args:
+      - type: string
+  File.CreateDirectory:
+    args:
+      - type: string
+  File.Remove:
+    args:
+      - type: string
+  File.Exists:
+    args:
+      - type: string
+  File.IsDirectory:
+    args:
+      - type: string
+  File.IsRegularFile:
+    args:
+      - type: string
+  Level.LoadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Level.UnloadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Level.SetStreamLevelVisibility:
+    args:
+      - type: string
+      - type: boolean
+  Level.GetStreamLevels:
+    args:[]
+  Level.CallLevelBlueprintEvent:
+    args:
+      - type: string
+  Level.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Level.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXVehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Character:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  Package.Export:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.Require:
+    args:
+      - type: string
+  Package.SetPersistentData:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.GetDirectories:
+    args:
+      - required: false
+        type: string
+  Package.GetFiles:
+    args:
+      - required: false
+        type: any
+      - required: false
+        type: string
+  Package.GetName:
+    args:[]
+  Package.GetTitle:
+    args:[]
+  Package.GetVersion:
+    args:[]
+  Package.GetCompatibilityVersion:
+    args:[]
+  Package.GetPersistentData:
+    args:
+      - required: false
+        type: string
+  Package.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Package.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Log:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Warn:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Error:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.RegisterCommand:
+    args:
+      - type: string
+      - type: function
+      - type: string
+      - type: string[]
+  Console.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  TextRender:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: FontType
+      - required: false
+        type: 
+          display: TextRenderAlignCamera
+  HSimpleVehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Blueprint Reference
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Payment.ChargePlayer:
+    args:
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: string
+      - type: function
+  Payment.SellItem:
+    args:
+      - type: 
+          display: Player
+      - type: string
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: function
+  Payment.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Payment.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Particle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: ParticlePath
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Weapon:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Server.ChangeMap:
+    args:
+      - type: string
+  Server.LoadPackage:
+    args:
+      - type: string
+  Server.ReloadPackage:
+    args:
+      - type: string
+  Server.UnloadPackage:
+    args:
+      - type: string
+  Server.SetDescription:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetLogo:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetMaxPlayers:
+    args:
+      - type: 
+          display: integer
+      - required: false
+        type: boolean
+  Server.SetName:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetPassword:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+      - required: false
+        type: boolean
+  Server.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Server.Unban:
+    args:
+      - type: string
+  Server.Stop:
+    args:[]
+  Server.GetMap:
+    args:[]
+  Server.GetMapAsset:
+    args:[]
+  Server.GetMapConfig:
+    args:[]
+  Server.GetMapSpawnPoints:
+    args:[]
+  Server.GetPackages:
+    args:
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: PackageType
+  Server.GetVersion:
+    args:[]
+  Server.GetIP:
+    args:[]
+  Server.GetPort:
+    args:[]
+  Server.GetQueryPort:
+    args:[]
+  Server.GetMaxPlayers:
+    args:[]
+  Server.GetDescription:
+    args:[]
+  Server.GetCustomSettings:
+    args:[]
+  Server.GetTickRate:
+    args:[]
+  Server.GetTime:
+    args:[]
+  Server.IsAnnounced:
+    args:[]
+  Server.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Server.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Navigation.GetRandomReachablePointInRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+  Navigation.GetRandomPointInNavigableRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+  Navigation.FindPathToLocation:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+  Input.Bind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - type: function
+  Input.Unbind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+  Input.Register:
+    args:
+      - type: string
+      - type: string
+  Input.Unregister:
+    args:
+      - type: string
+      - type: string
+  Input.GetKeyIcon:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Input.GetKeyCode:
+    args:
+      - type: string
+  Input.GetModifierKeys:
+    args:[]
+  Input.GetMappedKeys:
+    args:
+      - type: string
+  Input.ResetBindings:
+    args:[]
+  Input.GetScriptingKeyBindings:
+    args:[]
+  Input.GetGameKeyBindings:
+    args:[]
+  Input.SetInputEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseCursor:
+    args:
+      - type: 
+          display: CursorType
+  Input.InputKey:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - required: false
+        type: 
+          display: float
+  Input.IsKeyDown:
+    args:
+      - type: string
+  Input.IsMouseEnabled:
+    args:[]
+  Input.IsInputEnabled:
+    args:[]
+  Input.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Input.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Trace.LineSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.LineMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.SphereSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.SphereMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.BoxSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.BoxMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.CapsuleSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.CapsuleMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Matchmaking.JoinMatchmaking:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: function
+  Matchmaking.CheckMatchmakingStatus:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.LeaveMatchmaking:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - type: function
+  Matchmaking.LeaveAllMatchmaking:
+    args:
+      - type: 
+          display: Player
+      - type: function
+  Color:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.RandomPalette:
+    args:
+      - required: false
+        type: boolean
+  Color.Random:
+    args:[]
+  Color.FromRGBA:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromCYMK:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSL:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSV:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHEX:
+    args:
+      - type: string
+  Client.CopyToClipboard:
+    args:
+      - type: string
+  Client.SetNearClipPlane:
+    args:
+      - type: 
+          display: float
+  Client.GetNearClipPlane:
+    args:[]
+  Client.GetConnectedServerIP:
+    args:[]
+  Client.SetDebugEnabled:
+    args:
+      - type: boolean
+  Client.SetHighlightColor:
+    args:
+      - type: 
+          display: Color
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: HighlightMode
+  Client.SetOutlineColor:
+    args:
+      - type: 
+          display: Color
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: float
+  Client.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.GetLocalPlayer:
+    args:[]
+  Client.GetFrameTime:
+    args:[]
+  Client.GetTime:
+    args:[]
+  Client.GetMap:
+    args:[]
+  Client.GetPackages:
+    args:[]
+  Client.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Client.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PersistentDatabase.Create:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.Insert:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Update:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Delete:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetByKey:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetAll:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.GetSummary:
+    args:
+      - required: false
+        type: function
+  Viewport.ProjectWorldToScreen:
+    args:
+      - type: 
+          display: Vector
+  Viewport.DeprojectScreenToWorld:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.SetHardwareCursor:
+    args:
+      - type: 
+          display: CursorType
+      - type: 
+          display: ImagePath
+      - required: false
+        type: 
+          display: Vector2D
+  Viewport.GetViewportSize:
+    args:[]
+  Viewport.SetMousePosition:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.GetMousePosition:
+    args:[]
+  Viewport.SetCrosshairEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenIntensity:
+    args:
+      - type: 
+          display: float
+  Viewport.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Viewport.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PostProcess.SetBloom:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetChromaticAberration:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetImageEffects:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetExposure:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetFilm:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetGlobalSaturation:
+    args:
+      - type: 
+          display: Color
+  PostProcess.SetLookupTable:
+    args:
+      - type: 
+          display: ImagePath
+  PostProcess.SetMaterial:
+    args:
+      - type: 
+          display: MaterialPath
+  PostProcess.RemoveMaterial:
+    args:[]
+  PostProcess.SetSunAngle:
+    args:
+      - type: 
+          display: float
+  Rotator:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator.Random:
+    args:
+      - required: false
+        type: boolean
+  Matrix:
+    must_use: true
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+  Vector2D:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Vector:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  JSON.stringify:
+    args:
+      - type: table
+  JSON.parse:
+    args:
+      - type: string
+  HELIXUtils.IsEntityValid:
+    args:
+      - type: 
+          display: any
+  HELIXUtils.Benchmark:
+    args:
+      - type: string
+      - type: number
+      - type: function
+      - type: 
+          display: any
+  Sky.Spawn:
+    args:
+      - required: false
+        type: boolean
+  Sky.DestroyAllSky:
+    args:[]
+  Sky.Reconstruct:
+    args:[]
+  Sky.SetMoonTexture:
+    args:
+      - type: 
+          display: ImagePath
+  Sky.SetMoonTextureRotation:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonVerticalOffset:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonScale:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonPhase:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonGlowIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonLightIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunAngle:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunRadius:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunLightIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetSkyMode:
+    args:
+      - type: 
+          display: SkyMode
+  Sky.SetVolumetricCloudColor:
+    args:
+      - type: 
+          display: Color
+  Sky.SetCloudCoverage:
+    args:
+      - type: 
+          display: float
+  Sky.SetFog:
+    args:
+      - type: 
+          display: float
+  Sky.SetContrast:
+    args:
+      - type: 
+          display: float
+  Sky.SetOverallIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetNightBrightness:
+    args:
+      - type: 
+          display: float
+  Sky.SetAnimateTimeOfDay:
+    args:
+      - type: boolean
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  Sky.SetTimeOfDay:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+  Sky.GetTimeOfDay:
+    args:[]
+  Sky.IsSpawned:
+    args:
+      - type: boolean
+  Sky.GetWeather:
+    args:[]
+  Sky.ChangeWeather:
+    args:
+      - type: 
+          display: WeatherType
+      - type: 
+          display: float
+  WebUI:
+    must_use: true
+    args:
+      - type: string
+      - type: 
+          display: HTMLPath
+      - required: false
+        type: 
+          display: WidgetVisibility
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+  HTTP.RequestAsync:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+      - required: false
+        type: function
+  HTTP.Request:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+  HTTP.SetConnectionTimeout:
+    args:
+      - type: 
+          display: integer
+  HTTP.SetReadWriteTimeout:
+    args:
+      - type: 
+          display: integer
+  Grenade:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: ParticlePath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Vehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: BlueprintPath
+  Timer.SetTimeout:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.SetInterval:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.ClearTimeout:
+    args:
+      - type: 
+          display: integer
+  Timer.ClearInterval:
+    args:
+      - type: 
+          display: integer
+  Timer.Bind:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: Actor
+  Timer.IsValid:
+    args:
+      - type: 
+          display: integer
+  Timer.GetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Timer.GetRemainingTime:
+    args:
+      - type: 
+          display: integer
+  Timer.Pause:
+    args:
+      - type: 
+          display: integer
+  Timer.Resume:
+    args:
+      - type: 
+          display: integer
+  Timer.ResetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Chat.AddMessage:
+    args:
+      - type: string
+  Chat.SendMessage:
+    args:
+      - type: 
+          display: Player
+      - type: string
+  Chat.SetConfiguration:
+    args:
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Chat.SetVisibility:
+    args:
+      - type: boolean
+  Chat.Clear:
+    args:[]
+  Chat.BroadcastMessage:
+    args:
+      - type: string
+  Chat.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Chat.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Assets.GetAssetPacks:
+    args:[]
+  Assets.GetAnimations:
+    args:
+      - type: string
+  Assets.GetBlueprints:
+    args:
+      - type: string
+  Assets.GetMaps:
+    args:
+      - type: string
+  Assets.GetMaterials:
+    args:
+      - type: string
+  Assets.GetParticles:
+    args:
+      - type: string
+  Assets.GetSounds:
+    args:
+      - type: string
+  Assets.GetSkeletalMeshes:
+    args:
+      - type: string
+  Assets.GetStaticMeshes:
+    args:
+      - type: string
+  Assets.GetOthers:
+    args:
+      - type: string
+  Assets.Precache:
+    args:
+      - type: string
+      - type: 
+          display: AssetType
+  HELIXTable.Dump:
+    args:
+      - type: table
+  HELIXTable.ShallowCopy:
+    args:
+      - type: table
+  HELIXMath.Round:
+    args:
+      - type: number
+  HELIXMath.Clamp:
+    args:
+      - type: number
+      - type: number
+      - type: number
+  HELIXMath.ClampAxis:
+    args:
+      - type: number
+  HELIXMath.NormalizeAxis:
+    args:
+      - type: number
+  HELIXMath.RelativeTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Actor
+  HELIXMath.FInterpTo:
+    args:
+      - type: number
+      - type: number
+      - type: number
+      - type: number
+  HELIXMath.RInterpTo:
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Rotator
+      - type: number
+      - type: number
+  HELIXMath.RInterpConstantTo:
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Rotator
+      - type: number
+      - type: number
+  HELIXMath.VInterpTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: number
+      - type: number
+  HELIXMath.VInterpConstantTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: number
+      - type: number
+  Quat:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+structs:
+  Decal:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: MaterialPath
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  Billboard:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: MaterialPath
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: boolean
+  Blueprint:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: BlueprintPath
+  HELIXAircraft:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: BlueprintPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  SceneCapture:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+  Cable:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: boolean
+  Database:
+    must_use: true
+    args:
+      - type: 
+          display: DatabaseEngine
+      - type: string
+      - required: false
+        type: 
+          display: integer
+  Light:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: LightType
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Trigger:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: TriggerType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: string[]
+  Events.Call:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemoteDimension:
+    args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Events.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  Events.Unsubscribe:
+    args:
+      - type: string
+      - required: false
+        type: function
+  Debug.DrawBox:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCoordinateSystem:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCrosshairs:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawCylinder:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawDirectionalArrow:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawLine:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawPoint:
+    args:
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawSphere:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: 
+          display: float
+  Debug.DrawString:
+    args:
+      - type: 
+          display: Vector
+      - type: string
+      - required: false
+        type: 
+          display: Color
+      - type: 
+          display: float
+      - type: boolean
+      - type: 
+          display: float
+  Discord.Initialize:
+    args:
+      - type: 
+          display: integer
+  Discord.SetActivity:
+    args:
+      - type: string
+      - type: string
+      - type: string
+      - type: string
+      - required: false
+        type: string
+  StaticMesh:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+  Melee:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: HandlingMode
+      - required: false
+        type: 
+          display: MaterialPath
+      - required: false
+        type: boolean
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: BlueprintPath
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: NativeWidget
+  Sound:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: SoundPath
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundType
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: AttenuationFunction
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundLoopMode
+  Entity.GetAll:
+    args:[]
+  Entity.GetByIndex:
+    args:
+      - type: 
+          display: integer
+  Entity.GetCount:
+    args:[]
+  Entity.GetPairs:
+    args:[]
+  Entity.Inherit:
+    args:
+      - type: string
+      - required: false
+        type: table
+  Entity.GetInheritedClasses:
+    args:
+      - required: false
+        type: boolean
+  Entity.GetParentClass:
+    args:[]
+  Entity.IsChildOf:
+    args:
+      - type: table
+  Entity.SubscribeRemote:
+    args:
+      - type: string
+      - type: function
+  CharacterSimple:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: 
+          display: BlueprintPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Canvas:
+    must_use: true
+    args:
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector2D
+  Prop:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: GrabMode
+      - required: false
+        type: 
+          display: CCDMode
+  File:
+    must_use: true
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  File.Time:
+    args:
+      - type: string
+  File.CreateDirectory:
+    args:
+      - type: string
+  File.Remove:
+    args:
+      - type: string
+  File.Exists:
+    args:
+      - type: string
+  File.IsDirectory:
+    args:
+      - type: string
+  File.IsRegularFile:
+    args:
+      - type: string
+  Level.LoadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Level.UnloadStreamLevel:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Level.SetStreamLevelVisibility:
+    args:
+      - type: string
+      - type: boolean
+  Level.GetStreamLevels:
+    args:[]
+  Level.CallLevelBlueprintEvent:
+    args:
+      - type: string
+  Level.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Level.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXVehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Character:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+  Package.Export:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.Require:
+    args:
+      - type: string
+  Package.SetPersistentData:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Package.GetDirectories:
+    args:
+      - required: false
+        type: string
+  Package.GetFiles:
+    args:
+      - required: false
+        type: any
+      - required: false
+        type: string
+  Package.GetName:
+    args:[]
+  Package.GetTitle:
+    args:[]
+  Package.GetVersion:
+    args:[]
+  Package.GetCompatibilityVersion:
+    args:[]
+  Package.GetPersistentData:
+    args:
+      - required: false
+        type: string
+  Package.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Package.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Log:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Warn:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Error:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.RegisterCommand:
+    args:
+      - type: string
+      - type: function
+      - type: string
+      - type: string[]
+  Console.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  TextRender:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: FontType
+      - required: false
+        type: 
+          display: TextRenderAlignCamera
+  HSimpleVehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Blueprint Reference
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Payment.ChargePlayer:
+    args:
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: string
+      - type: function
+  Payment.SellItem:
+    args:
+      - type: 
+          display: Player
+      - type: string
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: function
+  Payment.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Payment.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Particle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: ParticlePath
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Weapon:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Server.ChangeMap:
+    args:
+      - type: string
+  Server.LoadPackage:
+    args:
+      - type: string
+  Server.ReloadPackage:
+    args:
+      - type: string
+  Server.UnloadPackage:
+    args:
+      - type: string
+  Server.SetDescription:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetLogo:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetMaxPlayers:
+    args:
+      - type: 
+          display: integer
+      - required: false
+        type: boolean
+  Server.SetName:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetPassword:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Server.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+      - required: false
+        type: boolean
+  Server.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Server.Unban:
+    args:
+      - type: string
+  Server.Stop:
+    args:[]
+  Server.GetMap:
+    args:[]
+  Server.GetMapAsset:
+    args:[]
+  Server.GetMapConfig:
+    args:[]
+  Server.GetMapSpawnPoints:
+    args:[]
+  Server.GetPackages:
+    args:
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: PackageType
+  Server.GetVersion:
+    args:[]
+  Server.GetIP:
+    args:[]
+  Server.GetPort:
+    args:[]
+  Server.GetQueryPort:
+    args:[]
+  Server.GetMaxPlayers:
+    args:[]
+  Server.GetDescription:
+    args:[]
+  Server.GetCustomSettings:
+    args:[]
+  Server.GetTickRate:
+    args:[]
+  Server.GetTime:
+    args:[]
+  Server.IsAnnounced:
+    args:[]
+  Server.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Server.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Navigation.GetRandomReachablePointInRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+  Navigation.GetRandomPointInNavigableRadius:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+  Navigation.FindPathToLocation:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+  Input.Bind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - type: function
+  Input.Unbind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+  Input.Register:
+    args:
+      - type: string
+      - type: string
+  Input.Unregister:
+    args:
+      - type: string
+      - type: string
+  Input.GetKeyIcon:
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  Input.GetKeyCode:
+    args:
+      - type: string
+  Input.GetModifierKeys:
+    args:[]
+  Input.GetMappedKeys:
+    args:
+      - type: string
+  Input.ResetBindings:
+    args:[]
+  Input.GetScriptingKeyBindings:
+    args:[]
+  Input.GetGameKeyBindings:
+    args:[]
+  Input.SetInputEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseCursor:
+    args:
+      - type: 
+          display: CursorType
+  Input.InputKey:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - required: false
+        type: 
+          display: float
+  Input.IsKeyDown:
+    args:
+      - type: string
+  Input.IsMouseEnabled:
+    args:[]
+  Input.IsInputEnabled:
+    args:[]
+  Input.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Input.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Trace.LineSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.LineMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.SphereSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.SphereMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.BoxSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.BoxMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.CapsuleSingle:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Trace.CapsuleMulti:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: 
+          display: float
+      - type: 
+          display: float
+      - required: false
+        type: 
+          display: CollisionChannel
+      - required: false
+        type: 
+          display: TraceMode
+      - required: false
+        type: 
+          display: Actor[]
+  Matchmaking.JoinMatchmaking:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: function
+  Matchmaking.CheckMatchmakingStatus:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.LeaveMatchmaking:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - type: function
+  Matchmaking.LeaveAllMatchmaking:
+    args:
+      - type: 
+          display: Player
+      - type: function
+  Color:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.RandomPalette:
+    args:
+      - required: false
+        type: boolean
+  Color.Random:
+    args:[]
+  Color.FromRGBA:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromCYMK:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSL:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHSV:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Color.FromHEX:
+    args:
+      - type: string
+  Client.CopyToClipboard:
+    args:
+      - type: string
+  Client.SetNearClipPlane:
+    args:
+      - type: 
+          display: float
+  Client.GetNearClipPlane:
+    args:[]
+  Client.GetConnectedServerIP:
+    args:[]
+  Client.SetDebugEnabled:
+    args:
+      - type: boolean
+  Client.SetHighlightColor:
+    args:
+      - type: 
+          display: Color
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: HighlightMode
+  Client.SetOutlineColor:
+    args:
+      - type: 
+          display: Color
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: float
+  Client.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.GetLocalPlayer:
+    args:[]
+  Client.GetFrameTime:
+    args:[]
+  Client.GetTime:
+    args:[]
+  Client.GetMap:
+    args:[]
+  Client.GetPackages:
+    args:[]
+  Client.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Client.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PersistentDatabase.Create:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.Insert:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Update:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Delete:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetByKey:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetAll:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.GetSummary:
+    args:
+      - required: false
+        type: function
+  Viewport.ProjectWorldToScreen:
+    args:
+      - type: 
+          display: Vector
+  Viewport.DeprojectScreenToWorld:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.SetHardwareCursor:
+    args:
+      - type: 
+          display: CursorType
+      - type: 
+          display: ImagePath
+      - required: false
+        type: 
+          display: Vector2D
+  Viewport.GetViewportSize:
+    args:[]
+  Viewport.SetMousePosition:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.GetMousePosition:
+    args:[]
+  Viewport.SetCrosshairEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenIntensity:
+    args:
+      - type: 
+          display: float
+  Viewport.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Viewport.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PostProcess.SetBloom:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetChromaticAberration:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetImageEffects:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetExposure:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetFilm:
+    args:
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  PostProcess.SetGlobalSaturation:
+    args:
+      - type: 
+          display: Color
+  PostProcess.SetLookupTable:
+    args:
+      - type: 
+          display: ImagePath
+  PostProcess.SetMaterial:
+    args:
+      - type: 
+          display: MaterialPath
+  PostProcess.RemoveMaterial:
+    args:[]
+  PostProcess.SetSunAngle:
+    args:
+      - type: 
+          display: float
+  Rotator:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator.Random:
+    args:
+      - required: false
+        type: boolean
+  Matrix:
+    must_use: true
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+  Vector2D:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Vector:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  JSON.stringify:
+    args:
+      - type: table
+  JSON.parse:
+    args:
+      - type: string
+  HELIXUtils.IsEntityValid:
+    args:
+      - type: 
+          display: any
+  HELIXUtils.Benchmark:
+    args:
+      - type: string
+      - type: number
+      - type: function
+      - type: 
+          display: any
+  Sky.Spawn:
+    args:
+      - required: false
+        type: boolean
+  Sky.DestroyAllSky:
+    args:[]
+  Sky.Reconstruct:
+    args:[]
+  Sky.SetMoonTexture:
+    args:
+      - type: 
+          display: ImagePath
+  Sky.SetMoonTextureRotation:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonVerticalOffset:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonScale:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonPhase:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonGlowIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetMoonLightIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunAngle:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunRadius:
+    args:
+      - type: 
+          display: float
+  Sky.SetSunLightIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetSkyMode:
+    args:
+      - type: 
+          display: SkyMode
+  Sky.SetVolumetricCloudColor:
+    args:
+      - type: 
+          display: Color
+  Sky.SetCloudCoverage:
+    args:
+      - type: 
+          display: float
+  Sky.SetFog:
+    args:
+      - type: 
+          display: float
+  Sky.SetContrast:
+    args:
+      - type: 
+          display: float
+  Sky.SetOverallIntensity:
+    args:
+      - type: 
+          display: float
+  Sky.SetNightBrightness:
+    args:
+      - type: 
+          display: float
+  Sky.SetAnimateTimeOfDay:
+    args:
+      - type: boolean
+      - required: false
+        type: 
+          display: float
+      - required: false
+        type: 
+          display: float
+  Sky.SetTimeOfDay:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+  Sky.GetTimeOfDay:
+    args:[]
+  Sky.IsSpawned:
+    args:
+      - type: boolean
+  Sky.GetWeather:
+    args:[]
+  Sky.ChangeWeather:
+    args:
+      - type: 
+          display: WeatherType
+      - type: 
+          display: float
+  WebUI:
+    must_use: true
+    args:
+      - type: string
+      - type: 
+          display: HTMLPath
+      - required: false
+        type: 
+          display: WidgetVisibility
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: integer
+  HTTP.RequestAsync:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+      - required: false
+        type: function
+  HTTP.Request:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+  HTTP.SetConnectionTimeout:
+    args:
+      - type: 
+          display: integer
+  HTTP.SetReadWriteTimeout:
+    args:
+      - type: 
+          display: integer
+  Grenade:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - required: false
+        type: 
+          display: StaticMeshPath
+      - required: false
+        type: 
+          display: ParticlePath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Vehicle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: SkeletalMeshPath
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: 
+          display: SoundPath
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: BlueprintPath
+  Timer.SetTimeout:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.SetInterval:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.ClearTimeout:
+    args:
+      - type: 
+          display: integer
+  Timer.ClearInterval:
+    args:
+      - type: 
+          display: integer
+  Timer.Bind:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: Actor
+  Timer.IsValid:
+    args:
+      - type: 
+          display: integer
+  Timer.GetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Timer.GetRemainingTime:
+    args:
+      - type: 
+          display: integer
+  Timer.Pause:
+    args:
+      - type: 
+          display: integer
+  Timer.Resume:
+    args:
+      - type: 
+          display: integer
+  Timer.ResetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Chat.AddMessage:
+    args:
+      - type: string
+  Chat.SendMessage:
+    args:
+      - type: 
+          display: Player
+      - type: string
+  Chat.SetConfiguration:
+    args:
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+  Chat.SetVisibility:
+    args:
+      - type: boolean
+  Chat.Clear:
+    args:[]
+  Chat.BroadcastMessage:
+    args:
+      - type: string
+  Chat.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Chat.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Assets.GetAssetPacks:
+    args:[]
+  Assets.GetAnimations:
+    args:
+      - type: string
+  Assets.GetBlueprints:
+    args:
+      - type: string
+  Assets.GetMaps:
+    args:
+      - type: string
+  Assets.GetMaterials:
+    args:
+      - type: string
+  Assets.GetParticles:
+    args:
+      - type: string
+  Assets.GetSounds:
+    args:
+      - type: string
+  Assets.GetSkeletalMeshes:
+    args:
+      - type: string
+  Assets.GetStaticMeshes:
+    args:
+      - type: string
+  Assets.GetOthers:
+    args:
+      - type: string
+  Assets.Precache:
+    args:
+      - type: string
+      - type: 
+          display: AssetType
+  HELIXTable.Dump:
+    args:
+      - type: table
+  HELIXTable.ShallowCopy:
+    args:
+      - type: table
+  HELIXMath.Round:
+    args:
+      - type: number
+  HELIXMath.Clamp:
+    args:
+      - type: number
+      - type: number
+      - type: number
+  HELIXMath.ClampAxis:
+    args:
+      - type: number
+  HELIXMath.NormalizeAxis:
+    args:
+      - type: number
+  HELIXMath.RelativeTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Actor
+  HELIXMath.FInterpTo:
+    args:
+      - type: number
+      - type: number
+      - type: number
+      - type: number
+  HELIXMath.RInterpTo:
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Rotator
+      - type: number
+      - type: number
+  HELIXMath.RInterpConstantTo:
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Rotator
+      - type: number
+      - type: number
+  HELIXMath.VInterpTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: number
+      - type: number
+  HELIXMath.VInterpConstantTo:
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Vector
+      - type: number
+      - type: number
+  Quat:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
