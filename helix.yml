@@ -681,24 +681,17 @@ globals:
   WidgetVisibility.VisibleNotHitTestable:
     property: read-only
 
-  Decal:
+  StaticMesh:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: MaterialPath
+      - type: string
       - required: false
         type: 
-          display: Vector
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
+          display: CollisionType
   Billboard:
     must_use: true
     args:
@@ -706,13 +699,114 @@ globals:
         type: 
           display: Vector
       - required: false
-        type: 
-          display: MaterialPath
+        type: string
       - required: false
         type: 
           display: Vector2D
       - required: false
         type: boolean
+  Decal:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: number
+      - required: false
+        type: number
+  HELIXAircraft:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXTable.Dump:
+    args:
+      - type: table
+  HELIXTable.ShallowCopy:
+    args:
+      - type: table
+  TextRender:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: FontType
+      - required: false
+        type: 
+          display: TextRenderAlignCamera
+  Sound:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundType
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: AttenuationFunction
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundLoopMode
+  Trigger:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: TriggerType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: string[]
   Blueprint:
     must_use: true
     args:
@@ -723,20 +817,35 @@ globals:
         type: 
           display: Rotator
       - required: false
-        type: 
-          display: BlueprintPath
-  HELIXAircraft:
+        type: string
+  Grenade:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: BlueprintPath
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
       - required: false
         type: 
           display: CollisionType
+      - required: false
+        type: boolean
+  Particle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: boolean
       - required: false
         type: boolean
   SceneCapture:
@@ -755,14 +864,11 @@ globals:
         type: 
           display: integer
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: boolean
   Cable:
@@ -772,6 +878,49 @@ globals:
           display: Vector
       - required: false
         type: boolean
+  File:
+    must_use: true
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  File.Time:
+    args:
+      - type: string
+  File.CreateDirectory:
+    args:
+      - type: string
+  File.Remove:
+    args:
+      - type: string
+  File.Exists:
+    args:
+      - type: string
+  File.IsDirectory:
+    args:
+      - type: string
+  File.IsRegularFile:
+    args:
+      - type: string
+  Prop:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: GrabMode
+      - required: false
+        type: 
+          display: CCDMode
   Database:
     must_use: true
     args:
@@ -796,92 +945,50 @@ globals:
         type: 
           display: LightType
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: boolean
       - required: false
         type: boolean
       - required: false
         type: boolean
-  Trigger:
+  HELIXUtils.IsEntityValid:
+    args:
+      - type: 
+          display: any
+  HELIXUtils.Benchmark:
+    args:
+      - type: string
+      - type: number
+      - type: function
+      - type: 
+          display: any
+  WebUI:
     must_use: true
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
+      - type: string
+      - type: string
       - required: false
         type: 
-          display: TriggerType
+          display: WidgetVisibility
+      - required: false
+        type: boolean
       - required: false
         type: boolean
       - required: false
         type: 
-          display: Color
-      - required: false
-        type: string[]
-  Events.Call:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.CallRemote:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.CallRemote:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemote:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemoteDimension:
-    args:
-      - type: 
           display: integer
-      - type: string
       - required: false
         type: 
-          display: any
-  Events.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Events.SubscribeRemote:
-    args:
-      - type: string
-      - type: function
-  Events.Unsubscribe:
-    args:
-      - type: string
-      - required: false
-        type: function
+          display: integer
   Debug.DrawBox:
     args:
       - type: 
@@ -892,22 +999,17 @@ globals:
           display: Rotator
       - type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawCoordinateSystem:
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: float
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
+      - type: number
   Debug.DrawCrosshairs:
     args:
       - type: 
@@ -915,32 +1017,26 @@ globals:
       - type: 
           display: Rotator
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawCylinder:
     args:
       - type: 
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - type: 
           display: integer
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawDirectionalArrow:
     args:
       - type: 
@@ -948,15 +1044,12 @@ globals:
       - type: 
           display: Vector
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawLine:
     args:
       - type: 
@@ -966,10 +1059,8 @@ globals:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawPoint:
     args:
       - type: 
@@ -977,25 +1068,20 @@ globals:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawSphere:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - type: 
           display: integer
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawString:
     args:
       - type: 
@@ -1004,104 +1090,45 @@ globals:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
+      - type: number
       - type: boolean
-      - type: 
-          display: float
-  Discord.Initialize:
+      - type: number
+  Canvas:
+    must_use: true
     args:
-      - type: 
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
           display: integer
-  Discord.SetActivity:
-    args:
-      - type: string
-      - type: string
-      - type: string
-      - type: string
       - required: false
-        type: string
-  StaticMesh:
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector2D
+  HELIXVehicle:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: StaticMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-  Melee:
-    must_use: true
-    args:
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-      - required: false
-        type: 
-          display: StaticMeshPath
+      - type: string
       - required: false
         type: 
           display: CollisionType
       - required: false
         type: boolean
-      - required: false
-        type: 
-          display: HandlingMode
-      - required: false
-        type: 
-          display: MaterialPath
-      - required: false
-        type: boolean
-  Widget:
-    must_use: true
-    args:
-      - type: 
-          display: BlueprintPath
-  Widget:
-    must_use: true
-    args:
-      - type: 
-          display: NativeWidget
-  Sound:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: SoundPath
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundType
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: AttenuationFunction
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundLoopMode
   Entity.GetAll:
     args:[]
   Entity.GetByIndex:
@@ -1130,6 +1157,70 @@ globals:
     args:
       - type: string
       - type: function
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  Melee:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: HandlingMode
+      - required: false
+        type: string
+      - required: false
+        type: boolean
   CharacterSimple:
     must_use: true
     args:
@@ -1139,38 +1230,44 @@ globals:
           display: Rotator
       - type: any
       - required: false
-        type: 
-          display: BlueprintPath
+        type: string
       - required: false
         type: 
           display: CollisionType
       - required: false
         type: boolean
-  Canvas:
+  Vehicle:
     must_use: true
     args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
       - required: false
         type: boolean
       - required: false
-        type: 
-          display: Color
-      - required: false
-        type: 
-          display: float
-      - required: false
         type: boolean
       - required: false
         type: boolean
       - required: false
-        type: 
-          display: integer
+        type: string
       - required: false
-        type: 
-          display: integer
+        type: string
       - required: false
-        type: 
-          display: Vector2D
-  Prop:
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: string
+  HSimpleVehicle:
     must_use: true
     args:
       - type: 
@@ -1178,7 +1275,20 @@ globals:
       - type: 
           display: Rotator
       - type: 
-          display: StaticMeshPath
+          display: Blueprint Reference
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Character:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
       - required: false
         type: 
           display: CollisionType
@@ -1186,34 +1296,325 @@ globals:
         type: boolean
       - required: false
         type: 
-          display: GrabMode
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
       - required: false
         type: 
-          display: CCDMode
-  File:
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXCharacter:
     must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Input.Bind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - type: function
+  Input.Unbind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+  Input.Register:
+    args:
+      - type: string
+      - type: string
+  Input.Unregister:
+    args:
+      - type: string
+      - type: string
+  Input.GetKeyIcon:
     args:
       - type: string
       - required: false
         type: boolean
-  File.Time:
+  Input.GetKeyCode:
     args:
       - type: string
-  File.CreateDirectory:
+  Input.GetModifierKeys:
+    args:[]
+  Input.GetMappedKeys:
     args:
       - type: string
-  File.Remove:
+  Input.ResetBindings:
+    args:[]
+  Input.GetScriptingKeyBindings:
+    args:[]
+  Input.GetGameKeyBindings:
+    args:[]
+  Input.SetInputEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseCursor:
+    args:
+      - type: 
+          display: CursorType
+  Input.InputKey:
     args:
       - type: string
-  File.Exists:
+      - type: 
+          display: InputEvent
+      - required: false
+        type: number
+  Input.IsKeyDown:
     args:
       - type: string
-  File.IsDirectory:
+  Input.IsMouseEnabled:
+    args:[]
+  Input.IsInputEnabled:
+    args:[]
+  Input.Subscribe:
     args:
       - type: string
-  File.IsRegularFile:
+      - type: function
+  Input.Unsubscribe:
     args:
       - type: string
+      - type: function
+  Assets.GetAssetPacks:
+    args:[]
+  Assets.GetAnimations:
+    args:
+      - type: string
+  Assets.GetBlueprints:
+    args:
+      - type: string
+  Assets.GetMaps:
+    args:
+      - type: string
+  Assets.GetMaterials:
+    args:
+      - type: string
+  Assets.GetParticles:
+    args:
+      - type: string
+  Assets.GetSounds:
+    args:
+      - type: string
+  Assets.GetSkeletalMeshes:
+    args:
+      - type: string
+  Assets.GetStaticMeshes:
+    args:
+      - type: string
+  Assets.GetOthers:
+    args:
+      - type: string
+  Assets.Precache:
+    args:
+      - type: string
+      - type: 
+          display: AssetType
+  Weapon:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Client.CopyToClipboard:
+    args:
+      - type: string
+  Client.SetNearClipPlane:
+    args:
+      - type: number
+  Client.GetNearClipPlane:
+    args:[]
+  Client.GetConnectedServerIP:
+    args:[]
+  Client.SetDebugEnabled:
+    args:
+      - type: boolean
+  Client.SetHighlightColor:
+    args:
+      - type: 
+          display: Color
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: HighlightMode
+  Client.SetOutlineColor:
+    args:
+      - type: 
+          display: Color
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+  Client.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.GetLocalPlayer:
+    args:[]
+  Client.GetFrameTime:
+    args:[]
+  Client.GetTime:
+    args:[]
+  Client.GetMap:
+    args:[]
+  Client.GetPackages:
+    args:[]
+  Client.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Client.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Widget:
+    must_use: true
+    args:
+      - type: string
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: NativeWidget
+  Payment.ChargePlayer:
+    args:
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: string
+      - type: function
+  Payment.SellItem:
+    args:
+      - type: 
+          display: Player
+      - type: string
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: function
+  Payment.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Payment.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PersistentDatabase.Create:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.Insert:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Update:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Delete:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetByKey:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetAll:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.GetSummary:
+    args:
+      - required: false
+        type: function
+  HTTP.RequestAsync:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+      - required: false
+        type: function
+  HTTP.Request:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+  HTTP.SetConnectionTimeout:
+    args:
+      - type: 
+          display: integer
+  HTTP.SetReadWriteTimeout:
+    args:
+      - type: 
+          display: integer
   Level.LoadStreamLevel:
     args:
       - type: string
@@ -1243,116 +1644,147 @@ globals:
     args:
       - type: string
       - type: function
-  HELIXCharacter:
-    must_use: true
+  Sky.Spawn:
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: any
-      - required: false
-        type: 
-          display: CollisionType
       - required: false
         type: boolean
-  HELIXCharacter:
-    must_use: true
+  Sky.DestroyAllSky:
+    args:[]
+  Sky.Reconstruct:
+    args:[]
+  Sky.SetMoonTexture:
+    args:
+      - type: string
+  Sky.SetMoonTextureRotation:
+    args:
+      - type: number
+  Sky.SetMoonVerticalOffset:
+    args:
+      - type: number
+  Sky.SetMoonScale:
+    args:
+      - type: number
+  Sky.SetMoonPhase:
+    args:
+      - type: number
+  Sky.SetMoonGlowIntensity:
+    args:
+      - type: number
+  Sky.SetMoonLightIntensity:
+    args:
+      - type: number
+  Sky.SetSunAngle:
+    args:
+      - type: number
+  Sky.SetSunRadius:
+    args:
+      - type: number
+  Sky.SetSunLightIntensity:
+    args:
+      - type: number
+  Sky.SetSkyMode:
     args:
       - type: 
-          display: Vector
+          display: SkyMode
+  Sky.SetVolumetricCloudColor:
+    args:
       - type: 
-          display: Rotator
+          display: Color
+  Sky.SetCloudCoverage:
+    args:
+      - type: number
+  Sky.SetFog:
+    args:
+      - type: number
+  Sky.SetContrast:
+    args:
+      - type: number
+  Sky.SetOverallIntensity:
+    args:
+      - type: number
+  Sky.SetNightBrightness:
+    args:
+      - type: number
+  Sky.SetAnimateTimeOfDay:
+    args:
+      - type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Sky.SetTimeOfDay:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+  Sky.GetTimeOfDay:
+    args:[]
+  Sky.IsSpawned:
+    args:
+      - type: boolean
+  Sky.GetWeather:
+    args:[]
+  Sky.ChangeWeather:
+    args:
+      - type: 
+          display: WeatherType
+      - type: number
+  Console.Log:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Warn:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Error:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.RegisterCommand:
+    args:
+      - type: string
+      - type: function
+      - type: string
+      - type: string[]
+  Console.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.JoinMatchmaking:
+    args:
+      - type: string
       - type: 
           display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  HELIXVehicle:
-    must_use: true
-    args:
       - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Character:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
           display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-  HCharacter:
-    must_use: true
+      - type: function
+  Matchmaking.CheckMatchmakingStatus:
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
+      - type: string
+      - type: function
+  Matchmaking.LeaveMatchmaking:
+    args:
+      - type: string
       - type: 
           display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-  HCharacter:
-    must_use: true
+      - type: function
+  Matchmaking.LeaveAllMatchmaking:
     args:
       - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
+          display: Player
+      - type: function
   Package.Export:
     args:
       - type: string
@@ -1396,127 +1828,51 @@ globals:
     args:
       - type: string
       - type: function
-  Console.Log:
+  Chat.AddMessage:
     args:
       - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Warn:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Error:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.RegisterCommand:
-    args:
-      - type: string
-      - type: function
-      - type: string
-      - type: string[]
-  Console.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Console.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  TextRender:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Color
-      - required: false
-        type: 
-          display: FontType
-      - required: false
-        type: 
-          display: TextRenderAlignCamera
-  HSimpleVehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Blueprint Reference
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Payment.ChargePlayer:
-    args:
-      - type: 
-          display: Player
-      - type: 
-          display: integer
-      - type: string
-      - type: string
-      - type: string
-      - type: function
-  Payment.SellItem:
+  Chat.SendMessage:
     args:
       - type: 
           display: Player
       - type: string
-      - type: 
-          display: integer
-      - type: string
-      - type: string
-      - type: function
-  Payment.Subscribe:
+  Chat.SetConfiguration:
     args:
-      - type: string
-      - type: function
-  Payment.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Particle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: ParticlePath
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-  Weapon:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
       - required: false
         type: 
-          display: CollisionType
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
       - required: false
         type: boolean
+      - required: false
+        type: boolean
+  Chat.SetVisibility:
+    args:
+      - type: boolean
+  Chat.Clear:
+    args:[]
+  Chat.BroadcastMessage:
+    args:
+      - type: string
+  Chat.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Chat.Unsubscribe:
+    args:
+      - type: string
+      - type: function
   Server.ChangeMap:
     args:
       - type: string
@@ -1615,95 +1971,157 @@ globals:
     args:
       - type: string
       - type: function
+  PostProcess.SetBloom:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetChromaticAberration:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetImageEffects:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetExposure:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetFilm:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetGlobalSaturation:
+    args:
+      - type: 
+          display: Color
+  PostProcess.SetLookupTable:
+    args:
+      - type: string
+  PostProcess.SetMaterial:
+    args:
+      - type: string
+  PostProcess.RemoveMaterial:
+    args:[]
+  PostProcess.SetSunAngle:
+    args:
+      - type: number
   Navigation.GetRandomReachablePointInRadius:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
   Navigation.GetRandomPointInNavigableRadius:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
   Navigation.FindPathToLocation:
     args:
       - type: 
           display: Vector
       - type: 
           display: Vector
-  Input.Bind:
+  Discord.Initialize:
     args:
-      - type: string
       - type: 
-          display: InputEvent
-      - type: function
-  Input.Unbind:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
-  Input.Register:
+          display: integer
+  Discord.SetActivity:
     args:
       - type: string
       - type: string
-  Input.Unregister:
-    args:
       - type: string
-      - type: string
-  Input.GetKeyIcon:
-    args:
       - type: string
       - required: false
-        type: boolean
-  Input.GetKeyCode:
+        type: string
+  JSON.stringify:
+    args:
+      - type: table
+  JSON.parse:
     args:
       - type: string
-  Input.GetModifierKeys:
-    args:[]
-  Input.GetMappedKeys:
+  Quat:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Events.Call:
     args:
       - type: string
-  Input.ResetBindings:
-    args:[]
-  Input.GetScriptingKeyBindings:
-    args:[]
-  Input.GetGameKeyBindings:
-    args:[]
-  Input.SetInputEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseCursor:
-    args:
-      - type: 
-          display: CursorType
-  Input.InputKey:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
       - required: false
         type: 
-          display: float
-  Input.IsKeyDown:
+          display: any
+  Events.CallRemote:
     args:
       - type: string
-  Input.IsMouseEnabled:
-    args:[]
-  Input.IsInputEnabled:
-    args:[]
-  Input.Subscribe:
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemoteDimension:
+    args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.Subscribe:
     args:
       - type: string
       - type: function
-  Input.Unsubscribe:
+  Events.SubscribeRemote:
     args:
       - type: string
       - type: function
+  Events.Unsubscribe:
+    args:
+      - type: string
+      - required: false
+        type: function
   Trace.LineSingle:
     args:
       - type: 
@@ -1740,8 +2158,7 @@ globals:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -1757,8 +2174,7 @@ globals:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -1812,10 +2228,8 @@ globals:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -1831,10 +2245,8 @@ globals:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -1844,29 +2256,139 @@ globals:
       - required: false
         type: 
           display: Actor[]
-  Matchmaking.JoinMatchmaking:
+  Matrix:
+    must_use: true
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+  Vector2D:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Vector:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator.Random:
+    args:
+      - required: false
+        type: boolean
+  Viewport.ProjectWorldToScreen:
+    args:
+      - type: 
+          display: Vector
+  Viewport.DeprojectScreenToWorld:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.SetHardwareCursor:
+    args:
+      - type: 
+          display: CursorType
+      - type: string
+      - required: false
+        type: 
+          display: Vector2D
+  Viewport.GetViewportSize:
+    args:[]
+  Viewport.SetMousePosition:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.GetMousePosition:
+    args:[]
+  Viewport.SetCrosshairEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenIntensity:
+    args:
+      - type: number
+  Viewport.Subscribe:
     args:
       - type: string
-      - type: 
-          display: Player
+      - type: function
+  Viewport.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Timer.SetTimeout:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.SetInterval:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.ClearTimeout:
+    args:
       - type: 
           display: integer
-      - type: function
-  Matchmaking.CheckMatchmakingStatus:
-    args:
-      - type: string
-      - type: function
-  Matchmaking.LeaveMatchmaking:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - type: function
-  Matchmaking.LeaveAllMatchmaking:
+  Timer.ClearInterval:
     args:
       - type: 
-          display: Player
-      - type: function
+          display: integer
+  Timer.Bind:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: Actor
+  Timer.IsValid:
+    args:
+      - type: 
+          display: integer
+  Timer.GetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Timer.GetRemainingTime:
+    args:
+      - type: 
+          display: integer
+  Timer.Pause:
+    args:
+      - type: 
+          display: integer
+  Timer.Resume:
+    args:
+      - type: 
+          display: integer
+  Timer.ResetElapsedTime:
+    args:
+      - type: 
+          display: integer
   Color:
     must_use: true
     args:
@@ -1925,639 +2447,6 @@ globals:
   Color.FromHEX:
     args:
       - type: string
-  Client.CopyToClipboard:
-    args:
-      - type: string
-  Client.SetNearClipPlane:
-    args:
-      - type: 
-          display: float
-  Client.GetNearClipPlane:
-    args:[]
-  Client.GetConnectedServerIP:
-    args:[]
-  Client.SetDebugEnabled:
-    args:
-      - type: boolean
-  Client.SetHighlightColor:
-    args:
-      - type: 
-          display: Color
-      - type: 
-          display: integer
-      - required: false
-        type: 
-          display: HighlightMode
-  Client.SetOutlineColor:
-    args:
-      - type: 
-          display: Color
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: float
-  Client.SetValue:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Client.GetLocalPlayer:
-    args:[]
-  Client.GetFrameTime:
-    args:[]
-  Client.GetTime:
-    args:[]
-  Client.GetMap:
-    args:[]
-  Client.GetPackages:
-    args:[]
-  Client.GetValue:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Client.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Client.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  PersistentDatabase.Create:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.Insert:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Update:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Delete:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetByKey:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetAll:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.GetSummary:
-    args:
-      - required: false
-        type: function
-  Viewport.ProjectWorldToScreen:
-    args:
-      - type: 
-          display: Vector
-  Viewport.DeprojectScreenToWorld:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.SetHardwareCursor:
-    args:
-      - type: 
-          display: CursorType
-      - type: 
-          display: ImagePath
-      - required: false
-        type: 
-          display: Vector2D
-  Viewport.GetViewportSize:
-    args:[]
-  Viewport.SetMousePosition:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.GetMousePosition:
-    args:[]
-  Viewport.SetCrosshairEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenIntensity:
-    args:
-      - type: 
-          display: float
-  Viewport.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Viewport.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  PostProcess.SetBloom:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetChromaticAberration:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetImageEffects:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetExposure:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetFilm:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetGlobalSaturation:
-    args:
-      - type: 
-          display: Color
-  PostProcess.SetLookupTable:
-    args:
-      - type: 
-          display: ImagePath
-  PostProcess.SetMaterial:
-    args:
-      - type: 
-          display: MaterialPath
-  PostProcess.RemoveMaterial:
-    args:[]
-  PostProcess.SetSunAngle:
-    args:
-      - type: 
-          display: float
-  Rotator:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Rotator.Random:
-    args:
-      - required: false
-        type: boolean
-  Matrix:
-    must_use: true
-    args:
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
-  Vector2D:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Vector:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  JSON.stringify:
-    args:
-      - type: table
-  JSON.parse:
-    args:
-      - type: string
-  HELIXUtils.IsEntityValid:
-    args:
-      - type: 
-          display: any
-  HELIXUtils.Benchmark:
-    args:
-      - type: string
-      - type: number
-      - type: function
-      - type: 
-          display: any
-  Sky.Spawn:
-    args:
-      - required: false
-        type: boolean
-  Sky.DestroyAllSky:
-    args:[]
-  Sky.Reconstruct:
-    args:[]
-  Sky.SetMoonTexture:
-    args:
-      - type: 
-          display: ImagePath
-  Sky.SetMoonTextureRotation:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonVerticalOffset:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonScale:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonPhase:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonGlowIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonLightIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunAngle:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunRadius:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunLightIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetSkyMode:
-    args:
-      - type: 
-          display: SkyMode
-  Sky.SetVolumetricCloudColor:
-    args:
-      - type: 
-          display: Color
-  Sky.SetCloudCoverage:
-    args:
-      - type: 
-          display: float
-  Sky.SetFog:
-    args:
-      - type: 
-          display: float
-  Sky.SetContrast:
-    args:
-      - type: 
-          display: float
-  Sky.SetOverallIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetNightBrightness:
-    args:
-      - type: 
-          display: float
-  Sky.SetAnimateTimeOfDay:
-    args:
-      - type: boolean
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  Sky.SetTimeOfDay:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-  Sky.GetTimeOfDay:
-    args:[]
-  Sky.IsSpawned:
-    args:
-      - type: boolean
-  Sky.GetWeather:
-    args:[]
-  Sky.ChangeWeather:
-    args:
-      - type: 
-          display: WeatherType
-      - type: 
-          display: float
-  WebUI:
-    must_use: true
-    args:
-      - type: string
-      - type: 
-          display: HTMLPath
-      - required: false
-        type: 
-          display: WidgetVisibility
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-  HTTP.RequestAsync:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-      - required: false
-        type: function
-  HTTP.Request:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-  HTTP.SetConnectionTimeout:
-    args:
-      - type: 
-          display: integer
-  HTTP.SetReadWriteTimeout:
-    args:
-      - type: 
-          display: integer
-  Grenade:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - required: false
-        type: 
-          display: StaticMeshPath
-      - required: false
-        type: 
-          display: ParticlePath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Vehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: BlueprintPath
-  Timer.SetTimeout:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.SetInterval:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.ClearTimeout:
-    args:
-      - type: 
-          display: integer
-  Timer.ClearInterval:
-    args:
-      - type: 
-          display: integer
-  Timer.Bind:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: Actor
-  Timer.IsValid:
-    args:
-      - type: 
-          display: integer
-  Timer.GetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  Timer.GetRemainingTime:
-    args:
-      - type: 
-          display: integer
-  Timer.Pause:
-    args:
-      - type: 
-          display: integer
-  Timer.Resume:
-    args:
-      - type: 
-          display: integer
-  Timer.ResetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  Chat.AddMessage:
-    args:
-      - type: string
-  Chat.SendMessage:
-    args:
-      - type: 
-          display: Player
-      - type: string
-  Chat.SetConfiguration:
-    args:
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-  Chat.SetVisibility:
-    args:
-      - type: boolean
-  Chat.Clear:
-    args:[]
-  Chat.BroadcastMessage:
-    args:
-      - type: string
-  Chat.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Chat.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Assets.GetAssetPacks:
-    args:[]
-  Assets.GetAnimations:
-    args:
-      - type: string
-  Assets.GetBlueprints:
-    args:
-      - type: string
-  Assets.GetMaps:
-    args:
-      - type: string
-  Assets.GetMaterials:
-    args:
-      - type: string
-  Assets.GetParticles:
-    args:
-      - type: string
-  Assets.GetSounds:
-    args:
-      - type: string
-  Assets.GetSkeletalMeshes:
-    args:
-      - type: string
-  Assets.GetStaticMeshes:
-    args:
-      - type: string
-  Assets.GetOthers:
-    args:
-      - type: string
-  Assets.Precache:
-    args:
-      - type: string
-      - type: 
-          display: AssetType
-  HELIXTable.Dump:
-    args:
-      - type: table
-  HELIXTable.ShallowCopy:
-    args:
-      - type: table
   HELIXMath.Round:
     args:
       - type: number
@@ -2618,36 +2507,18 @@ globals:
           display: Vector
       - type: number
       - type: number
-  Quat:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
 structs:
-  Decal:
+  StaticMesh:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: MaterialPath
+      - type: string
       - required: false
         type: 
-          display: Vector
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
+          display: CollisionType
   Billboard:
     must_use: true
     args:
@@ -2655,13 +2526,114 @@ structs:
         type: 
           display: Vector
       - required: false
-        type: 
-          display: MaterialPath
+        type: string
       - required: false
         type: 
           display: Vector2D
       - required: false
         type: boolean
+  Decal:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: number
+      - required: false
+        type: number
+  HELIXAircraft:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXTable.Dump:
+    args:
+      - type: table
+  HELIXTable.ShallowCopy:
+    args:
+      - type: table
+  TextRender:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: 
+          display: FontType
+      - required: false
+        type: 
+          display: TextRenderAlignCamera
+  Sound:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundType
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: 
+          display: AttenuationFunction
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: SoundLoopMode
+  Trigger:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+      - required: false
+        type: 
+          display: TriggerType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: string[]
   Blueprint:
     must_use: true
     args:
@@ -2672,20 +2644,35 @@ structs:
         type: 
           display: Rotator
       - required: false
-        type: 
-          display: BlueprintPath
-  HELIXAircraft:
+        type: string
+  Grenade:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: BlueprintPath
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
       - required: false
         type: 
           display: CollisionType
+      - required: false
+        type: boolean
+  Particle:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: boolean
       - required: false
         type: boolean
   SceneCapture:
@@ -2704,14 +2691,11 @@ structs:
         type: 
           display: integer
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: boolean
   Cable:
@@ -2721,6 +2705,49 @@ structs:
           display: Vector
       - required: false
         type: boolean
+  File:
+    must_use: true
+    args:
+      - type: string
+      - required: false
+        type: boolean
+  File.Time:
+    args:
+      - type: string
+  File.CreateDirectory:
+    args:
+      - type: string
+  File.Remove:
+    args:
+      - type: string
+  File.Exists:
+    args:
+      - type: string
+  File.IsDirectory:
+    args:
+      - type: string
+  File.IsRegularFile:
+    args:
+      - type: string
+  Prop:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: GrabMode
+      - required: false
+        type: 
+          display: CCDMode
   Database:
     must_use: true
     args:
@@ -2745,92 +2772,50 @@ structs:
         type: 
           display: LightType
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: boolean
       - required: false
         type: boolean
       - required: false
         type: boolean
-  Trigger:
+  HELIXUtils.IsEntityValid:
+    args:
+      - type: 
+          display: any
+  HELIXUtils.Benchmark:
+    args:
+      - type: string
+      - type: number
+      - type: function
+      - type: 
+          display: any
+  WebUI:
     must_use: true
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
+      - type: string
+      - type: string
       - required: false
         type: 
-          display: TriggerType
+          display: WidgetVisibility
+      - required: false
+        type: boolean
       - required: false
         type: boolean
       - required: false
         type: 
-          display: Color
-      - required: false
-        type: string[]
-  Events.Call:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.CallRemote:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.CallRemote:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemote:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Events.BroadcastRemoteDimension:
-    args:
-      - type: 
           display: integer
-      - type: string
       - required: false
         type: 
-          display: any
-  Events.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Events.SubscribeRemote:
-    args:
-      - type: string
-      - type: function
-  Events.Unsubscribe:
-    args:
-      - type: string
-      - required: false
-        type: function
+          display: integer
   Debug.DrawBox:
     args:
       - type: 
@@ -2841,22 +2826,17 @@ structs:
           display: Rotator
       - type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawCoordinateSystem:
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: float
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
+      - type: number
   Debug.DrawCrosshairs:
     args:
       - type: 
@@ -2864,32 +2844,26 @@ structs:
       - type: 
           display: Rotator
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawCylinder:
     args:
       - type: 
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - type: 
           display: integer
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawDirectionalArrow:
     args:
       - type: 
@@ -2897,15 +2871,12 @@ structs:
       - type: 
           display: Vector
       - required: false
-        type: 
-          display: float
+        type: number
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawLine:
     args:
       - type: 
@@ -2915,10 +2886,8 @@ structs:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawPoint:
     args:
       - type: 
@@ -2926,25 +2895,20 @@ structs:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawSphere:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - type: 
           display: integer
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
   Debug.DrawString:
     args:
       - type: 
@@ -2953,104 +2917,45 @@ structs:
       - required: false
         type: 
           display: Color
-      - type: 
-          display: float
+      - type: number
       - type: boolean
-      - type: 
-          display: float
-  Discord.Initialize:
+      - type: number
+  Canvas:
+    must_use: true
     args:
-      - type: 
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: Color
+      - required: false
+        type: number
+      - required: false
+        type: boolean
+      - required: false
+        type: boolean
+      - required: false
+        type: 
           display: integer
-  Discord.SetActivity:
-    args:
-      - type: string
-      - type: string
-      - type: string
-      - type: string
       - required: false
-        type: string
-  StaticMesh:
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: Vector2D
+  HELIXVehicle:
     must_use: true
     args:
       - type: 
           display: Vector
       - type: 
           display: Rotator
-      - type: 
-          display: StaticMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-  Melee:
-    must_use: true
-    args:
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Rotator
-      - required: false
-        type: 
-          display: StaticMeshPath
+      - type: string
       - required: false
         type: 
           display: CollisionType
       - required: false
         type: boolean
-      - required: false
-        type: 
-          display: HandlingMode
-      - required: false
-        type: 
-          display: MaterialPath
-      - required: false
-        type: boolean
-  Widget:
-    must_use: true
-    args:
-      - type: 
-          display: BlueprintPath
-  Widget:
-    must_use: true
-    args:
-      - type: 
-          display: NativeWidget
-  Sound:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: SoundPath
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundType
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: AttenuationFunction
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundLoopMode
   Entity.GetAll:
     args:[]
   Entity.GetByIndex:
@@ -3079,6 +2984,70 @@ structs:
     args:
       - type: string
       - type: function
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  HCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  Melee:
+    must_use: true
+    args:
+      - required: false
+        type: 
+          display: Vector
+      - required: false
+        type: 
+          display: Rotator
+      - required: false
+        type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+      - required: false
+        type: 
+          display: HandlingMode
+      - required: false
+        type: string
+      - required: false
+        type: boolean
   CharacterSimple:
     must_use: true
     args:
@@ -3088,38 +3057,44 @@ structs:
           display: Rotator
       - type: any
       - required: false
-        type: 
-          display: BlueprintPath
+        type: string
       - required: false
         type: 
           display: CollisionType
       - required: false
         type: boolean
-  Canvas:
+  Vehicle:
     must_use: true
     args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
       - required: false
         type: boolean
       - required: false
-        type: 
-          display: Color
-      - required: false
-        type: 
-          display: float
-      - required: false
         type: boolean
       - required: false
         type: boolean
       - required: false
-        type: 
-          display: integer
+        type: string
       - required: false
-        type: 
-          display: integer
+        type: string
       - required: false
-        type: 
-          display: Vector2D
-  Prop:
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: string
+  HSimpleVehicle:
     must_use: true
     args:
       - type: 
@@ -3127,7 +3102,20 @@ structs:
       - type: 
           display: Rotator
       - type: 
-          display: StaticMeshPath
+          display: Blueprint Reference
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Character:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
       - required: false
         type: 
           display: CollisionType
@@ -3135,34 +3123,325 @@ structs:
         type: boolean
       - required: false
         type: 
-          display: GrabMode
+          display: integer
+      - required: false
+        type: string
+      - required: false
+        type: string
+  HELIXCharacter:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: any
       - required: false
         type: 
-          display: CCDMode
-  File:
+          display: CollisionType
+      - required: false
+        type: boolean
+  HELIXCharacter:
     must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Input.Bind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+      - type: function
+  Input.Unbind:
+    args:
+      - type: string
+      - type: 
+          display: InputEvent
+  Input.Register:
+    args:
+      - type: string
+      - type: string
+  Input.Unregister:
+    args:
+      - type: string
+      - type: string
+  Input.GetKeyIcon:
     args:
       - type: string
       - required: false
         type: boolean
-  File.Time:
+  Input.GetKeyCode:
     args:
       - type: string
-  File.CreateDirectory:
+  Input.GetModifierKeys:
+    args:[]
+  Input.GetMappedKeys:
     args:
       - type: string
-  File.Remove:
+  Input.ResetBindings:
+    args:[]
+  Input.GetScriptingKeyBindings:
+    args:[]
+  Input.GetGameKeyBindings:
+    args:[]
+  Input.SetInputEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseEnabled:
+    args:
+      - type: boolean
+  Input.SetMouseCursor:
+    args:
+      - type: 
+          display: CursorType
+  Input.InputKey:
     args:
       - type: string
-  File.Exists:
+      - type: 
+          display: InputEvent
+      - required: false
+        type: number
+  Input.IsKeyDown:
     args:
       - type: string
-  File.IsDirectory:
+  Input.IsMouseEnabled:
+    args:[]
+  Input.IsInputEnabled:
+    args:[]
+  Input.Subscribe:
     args:
       - type: string
-  File.IsRegularFile:
+      - type: function
+  Input.Unsubscribe:
     args:
       - type: string
+      - type: function
+  Assets.GetAssetPacks:
+    args:[]
+  Assets.GetAnimations:
+    args:
+      - type: string
+  Assets.GetBlueprints:
+    args:
+      - type: string
+  Assets.GetMaps:
+    args:
+      - type: string
+  Assets.GetMaterials:
+    args:
+      - type: string
+  Assets.GetParticles:
+    args:
+      - type: string
+  Assets.GetSounds:
+    args:
+      - type: string
+  Assets.GetSkeletalMeshes:
+    args:
+      - type: string
+  Assets.GetStaticMeshes:
+    args:
+      - type: string
+  Assets.GetOthers:
+    args:
+      - type: string
+  Assets.Precache:
+    args:
+      - type: string
+      - type: 
+          display: AssetType
+  Weapon:
+    must_use: true
+    args:
+      - type: 
+          display: Vector
+      - type: 
+          display: Rotator
+      - type: string
+      - required: false
+        type: 
+          display: CollisionType
+      - required: false
+        type: boolean
+  Client.CopyToClipboard:
+    args:
+      - type: string
+  Client.SetNearClipPlane:
+    args:
+      - type: number
+  Client.GetNearClipPlane:
+    args:[]
+  Client.GetConnectedServerIP:
+    args:[]
+  Client.SetDebugEnabled:
+    args:
+      - type: boolean
+  Client.SetHighlightColor:
+    args:
+      - type: 
+          display: Color
+      - type: 
+          display: integer
+      - required: false
+        type: 
+          display: HighlightMode
+  Client.SetOutlineColor:
+    args:
+      - type: 
+          display: Color
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: number
+  Client.SetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.GetLocalPlayer:
+    args:[]
+  Client.GetFrameTime:
+    args:[]
+  Client.GetTime:
+    args:[]
+  Client.GetMap:
+    args:[]
+  Client.GetPackages:
+    args:[]
+  Client.GetValue:
+    args:
+      - type: string
+      - type: 
+          display: any
+  Client.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Client.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Widget:
+    must_use: true
+    args:
+      - type: string
+  Widget:
+    must_use: true
+    args:
+      - type: 
+          display: NativeWidget
+  Payment.ChargePlayer:
+    args:
+      - type: 
+          display: Player
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: string
+      - type: function
+  Payment.SellItem:
+    args:
+      - type: 
+          display: Player
+      - type: string
+      - type: 
+          display: integer
+      - type: string
+      - type: string
+      - type: function
+  Payment.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Payment.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  PersistentDatabase.Create:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.Insert:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Update:
+    args:
+      - type: string
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.Delete:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetByKey:
+    args:
+      - type: string
+      - required: false
+        type: function
+  PersistentDatabase.GetAll:
+    args:
+      - required: false
+        type: function
+  PersistentDatabase.GetSummary:
+    args:
+      - required: false
+        type: function
+  HTTP.RequestAsync:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+      - required: false
+        type: function
+  HTTP.Request:
+    args:
+      - type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: string
+      - required: false
+        type: boolean
+      - required: false
+        type: table
+  HTTP.SetConnectionTimeout:
+    args:
+      - type: 
+          display: integer
+  HTTP.SetReadWriteTimeout:
+    args:
+      - type: 
+          display: integer
   Level.LoadStreamLevel:
     args:
       - type: string
@@ -3192,116 +3471,147 @@ structs:
     args:
       - type: string
       - type: function
-  HELIXCharacter:
-    must_use: true
+  Sky.Spawn:
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: any
-      - required: false
-        type: 
-          display: CollisionType
       - required: false
         type: boolean
-  HELIXCharacter:
-    must_use: true
+  Sky.DestroyAllSky:
+    args:[]
+  Sky.Reconstruct:
+    args:[]
+  Sky.SetMoonTexture:
+    args:
+      - type: string
+  Sky.SetMoonTextureRotation:
+    args:
+      - type: number
+  Sky.SetMoonVerticalOffset:
+    args:
+      - type: number
+  Sky.SetMoonScale:
+    args:
+      - type: number
+  Sky.SetMoonPhase:
+    args:
+      - type: number
+  Sky.SetMoonGlowIntensity:
+    args:
+      - type: number
+  Sky.SetMoonLightIntensity:
+    args:
+      - type: number
+  Sky.SetSunAngle:
+    args:
+      - type: number
+  Sky.SetSunRadius:
+    args:
+      - type: number
+  Sky.SetSunLightIntensity:
+    args:
+      - type: number
+  Sky.SetSkyMode:
     args:
       - type: 
-          display: Vector
+          display: SkyMode
+  Sky.SetVolumetricCloudColor:
+    args:
       - type: 
-          display: Rotator
+          display: Color
+  Sky.SetCloudCoverage:
+    args:
+      - type: number
+  Sky.SetFog:
+    args:
+      - type: number
+  Sky.SetContrast:
+    args:
+      - type: number
+  Sky.SetOverallIntensity:
+    args:
+      - type: number
+  Sky.SetNightBrightness:
+    args:
+      - type: number
+  Sky.SetAnimateTimeOfDay:
+    args:
+      - type: boolean
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Sky.SetTimeOfDay:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: integer
+  Sky.GetTimeOfDay:
+    args:[]
+  Sky.IsSpawned:
+    args:
+      - type: boolean
+  Sky.GetWeather:
+    args:[]
+  Sky.ChangeWeather:
+    args:
+      - type: 
+          display: WeatherType
+      - type: number
+  Console.Log:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Warn:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.Error:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Console.RegisterCommand:
+    args:
+      - type: string
+      - type: function
+      - type: string
+      - type: string[]
+  Console.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Console.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Matchmaking.JoinMatchmaking:
+    args:
+      - type: string
       - type: 
           display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  HELIXVehicle:
-    must_use: true
-    args:
       - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Character:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
           display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-  HCharacter:
-    must_use: true
+      - type: function
+  Matchmaking.CheckMatchmakingStatus:
     args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
+      - type: string
+      - type: function
+  Matchmaking.LeaveMatchmaking:
+    args:
+      - type: string
       - type: 
           display: Player
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-  HCharacter:
-    must_use: true
+      - type: function
+  Matchmaking.LeaveAllMatchmaking:
     args:
       - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
+          display: Player
+      - type: function
   Package.Export:
     args:
       - type: string
@@ -3345,127 +3655,51 @@ structs:
     args:
       - type: string
       - type: function
-  Console.Log:
+  Chat.AddMessage:
     args:
       - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Warn:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.Error:
-    args:
-      - type: string
-      - required: false
-        type: 
-          display: any
-  Console.RegisterCommand:
-    args:
-      - type: string
-      - type: function
-      - type: string
-      - type: string[]
-  Console.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Console.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  TextRender:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: string
-      - required: false
-        type: 
-          display: Vector
-      - required: false
-        type: 
-          display: Color
-      - required: false
-        type: 
-          display: FontType
-      - required: false
-        type: 
-          display: TextRenderAlignCamera
-  HSimpleVehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: Blueprint Reference
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Payment.ChargePlayer:
-    args:
-      - type: 
-          display: Player
-      - type: 
-          display: integer
-      - type: string
-      - type: string
-      - type: string
-      - type: function
-  Payment.SellItem:
+  Chat.SendMessage:
     args:
       - type: 
           display: Player
       - type: string
-      - type: 
-          display: integer
-      - type: string
-      - type: string
-      - type: function
-  Payment.Subscribe:
+  Chat.SetConfiguration:
     args:
-      - type: string
-      - type: function
-  Payment.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Particle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: ParticlePath
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-  Weapon:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
       - required: false
         type: 
-          display: CollisionType
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
+      - required: false
+        type: 
+          display: Vector2D
       - required: false
         type: boolean
+      - required: false
+        type: boolean
+  Chat.SetVisibility:
+    args:
+      - type: boolean
+  Chat.Clear:
+    args:[]
+  Chat.BroadcastMessage:
+    args:
+      - type: string
+  Chat.Subscribe:
+    args:
+      - type: string
+      - type: function
+  Chat.Unsubscribe:
+    args:
+      - type: string
+      - type: function
   Server.ChangeMap:
     args:
       - type: string
@@ -3564,95 +3798,157 @@ structs:
     args:
       - type: string
       - type: function
+  PostProcess.SetBloom:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetChromaticAberration:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetImageEffects:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetExposure:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetFilm:
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  PostProcess.SetGlobalSaturation:
+    args:
+      - type: 
+          display: Color
+  PostProcess.SetLookupTable:
+    args:
+      - type: string
+  PostProcess.SetMaterial:
+    args:
+      - type: string
+  PostProcess.RemoveMaterial:
+    args:[]
+  PostProcess.SetSunAngle:
+    args:
+      - type: number
   Navigation.GetRandomReachablePointInRadius:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
   Navigation.GetRandomPointInNavigableRadius:
     args:
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
   Navigation.FindPathToLocation:
     args:
       - type: 
           display: Vector
       - type: 
           display: Vector
-  Input.Bind:
+  Discord.Initialize:
     args:
-      - type: string
       - type: 
-          display: InputEvent
-      - type: function
-  Input.Unbind:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
-  Input.Register:
+          display: integer
+  Discord.SetActivity:
     args:
       - type: string
       - type: string
-  Input.Unregister:
-    args:
       - type: string
-      - type: string
-  Input.GetKeyIcon:
-    args:
       - type: string
       - required: false
-        type: boolean
-  Input.GetKeyCode:
+        type: string
+  JSON.stringify:
+    args:
+      - type: table
+  JSON.parse:
     args:
       - type: string
-  Input.GetModifierKeys:
-    args:[]
-  Input.GetMappedKeys:
+  Quat:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Events.Call:
     args:
       - type: string
-  Input.ResetBindings:
-    args:[]
-  Input.GetScriptingKeyBindings:
-    args:[]
-  Input.GetGameKeyBindings:
-    args:[]
-  Input.SetInputEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseEnabled:
-    args:
-      - type: boolean
-  Input.SetMouseCursor:
-    args:
-      - type: 
-          display: CursorType
-  Input.InputKey:
-    args:
-      - type: string
-      - type: 
-          display: InputEvent
       - required: false
         type: 
-          display: float
-  Input.IsKeyDown:
+          display: any
+  Events.CallRemote:
     args:
       - type: string
-  Input.IsMouseEnabled:
-    args:[]
-  Input.IsInputEnabled:
-    args:[]
-  Input.Subscribe:
+      - required: false
+        type: 
+          display: any
+  Events.CallRemote:
+    args:
+      - type: string
+      - type: 
+          display: Player
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemote:
+    args:
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.BroadcastRemoteDimension:
+    args:
+      - type: 
+          display: integer
+      - type: string
+      - required: false
+        type: 
+          display: any
+  Events.Subscribe:
     args:
       - type: string
       - type: function
-  Input.Unsubscribe:
+  Events.SubscribeRemote:
     args:
       - type: string
       - type: function
+  Events.Unsubscribe:
+    args:
+      - type: string
+      - required: false
+        type: function
   Trace.LineSingle:
     args:
       - type: 
@@ -3689,8 +3985,7 @@ structs:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -3706,8 +4001,7 @@ structs:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -3761,10 +4055,8 @@ structs:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -3780,10 +4072,8 @@ structs:
           display: Vector
       - type: 
           display: Vector
-      - type: 
-          display: float
-      - type: 
-          display: float
+      - type: number
+      - type: number
       - required: false
         type: 
           display: CollisionChannel
@@ -3793,29 +4083,139 @@ structs:
       - required: false
         type: 
           display: Actor[]
-  Matchmaking.JoinMatchmaking:
+  Matrix:
+    must_use: true
+    args:
+      - type: 
+          display: Rotator
+      - type: 
+          display: Vector
+  Vector2D:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Vector:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator:
+    must_use: true
+    args:
+      - required: false
+        type: number
+      - required: false
+        type: number
+      - required: false
+        type: number
+  Rotator.Random:
+    args:
+      - required: false
+        type: boolean
+  Viewport.ProjectWorldToScreen:
+    args:
+      - type: 
+          display: Vector
+  Viewport.DeprojectScreenToWorld:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.SetHardwareCursor:
+    args:
+      - type: 
+          display: CursorType
+      - type: string
+      - required: false
+        type: 
+          display: Vector2D
+  Viewport.GetViewportSize:
+    args:[]
+  Viewport.SetMousePosition:
+    args:
+      - type: 
+          display: Vector2D
+  Viewport.GetMousePosition:
+    args:[]
+  Viewport.SetCrosshairEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenEnabled:
+    args:
+      - type: boolean
+  Viewport.SetBloodScreenIntensity:
+    args:
+      - type: number
+  Viewport.Subscribe:
     args:
       - type: string
-      - type: 
-          display: Player
+      - type: function
+  Viewport.Unsubscribe:
+    args:
+      - type: string
+      - type: function
+  Timer.SetTimeout:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.SetInterval:
+    args:
+      - type: function
+      - required: false
+        type: 
+          display: integer
+      - required: false
+        type: 
+          display: any
+  Timer.ClearTimeout:
+    args:
       - type: 
           display: integer
-      - type: function
-  Matchmaking.CheckMatchmakingStatus:
-    args:
-      - type: string
-      - type: function
-  Matchmaking.LeaveMatchmaking:
-    args:
-      - type: string
-      - type: 
-          display: Player
-      - type: function
-  Matchmaking.LeaveAllMatchmaking:
+  Timer.ClearInterval:
     args:
       - type: 
-          display: Player
-      - type: function
+          display: integer
+  Timer.Bind:
+    args:
+      - type: 
+          display: integer
+      - type: 
+          display: Actor
+  Timer.IsValid:
+    args:
+      - type: 
+          display: integer
+  Timer.GetElapsedTime:
+    args:
+      - type: 
+          display: integer
+  Timer.GetRemainingTime:
+    args:
+      - type: 
+          display: integer
+  Timer.Pause:
+    args:
+      - type: 
+          display: integer
+  Timer.Resume:
+    args:
+      - type: 
+          display: integer
+  Timer.ResetElapsedTime:
+    args:
+      - type: 
+          display: integer
   Color:
     must_use: true
     args:
@@ -3874,639 +4274,6 @@ structs:
   Color.FromHEX:
     args:
       - type: string
-  Client.CopyToClipboard:
-    args:
-      - type: string
-  Client.SetNearClipPlane:
-    args:
-      - type: 
-          display: float
-  Client.GetNearClipPlane:
-    args:[]
-  Client.GetConnectedServerIP:
-    args:[]
-  Client.SetDebugEnabled:
-    args:
-      - type: boolean
-  Client.SetHighlightColor:
-    args:
-      - type: 
-          display: Color
-      - type: 
-          display: integer
-      - required: false
-        type: 
-          display: HighlightMode
-  Client.SetOutlineColor:
-    args:
-      - type: 
-          display: Color
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: float
-  Client.SetValue:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Client.GetLocalPlayer:
-    args:[]
-  Client.GetFrameTime:
-    args:[]
-  Client.GetTime:
-    args:[]
-  Client.GetMap:
-    args:[]
-  Client.GetPackages:
-    args:[]
-  Client.GetValue:
-    args:
-      - type: string
-      - type: 
-          display: any
-  Client.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Client.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  PersistentDatabase.Create:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.Insert:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Update:
-    args:
-      - type: string
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.Delete:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetByKey:
-    args:
-      - type: string
-      - required: false
-        type: function
-  PersistentDatabase.GetAll:
-    args:
-      - required: false
-        type: function
-  PersistentDatabase.GetSummary:
-    args:
-      - required: false
-        type: function
-  Viewport.ProjectWorldToScreen:
-    args:
-      - type: 
-          display: Vector
-  Viewport.DeprojectScreenToWorld:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.SetHardwareCursor:
-    args:
-      - type: 
-          display: CursorType
-      - type: 
-          display: ImagePath
-      - required: false
-        type: 
-          display: Vector2D
-  Viewport.GetViewportSize:
-    args:[]
-  Viewport.SetMousePosition:
-    args:
-      - type: 
-          display: Vector2D
-  Viewport.GetMousePosition:
-    args:[]
-  Viewport.SetCrosshairEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenEnabled:
-    args:
-      - type: boolean
-  Viewport.SetBloodScreenIntensity:
-    args:
-      - type: 
-          display: float
-  Viewport.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Viewport.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  PostProcess.SetBloom:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetChromaticAberration:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetImageEffects:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetExposure:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetFilm:
-    args:
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  PostProcess.SetGlobalSaturation:
-    args:
-      - type: 
-          display: Color
-  PostProcess.SetLookupTable:
-    args:
-      - type: 
-          display: ImagePath
-  PostProcess.SetMaterial:
-    args:
-      - type: 
-          display: MaterialPath
-  PostProcess.RemoveMaterial:
-    args:[]
-  PostProcess.SetSunAngle:
-    args:
-      - type: 
-          display: float
-  Rotator:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Rotator.Random:
-    args:
-      - required: false
-        type: boolean
-  Matrix:
-    must_use: true
-    args:
-      - type: 
-          display: Rotator
-      - type: 
-          display: Vector
-  Vector2D:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-  Vector:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-  JSON.stringify:
-    args:
-      - type: table
-  JSON.parse:
-    args:
-      - type: string
-  HELIXUtils.IsEntityValid:
-    args:
-      - type: 
-          display: any
-  HELIXUtils.Benchmark:
-    args:
-      - type: string
-      - type: number
-      - type: function
-      - type: 
-          display: any
-  Sky.Spawn:
-    args:
-      - required: false
-        type: boolean
-  Sky.DestroyAllSky:
-    args:[]
-  Sky.Reconstruct:
-    args:[]
-  Sky.SetMoonTexture:
-    args:
-      - type: 
-          display: ImagePath
-  Sky.SetMoonTextureRotation:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonVerticalOffset:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonScale:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonPhase:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonGlowIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetMoonLightIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunAngle:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunRadius:
-    args:
-      - type: 
-          display: float
-  Sky.SetSunLightIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetSkyMode:
-    args:
-      - type: 
-          display: SkyMode
-  Sky.SetVolumetricCloudColor:
-    args:
-      - type: 
-          display: Color
-  Sky.SetCloudCoverage:
-    args:
-      - type: 
-          display: float
-  Sky.SetFog:
-    args:
-      - type: 
-          display: float
-  Sky.SetContrast:
-    args:
-      - type: 
-          display: float
-  Sky.SetOverallIntensity:
-    args:
-      - type: 
-          display: float
-  Sky.SetNightBrightness:
-    args:
-      - type: 
-          display: float
-  Sky.SetAnimateTimeOfDay:
-    args:
-      - type: boolean
-      - required: false
-        type: 
-          display: float
-      - required: false
-        type: 
-          display: float
-  Sky.SetTimeOfDay:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: integer
-  Sky.GetTimeOfDay:
-    args:[]
-  Sky.IsSpawned:
-    args:
-      - type: boolean
-  Sky.GetWeather:
-    args:[]
-  Sky.ChangeWeather:
-    args:
-      - type: 
-          display: WeatherType
-      - type: 
-          display: float
-  WebUI:
-    must_use: true
-    args:
-      - type: string
-      - type: 
-          display: HTMLPath
-      - required: false
-        type: 
-          display: WidgetVisibility
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: integer
-  HTTP.RequestAsync:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-      - required: false
-        type: function
-  HTTP.Request:
-    args:
-      - type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: string
-      - required: false
-        type: boolean
-      - required: false
-        type: table
-  HTTP.SetConnectionTimeout:
-    args:
-      - type: 
-          display: integer
-  HTTP.SetReadWriteTimeout:
-    args:
-      - type: 
-          display: integer
-  Grenade:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - required: false
-        type: 
-          display: StaticMeshPath
-      - required: false
-        type: 
-          display: ParticlePath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-  Vehicle:
-    must_use: true
-    args:
-      - type: 
-          display: Vector
-      - type: 
-          display: Rotator
-      - type: 
-          display: SkeletalMeshPath
-      - required: false
-        type: 
-          display: CollisionType
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: 
-          display: SoundPath
-      - required: false
-        type: boolean
-      - required: false
-        type: 
-          display: BlueprintPath
-  Timer.SetTimeout:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.SetInterval:
-    args:
-      - type: function
-      - required: false
-        type: 
-          display: integer
-      - required: false
-        type: 
-          display: any
-  Timer.ClearTimeout:
-    args:
-      - type: 
-          display: integer
-  Timer.ClearInterval:
-    args:
-      - type: 
-          display: integer
-  Timer.Bind:
-    args:
-      - type: 
-          display: integer
-      - type: 
-          display: Actor
-  Timer.IsValid:
-    args:
-      - type: 
-          display: integer
-  Timer.GetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  Timer.GetRemainingTime:
-    args:
-      - type: 
-          display: integer
-  Timer.Pause:
-    args:
-      - type: 
-          display: integer
-  Timer.Resume:
-    args:
-      - type: 
-          display: integer
-  Timer.ResetElapsedTime:
-    args:
-      - type: 
-          display: integer
-  Chat.AddMessage:
-    args:
-      - type: string
-  Chat.SendMessage:
-    args:
-      - type: 
-          display: Player
-      - type: string
-  Chat.SetConfiguration:
-    args:
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: 
-          display: Vector2D
-      - required: false
-        type: boolean
-      - required: false
-        type: boolean
-  Chat.SetVisibility:
-    args:
-      - type: boolean
-  Chat.Clear:
-    args:[]
-  Chat.BroadcastMessage:
-    args:
-      - type: string
-  Chat.Subscribe:
-    args:
-      - type: string
-      - type: function
-  Chat.Unsubscribe:
-    args:
-      - type: string
-      - type: function
-  Assets.GetAssetPacks:
-    args:[]
-  Assets.GetAnimations:
-    args:
-      - type: string
-  Assets.GetBlueprints:
-    args:
-      - type: string
-  Assets.GetMaps:
-    args:
-      - type: string
-  Assets.GetMaterials:
-    args:
-      - type: string
-  Assets.GetParticles:
-    args:
-      - type: string
-  Assets.GetSounds:
-    args:
-      - type: string
-  Assets.GetSkeletalMeshes:
-    args:
-      - type: string
-  Assets.GetStaticMeshes:
-    args:
-      - type: string
-  Assets.GetOthers:
-    args:
-      - type: string
-  Assets.Precache:
-    args:
-      - type: string
-      - type: 
-          display: AssetType
-  HELIXTable.Dump:
-    args:
-      - type: table
-  HELIXTable.ShallowCopy:
-    args:
-      - type: table
   HELIXMath.Round:
     args:
       - type: number
@@ -4567,14 +4334,3 @@ structs:
           display: Vector
       - type: number
       - type: number
-  Quat:
-    must_use: true
-    args:
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
-      - required: false
-        type: number
