@@ -1,5 +1,5 @@
 ---
-base: lua52
+base: lua53
 name: helix
 globals:
   AimMode.None:
