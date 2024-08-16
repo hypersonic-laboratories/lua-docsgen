@@ -1,0 +1,550 @@
+{
+	"name": "Server",
+	"description": "Server represents all Server controls in the Server side.",
+	"authority": "server",
+	"static_functions": [
+		{
+			"name": "ChangeMap",
+			"description": "Restarts the server in a new Map, restarts all packages and reconnects all players",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "map_path",
+					"description": "The new map to load"
+				}
+			]
+		},
+		{
+			"name": "LoadPackage",
+			"description": "Loads a Package",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "package_folder_name",
+					"description": "The package to load"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the Package was loaded"
+				}
+			],
+			"relations": {
+				"functions": [
+					"ReloadPackage",
+					"UnloadPackage"
+				]
+			}
+		},
+		{
+			"name": "ReloadPackage",
+			"description_long": "Reloads a Package<br/>Note: the package is effectively reloaded in the next server tick",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "package_folder_name",
+					"description": "The package to reload"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the Package was found"
+				}
+			],
+			"relations": {
+				"functions": [
+					"LoadPackage",
+					"UnloadPackage"
+				]
+			}
+		},
+		{
+			"name": "UnloadPackage",
+			"description": "Unloads a Package",
+			"description_long": "Unloads a Package<br/>Note: the package is effectively unloaded in the next server tick",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "package_folder_name",
+					"description": "The package you want unload"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the Package was found"
+				}
+			],
+			"relations": {
+				"functions": [
+					"LoadPackage",
+					"ReloadPackage"
+				]
+			}
+		},
+		{
+			"name": "SetDescription",
+			"description": "Sets the description of the server, optionally overrides Config.toml",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "description",
+					"description": "The new description"
+				},
+				{
+					"type": "boolean",
+					"name": "persist_to_config_file",
+					"description": "Persist to config file",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SetLogo",
+			"description": "Sets the logo of the server, optionally overrides Config.toml",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "logo_url",
+					"description": "The new logo"
+				},
+				{
+					"type": "boolean",
+					"name": "persist_to_config_file",
+					"description": "Persist to config file",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SetMaxPlayers",
+			"description": "Sets the maximum player slots of the server, optionally overrides Config.toml",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "max_players",
+					"description": "The maximum players"
+				},
+				{
+					"type": "boolean",
+					"name": "persist_to_config_file",
+					"description": "Persist to config file",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SetName",
+			"description": "Sets the name of the server, optionally overrides Config.toml",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "name",
+					"description": "The new name"
+				},
+				{
+					"type": "boolean",
+					"name": "persist_to_config_file",
+					"description": "Persist to config file",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SetPassword",
+			"description": "Sets the password of the server, optionally overrides Config.toml",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "password",
+					"description": "The new password"
+				},
+				{
+					"type": "boolean",
+					"name": "persist_to_config_file",
+					"description": "Persist to config file",
+					"default": "false"
+				}
+			]
+		},
+		{
+			"name": "SetValue",
+			"description": "Sets a global value in the Server, which can be accessed from anywhere (server side)",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key",
+					"description": "Key"
+				},
+				{
+					"type": "any",
+					"name": "value",
+					"description": "Value"
+				},
+				{
+					"name": "sync_on_client",
+					"type": "boolean",
+					"default": "false",
+					"description": "If enabled will sync this value through all clients, accessible through Client.GetValue() static class."
+				}
+			]
+		},
+		{
+			"name": "GetValue",
+			"description": "Gets a value given a key",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key",
+					"description": "Key"
+				},
+				{
+					"type": "any",
+					"name": "fallback",
+					"description": "Fallback Value if key doesn't exist"
+				}
+			]
+		},
+		{
+			"name": "Unban",
+			"description": "Unbans a Player by it's account ID",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "account_id",
+					"description": "Account ID"
+				}
+			]
+		},
+		{
+			"name": "Stop",
+			"description": "Stops the server",
+			"authority": "server"
+		},
+		{
+			"name": "Subscribe",
+			"description": "Subscribes for an Event",
+			"authority": "server",
+			"return": [
+				{
+					"type": "function",
+					"description": "the function callback itself"
+				}
+			],
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": "The name of the Event"
+				},
+				{
+					"type": "function",
+					"name": "function",
+					"description": "Callback function"
+				}
+			]
+		},
+		{
+			"name": "Unsubscribe",
+			"description": "Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "event_name",
+					"description": "The name of the Events"
+				},
+				{
+					"type": "function",
+					"name": "function",
+					"description": "Callback function",
+					"default": "nil"
+				}
+			]
+		},
+		{
+			"name": "GetMap",
+			"description": "Returns the current Map Package name",
+			"authority": "server",
+			"return": [
+				{
+					"type": "string",
+					"description": "the current map package"
+				}
+			]
+		},
+		{
+			"name": "GetMapAsset",
+			"description": "Returns the current Map Asset reference",
+			"authority": "server",
+			"return": [
+				{
+					"type": "string",
+					"description": "the current map asset"
+				}
+			]
+		},
+		{
+			"name": "GetMapConfig",
+			"description": "Returns a list of the Custom Config of the current map (stored in the MAP_NAME.toml)",
+			"authority": "server",
+			"return": [
+				{
+					"type": "table",
+					"description": "a list of the Custom Config of the current map"
+				}
+			]
+		},
+		{
+			"name": "GetMapSpawnPoints",
+			"description": "Returns a list of the Spawn Points of the current map (stored in the MAP_NAME.toml)",
+			"authority": "server",
+			"return": [
+				{
+					"type": "table[]",
+					"description": "a list of the Spawn Points of the current map",
+					"table_properties": [
+						{
+							"name": "location",
+							"type": "Vector"
+						},
+						{
+							"name": "rotation",
+							"type": "Rotator"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "GetPackages",
+			"description": "Returns a list of Packages running, optionally returns all Packages installed in the server",
+			"authority": "server",
+			"return": [
+				{
+					"type": "table[]",
+					"description": "a list of Packages data",
+					"table_properties": [
+						{
+							"name": "title",
+							"type": "string"
+						},
+						{
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"name": "type",
+							"type": "PackageType"
+						},
+						{
+							"name": "version",
+							"type": "string"
+						},
+						{
+							"name": "author",
+							"type": "string"
+						}
+					]
+				}
+			],
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "only_loaded",
+					"description": "Set to true the function return only loaded and running packages. Caution: setting to false will retrieve Packages list from disk, which is a slow operation!",
+					"default": "true"
+				},
+				{
+					"type": "PackageType",
+					"name": "package_type_filter",
+					"description": "Which Package type to return. Leave it default (-1) to return all types.",
+					"default": "-1"
+				}
+			]
+		},
+		{
+			"name": "GetVersion",
+			"description": "Returns the server version",
+			"authority": "server",
+			"return": [
+				{
+					"type": "string",
+					"description": "the server version"
+				}
+			]
+		},
+		{
+			"name": "GetIP",
+			"description": "Returns the server Public IP",
+			"authority": "server",
+			"return": [
+				{
+					"type": "string",
+					"description": "the server Public IP"
+				}
+			]
+		},
+		{
+			"name": "GetPort",
+			"description": "Returns the server Port",
+			"authority": "server",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the server Port"
+				}
+			]
+		},
+		{
+			"name": "GetQueryPort",
+			"description": "Returns the server QueryPort",
+			"authority": "server",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the server QueryPort"
+				}
+			]
+		},
+		{
+			"name": "GetMaxPlayers",
+			"description": "Returns the Max Players configured",
+			"authority": "server",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the max players configured"
+				}
+			]
+		},
+		{
+			"name": "GetDescription",
+			"description": "Returns the Server Description",
+			"authority": "server",
+			"return": [
+				{
+					"type": "string",
+					"description": "the Server Description"
+				}
+			]
+		},
+		{
+			"name": "GetCustomSettings",
+			"description": "Returns the Server Custom Settings passed as parameter or New Game screen",
+			"authority": "server",
+			"return": [
+				{
+					"type": "table[]",
+					"description": "a list of the Custom Settings",
+					"table_properties_custom": "\n\t\"[KEY_01]\" = \"[VALUE_01]\",\n\t\"[KEY_02]\" = \"[VALUE_02]\",\n\t..."
+				}
+			]
+		},
+		{
+			"name": "GetTickRate",
+			"description": "Returns the Configured Tick Rate",
+			"authority": "server",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the server Tick Rate"
+				}
+			]
+		},
+		{
+			"name": "GetTime",
+			"description": "Gets the Unix Epoch Time in milliseconds",
+			"authority": "server",
+			"return": [
+				{
+					"type": "integer",
+					"description": "the unix timestamp"
+				}
+			]
+		},
+		{
+			"name": "IsAnnounced",
+			"description": "Returns if the Server is announced in the Master List",
+			"authority": "server",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the Server is announced in the Master List"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Start",
+			"description": "Server has been started",
+			"authority": "server"
+		},
+		{
+			"name": "PlayerConnect",
+			"description": "Called when a player is attempting to connect to the server",
+			"authority": "server",
+			"arguments": [
+				{
+					"type": "string",
+					"name": "IP",
+					"description": "IP of the player"
+				},
+				{
+					"type": "string",
+					"name": "player_account_ID",
+					"description": "Account ID of the player"
+				},
+				{
+					"type": "string",
+					"name": "player_name",
+					"description": "Player name"
+				},
+				{
+					"type": "string",
+					"name": "player_steam_ID",
+					"description": "SteamID of the player"
+				}
+			],
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to do not allow the player to connect"
+				}
+			]
+		},
+		{
+			"name": "Stop",
+			"description": "Server has been stopped",
+			"authority": "server"
+		},
+		{
+			"name": "Tick",
+			"description": "Triggered every 33ms by default",
+			"description_long": "Triggered every 33ms by default<br/><br/>Caution: Only small operations should be performed here, otherwise this can lead to server lag and delays",
+			"authority": "server",
+			"arguments": [
+				{
+					"type": "float",
+					"name": "delta_time",
+					"description": ""
+				}
+			]
+		}
+	]
+}

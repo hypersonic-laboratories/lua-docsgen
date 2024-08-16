@@ -1,0 +1,706 @@
+{
+	"name": "HSimpleVehicle",
+	"description": "HELIX Vehicle information",
+	"authority": "server",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable",
+		"Damageable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location",
+					
+					"description" : "Coordenates to spawn a Vehicle"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation",
+					
+					"description" : "Additional rotation settings"
+				},
+				{
+					"type": "Blueprint Reference",
+					"name": "blueprint_asset",
+					
+					"description" : "A Simple Vehicle blueprint is required"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "server",
+		"name": "SetSiren",
+			"description": "Sets the state of the siren (on/off) if available",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "bSiren",
+					"description": "True parameter adds a siren with sound to a Vehicle"
+				}
+			]
+        },
+		{
+			"authority": "server",
+		"name": "SetHorn",
+			"description": "Sets the state of the horn (on/off) if available",
+			
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "bHorn"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDoorState",
+			"description": "Changes the state of a selected door",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "Doorindex",
+					"description": "Set the door to manipulate"
+				},
+				{
+					"type": "integer",
+					"name": "NewState",
+					"description": "0-Close, 1-Open 2-Broken"
+				},
+				{
+					"type": "integer",
+					"name": "Curvetype",
+					"description": "0-Entering Vehicle curve, 1-Exiting Vehicle curve, 2-Normal"
+				}
+			]
+		},
+		{
+			"authority": "client",
+		"name": "SetIsDrifting",
+			"description": "Enables Vehicle's the drift state",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "bDrifting",
+					"description": "Enables drift state and returns to normal state after braking"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetHoodState",
+			"description": "Sets a state for the hood",
+			"parameters": [
+				{
+					"type": "integer",
+					"name":"NewState",
+					"description": "States: 0-Closed, 1-Open, 2-Broken"
+				},
+				{
+					"type":"boolean",
+					"name":"bForce",
+					"description":"bForce=True is used at reconnecting to prevent spawning broken hood when syncing state"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTrunkState",
+			"description": "Sets a state for the trunk",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "NewState",
+					"description": "States: 0-Closed, 1-Open, 2-Broken"
+				},
+				{
+					"type":"boolean",
+					"name":"bForce",
+					"description":"bForce=True is used at reconnecting to prevent spawning broken Trunk when syncing state"
+				}
+			]
+		},
+		{
+			"authority": "client",
+		"name": "SetWheelState",
+			"description": "Change wheel's state",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "Wheelindex",
+					"description": "Set the tire to modify"
+				},
+				{
+					"type": "integer",
+					"name": "NewState",
+					"description": "States: 0-Normal, 1-Flat, 2-Broken"
+				}
+			]
+		},
+		{
+			"authority": "client",
+		"name": "PrintData",
+			"description": "Debug print data of the vehicle",
+			"return": [
+				{
+					"type": "void",
+					"description": "This Function is used to debug Vehicle variables in Server console log at once"
+				}
+			]
+		},
+		{
+			"authority": "client",
+		"name": "SetVehicleHealthState",
+			"description": "Sets the Vehicle appearance into a state",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "NewState",
+					"default": " 0 ",
+					"description" : "State: 0-Normal, 1-Damaged, 2-Burning, 3-Broken"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetAllowEnterExitFromInteraction",
+			"description": "This prevents Vehicle enter/exit from player interaction",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "NewAllowEnterExit",
+					"default" : "True",
+					"description": "True allows enter/exit from vehicle"
+
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetVehicleOwner",
+			"description": "Sets Vehicle ownership",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "OwnerAccountID",
+					"description": "The scripter exposed function takes controller as input"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetOnlyOwnerCanInteract",
+			"description": "Sets who can interact with the Vehicle",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "NewOnlyOwnerCanInteract",
+					"description": "First set the Vehicle owner then use this function to set only owner can interact to true"	
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_DriftLateralForceFront",
+			"description": "Physics calculation for the drift in Vehicle, lateral force front",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "DriftLateralForceFront",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_DriftLateralForceRear",
+			"description": "Physics calculation for the drift in Vehicle, lateral force rear",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "DriftLateralForceRear",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_BaseLateralForceFront",
+			"description": "Physics calculation for the drift in Vehicle, lateral force front",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "BaseLateralForceFront",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_BaseLateralForceRear",
+			"description": "Physics calculation for the drift in Vehicle, lateral force rear",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "BaseLateralForceRear",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_DriftTorque",
+			"description": "Physics calculation for the drift in Vehicle, drift torque",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "DriftTorque",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_BaseDriftTorque",
+			"description": "Physics calculation for the drift in Vehicle, base drift torque",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "BaseDriftTorque",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetDrift_LowSpeedLateralForce",
+			"description": "Physics calculation for the drift in Vehicle, low speed lateral force",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "LowSpeedLateralForce",
+					"description": "Values can be -32,768 to 32,767"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTransmission_Efficiency",
+			"description": "A simple scalar that affects only acceleration at any given gear",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "TransmissionEfficiency",
+					"description": "Higher values result in a higher efficiency which increases acceleration. This does not affect top speed."
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTransmission_ShiftDelay",
+			"description": "How long do shifts (upshift/downshift) take in seconds.",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "ShiftDelay"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTransmission_DifferentialRatio",
+			"description": "A number that shows how many times a Vehicle's engine driveshaft turns compared to its wheels",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "DifferentialRatio"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTransmission_UpshiftRatio",
+			"description": "Ratio threshold of RPM to MaxRPM for an upshift to take place",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "UpshiftRatio"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetTransmission_DownshiftRatio",
+			"description": "Ratio threshold of RPM to MaxRPM for a downshift to take place",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "DownshiftRatio",
+					"description": "Gear ratios should be spaced out such that an instance of intersection between an upshift and downshift ratio occurs"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetEngine_MaxTorque",
+			"description": "This is the maximum torque that the engine will produce",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "MaxTorque"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetEngine_MaxRPM",
+			"description": "Maximum RPM",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "MaxRPM",
+					"description": "RPM will not exceed this value unless an override is applied during runtime"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetEngine_MaxReverseSpeed",
+			"description": "This is the maximum speed (KPH) that can be achieved in reverse",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "MaxReverseSpeed"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetEngine_BrakeForce",
+			"description": "Brake force in Newtons",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "BrakeForce"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetEngine_BrakeCoefficient",
+			"description": "This affects how quickly the RPM decreases when the throttle is not applied",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "BrakeCoefficient",
+					"description": "Higher values result in a quicker decrease. Lower values result in less off-throttle deceleration"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetAerodynamics_DragCoefficient",
+			"description": "Set the aerodynamics for the Vehicle",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "DragCoefficient"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetAerodynamics_CrossSectionArea",
+			"description": "Vehicle Area used for AirDrag calculation",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "CrossSectionArea"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetWheelRadius",
+			"description": "Set the physics wheel radius with a given float value",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "Wheelindex"
+				},
+				{
+					"type": "float",
+					"name": "BaseTireRadius"
+				},
+				{
+					"type": "float",
+					"name": "FlatTireRadius"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "SetGearRatios",
+			"description": "Set ratios between each gear change",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "GearsJson",
+					"description":"Field name must be {\"GearRatios\": [3.5,2,1.535,1.21]}"
+				}
+			]
+		},
+		{
+			"authority": "both",
+		"name": "NumOfAllowedPassanger",
+			"description": "Returns the number of doors the vehicle has",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		},
+		{
+			"authority": "both",
+		"name": "NumOfCurrentPassanger",
+			"description": "Return the number of current passenger in the vehicle",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		},
+		{
+			"authority": "both",
+		"name": "GetVehicleSpeed",
+			"description": "Returns the speed of the vehicle in kilometers per hour",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		},
+		{
+			"authority": "both",
+		"name": "GetVehicleAcceleration",
+			"description": "Returns how fast the vehicle is accelerating",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		},
+		{
+			"authority": "both",
+		"name": "GetVehicleRPM",
+			"description": "Returns the current RPM",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		},
+		{
+			"authority": "both",
+		"name": "GetVehicleGear",
+			"description": "Return the current gear index",
+			"return":[
+				{
+					"type" : "integer"
+				}
+				
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "CharacterAttemptEnter",
+			"description": "Triggered when a character attempts to enters the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "pawn"
+				},
+				{
+					"type": "integer",
+					"name": "seat",
+					"description": "The seat index"
+				}
+			]
+		},
+		{
+			"name": "CharacterEnter",
+			"description": "Triggered when a  character fully enters the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "pawn"
+				},
+				{
+					"type": "integer",
+					"name": "seat",
+					"description": "The seat index"
+				}
+				
+			]
+		},
+		{
+			"name": "CharacterAttemptLeave",
+			"description": "Triggered when a character attempts to exit the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "pawn"
+				}
+			]
+		},
+		{
+			"name": "CharacterLeave",
+			"description": "Triggered when a character fully exits the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "pawn"
+				},
+				{
+					"type": "integer",
+					"name": "seat",
+					"description": "The seat index"
+				}
+			]
+		},
+		{
+			"name": "Horn",
+			"description": "Horn sound emited from the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "boolean",
+					"name": "NewState"
+				}
+			]
+		},
+		{
+			"name": "Siren",
+			"description": "Siren sound emited from the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "boolean",
+					"name": "NewState"
+				}
+			]
+		},
+		{
+			"name": "TakeDamage",
+			"description": "Event for the Vehicle taking damage",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "integer",
+					"name": "Damage"
+				},
+				{
+					"type": "string",
+					"name": "BoneName"
+				},
+				{
+					"type": "DamageType",
+					"name": "Type"
+				},
+				{
+					"type": "Vector",
+					"name": "HitFromDirection"
+				},
+				{
+					"type": "Player",
+					"name": "Instigator"
+				},
+				{
+					"type": "any",
+					"name": "Causer"
+				}
+			]
+		},
+		{
+			"name": "Hit",
+			"description": "Triggered when a Vehicle is impacted from an external element",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "float",
+					"name": "Intensity"
+				},
+				{
+					"type": "Vector",
+					"name": "NormalImpulse"
+				},
+				{
+					"type": "Vector",
+					"name": "ImpactLocation"
+				},
+				{
+					"type": "Vector",
+					"name": "_Velocity"
+				}
+			]
+		}
+	]
+}

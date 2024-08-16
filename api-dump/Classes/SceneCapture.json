@@ -1,0 +1,246 @@
+{
+	"name": "SceneCapture",
+	"description": "Scene Capture is an Actor which captures a fully dynamic image of the scene into a Texture. It captures the scene from its view frustum, stores that view as an image, which is then used within a Material.",
+	"authority": "client",
+	"inheritance": [
+		"Entity",
+		"Actor"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location",
+					"default": "Vector(0, 0, 0)",
+					"description": "Location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation",
+					"default": "Rotator(0, 0, 0)",
+					"description": "Rotation"
+				},
+				{
+					"type": "integer",
+					"name": "width",
+					"default": "128",
+					"description": "Width of the generated Texture"
+				},
+				{
+					"type": "integer",
+					"name": "height",
+					"default": "128",
+					"description": "Height of the generated Texture"
+				},
+				{
+					"type": "float",
+					"name": "render_rate",
+					"default": "0.033",
+					"description": "Render Rate (how frequent is the capture)"
+				},
+				{
+					"type": "float",
+					"name": "view_distance",
+					"default": "5000",
+					"description": "Maximum distance of capturing"
+				},
+				{
+					"type": "float",
+					"name": "fov_angle",
+					"default": "90",
+					"description": "FOV"
+				},
+				{
+					"type": "boolean",
+					"name": "enable_distance_optimization",
+					"default": "true",
+					"description": "Reduces the rendering frequency if the entities with this Material are too far or not visible. Disable it to always render at the render_rate"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"name": "AddRenderActor",
+			"description": "Adds an Actor to the Render Only list",
+			"description_long": "Adds an Actor to the Render Only list<br/><br/>Note: adding one actor to this will make the SceneCapture only to render those Actors.",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "Actor",
+					"name": "actor"
+				}
+			],
+			"relations": {
+				"functions": [
+					"RemoveRenderActor",
+					"ClearRenderActors"
+				]
+			}
+		},
+		{
+			"name": "RemoveRenderActor",
+			"description": "Removes an Actor from the Render Only list",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "Actor",
+					"name": "actor"
+				}
+			],
+			"relations": {
+				"functions": [
+					"AddRenderActor",
+					"ClearRenderActors"
+				]
+			}
+		},
+		{
+			"name": "ClearRenderActors",
+			"description": "Clears the Render Only list",
+			"authority": "client",
+			"relations": {
+				"functions": [
+					"AddRenderActor",
+					"RemoveRenderActor"
+				]
+			}
+		},
+		{
+			"name": "SetFreeze",
+			"description": "Stops or Restore Capturing",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "freeze"
+				}
+			]
+		},
+		{
+			"name": "EncodeToBase64",
+			"description": "Takes a snapshot of the SceneCapture and returns a Base64 of it",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "ImageFormat",
+					"name": "image_format",
+					"default": "ImageFormat.JPEG",
+					"description": "Which format to generate - JPEG is fastest but discards Alpha channel"
+				}
+			],
+			"return": [
+				{
+					"type": "string"
+				}
+			],
+			"relations": {
+				"functions": [
+					"EncodeToBase64Async"
+				]
+			}
+		},
+		{
+			"name": "EncodeToBase64Async",
+			"description": "Takes a snapshot of the SceneCapture and returns a Base64 of it (asynchronously)",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "ImageFormat",
+					"name": "image_format",
+					"default": "ImageFormat.JPEG",
+					"description": "Which format to generate - JPEG is fastest but discards Alpha channel"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Callback in the format (base_64: string)"
+				}
+			],
+			"relations": {
+				"functions": [
+					"EncodeToBase64"
+				]
+			}
+		},
+		{
+			"name": "SetFOVAngle",
+			"description": "Sets the FOV",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "angle"
+				}
+			]
+		},
+		{
+			"name": "SetShowFlag",
+			"description": "Enables/Disables rendering features from being captured",
+			"description_long": "Enables/Disables rendering features from being captured<br/>A complete list of available flags can be found in the <a href='https://docs.unrealengine.com/5.0/en-US/API/Runtime/Engine/FEngineShowFlags/'>Official Unreal Documentation</a>",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "flag"
+				},
+				{
+					"type": "boolean",
+					"name": "enable"
+				}
+			]
+		},
+		{
+			"name": "Resize",
+			"description": "Change the output Texture size\nNote: too high texture will make the capture slower and will affect game performance",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "width"
+				},
+				{
+					"type": "integer",
+					"name": "height"
+				}
+			]
+		},
+		{
+			"name": "SetRenderRate",
+			"description": "Set how frequent is the capture\nNote: Setting to 0 will make it capture every frame",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "float",
+					"name": "render_rate"
+				}
+			]
+		},
+		{
+			"name": "SetDistanceOptimizationEnabled",
+			"description": "Enables or not the rendering frequency optimization if the entities with this Material are too far",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "enabled"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Capture",
+			"authority": "client",
+			"description": "Triggered when this SceneCapture does an update/renders a frame",
+			"arguments": [
+				{
+					"type": "SceneCapture",
+					"name": "self"
+				}
+			]
+		}
+	]
+}

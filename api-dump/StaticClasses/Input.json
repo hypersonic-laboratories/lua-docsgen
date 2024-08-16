@@ -1,0 +1,482 @@
+{
+	"name": "Input",
+	"description": "Create custom keybindings and retrieve input information.",
+	"authority": "client",
+	"static_functions": [
+		{
+			"authority": "client",
+			"name": "Bind",
+			"description": "Binds a function to an Input defined using <code>Register</code> or from the game",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				},
+				{
+					"type": "InputEvent",
+					"name": "input_event",
+					"description": "Which event to register (Released/Pressed)"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "The function to trigger"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "Unbind",
+			"description": "Unbinds an Input function",
+			"description_long": "Unbinds all Input functions related to the given binding_name and input_event",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				},
+				{
+					"type": "InputEvent",
+					"name": "input_event",
+					"description": "Which event to register (Released/Pressed)"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "Register",
+			"description": "Registers a keybinding to a default key",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				},
+				{
+					"type": "string",
+					"name": "key_name"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "Unregister",
+			"description": "Unregisters a keybinding",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				},
+				{
+					"type": "string",
+					"name": "key_name"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetKeyIcon",
+			"description": "Gets the icon path of a key",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key_name"
+				},
+				{
+					"type": "boolean",
+					"name": "dark_mode",
+					"default": "false"
+				}
+			],
+			"return": [
+				{
+					"type": "string"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetKeyCode",
+			"description": "Gets the key code of a key",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key_name"
+				}
+			],
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetModifierKeys",
+			"description": "Gets the currently pressed modifier keys",
+			"description_long": "Gets the currently pressed modifier keys.<br/>Use bit-wise operators like <code>modifier & KeyModifier.LeftShiftDown</code> to know if the left shift is pressed.",
+			"return": [
+				{
+					"type": "KeyModifier"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetMappedKeys",
+			"description": "Returns the keys bound to a keybinding",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				}
+			],
+			"return": [
+				{
+					"type": "string[]",
+					"description": "list of all keys"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "ResetBindings",
+			"description": "Resets all bound functions by this Package"
+		},
+		{
+			"authority": "client",
+			"name": "GetScriptingKeyBindings",
+			"description": "Returns a table with all Scripting KeyBindings",
+			"return": [
+				{
+					"type": "table",
+					"description": "in the format <code>{ \"[BINDING_NAME]\" = { \"[KEY_01]\", \"[KEY_02]\", ... }, ... }</code>"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetGameKeyBindings",
+			"description": "Returns a table with all Game KeyBindings",
+			"return": [
+				{
+					"type": "table",
+					"description": "in the format <code>{ \"[BINDING_NAME]\" = { \"[KEY_01]\", \"[KEY_02]\", ... }, ... }</code>"
+				}
+			]
+		},
+		{
+			"name": "SetInputEnabled",
+			"description": "Toggles Local Player input",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "enable_input",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "SetMouseEnabled",
+			"description": "Displays/Hides Mouse Cursor",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "is_enabled",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "SetMouseCursor",
+			"description": "Sets the current Mouse Cursor type",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "CursorType",
+					"name": "cursor_type",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "InputKey",
+			"description": "Forces an Input Key event on Local Player",
+			"description_long": "Forces an Input Key event on Local Player<br/><br/>This won't trigger any Scripting event as it bypass internal validations",
+			"authority": "client",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": "Key Name to input"
+				},
+				{
+					"type": "InputEvent",
+					"name": "input_event",
+					"description": "Which Event to input"
+				},
+				{
+					"type": "float",
+					"name": "amount_depressed",
+					"description": "The amount pressed",
+					"default": "1"
+				}
+			]
+		},
+		{
+			"name": "IsKeyDown",
+			"description": "Returns if a key is being pressed",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the key is pressed"
+				}
+			],
+			"parameters": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "IsMouseEnabled",
+			"description": "",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the mouse is visible"
+				}
+			]
+		},
+		{
+			"name": "IsInputEnabled",
+			"description": "",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the input is visible"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "KeyBindingChange",
+			"description": "A key binding has been changed through the settings",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "string",
+					"name": "binding_name",
+					"description": "The keybinding id"
+				},
+				{
+					"type": "string",
+					"name": "key",
+					"description": "The new key associated"
+				},
+				{
+					"type": "float",
+					"name": "scale",
+					"description": "The scale input (usually 1 or -1)"
+				}
+			]
+		},
+		{
+			"name": "KeyDown",
+			"description": "A keyboard key is being pressed",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to block it"
+				}
+			],
+			"arguments": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": "The key pressed"
+				},
+				{
+					"type": "float?",
+					"name": "delta",
+					"description": "The amount depressed in case of this is an Axis input"
+				}
+			]
+		},
+		{
+			"name": "KeyPress",
+			"description": "A keyboard key has been pressed",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to block it"
+				}
+			],
+			"arguments": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": "The key pressed"
+				},
+				{
+					"type": "float?",
+					"name": "delta",
+					"description": "The amount depressed in case of this is an Axis input"
+				}
+			]
+		},
+		{
+			"name": "KeyUp",
+			"description": "A keyboard key has been released",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to block it"
+				}
+			],
+			"arguments": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": "The key pressed"
+				},
+				{
+					"type": "float?",
+					"name": "delta",
+					"description": "The amount depressed in case of this is an Axis input"
+				}
+			]
+		},
+		{
+			"name": "MouseDown",
+			"description": "A mouse button has been pressed / is being pressed",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to block it"
+				}
+			],
+			"arguments": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_x",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_y",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "MouseUp",
+			"description": "A mouse button has been released",
+			"authority": "client",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "Return false to block it"
+				}
+			],
+			"arguments": [
+				{
+					"type": "string",
+					"name": "key_name",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_x",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_y",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "MouseEnable",
+			"description": "When mouse cursor is displayed/hidden",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "boolean",
+					"name": "is_enabled",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "MouseMove",
+			"description": "Called when the mouse moves",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "float",
+					"name": "cursor_delta_x",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "cursor_delta_y",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_x",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_y",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "MouseScroll",
+			"description": "Called when the mouse scrolls",
+			"authority": "client",
+			"arguments": [
+				{
+					"type": "float",
+					"name": "mouse_x",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "mouse_y",
+					"description": ""
+				},
+				{
+					"type": "float",
+					"name": "delta",
+					"description": ""
+				}
+			]
+		}
+	]
+}

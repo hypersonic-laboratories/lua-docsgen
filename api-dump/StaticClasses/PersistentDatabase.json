@@ -1,0 +1,128 @@
+{
+    "name": "PersistentDatabase",
+    "description": "Stores JSON data into database.",
+    "authority": "server",
+    "static_functions": [
+        {
+            "name": "Create",
+            "description": "Create new space into database.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success)`"
+				}
+            ]
+        },
+        {
+            "name": "Insert",
+            "description": "Insert new JSON data into database.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "string",
+					"name": "key",
+					"description": "The data key to query."
+				},
+                {
+					"type": "string",
+					"name": "data",
+					"description": "Data to be inserted in JSON format."
+				},
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success)`"
+				}
+            ]
+        },
+        {
+            "name": "Update",
+            "description": "Update JSON data for a specific key.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "string",
+					"name": "key",
+					"description": "The data key to query."
+				},
+                {
+					"type": "string",
+					"name": "data",
+					"description": "Data to be updated in JSON format."
+				},
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success)`"
+				}
+            ]
+        },
+        {
+            "name": "Delete",
+            "description": "Delete a key from database.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "string",
+					"name": "key",
+					"description": "The data key to query."
+				},
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success)`"
+				}
+            ]
+        },
+        {
+            "name": "GetByKey",
+            "description": "Query a specific key from database.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "string",
+					"name": "key",
+					"description": "The data key to query."
+				},
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success, data)`, `data` can be parsed with JSON.parse() function."
+				}
+            ]
+        },
+        {
+            "name": "GetAll",
+            "description": "Query all data from database.",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success, data)`, `data` can be parsed with JSON.parse() function."
+				}
+            ]
+        },
+        {
+            "name": "GetSummary",
+            "description": "Returns a brief summary of database usage",
+            "authority": "server",
+            "parameters": [
+                {
+					"type": "function",
+					"name": "callback",
+                    "default": "nil",
+					"description": "The result will be called in the format `function(success, data)`, `data` can be parsed with JSON.parse() function."
+				}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,142 @@
+{
+	"name": "Payment",
+	"description": "Charge LIX from other players.",
+	"authority": "server",
+	"static_functions": [
+		{
+			"name": "ChargePlayer",
+			"description": "Charges an amount of LIX from a player",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "Player",
+					"name": "player",
+					"description": "Player charged"
+				},
+				{
+					"type": "integer",
+					"name": "amount",
+					"description": "Amount of LIX being charged"
+				},
+				{
+					"type": "string",
+					"name": "to_id",
+					"description": "ID of the player who will receive the LIX"
+				},
+				{
+					"type": "string",
+					"name": "charge_title",
+					"description": "Title of charge"
+				},
+				{
+					"type": "string",
+					"name": "charge_description",
+					"description": "Description of charge"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Charge creation callback in the format (success, charge_id)"
+				}
+			]
+		},
+		{
+			"name": "SellItem",
+			"description": "Sells an item to a player",
+			"authority": "server",
+			"parameters": [
+				{
+					"type": "Player",
+					"name": "player",
+					"description": "Player being charged"
+				},
+				{
+					"type": "string",
+					"name": "item_id",
+					"description": "ID of the item being sold"
+				},
+				{
+					"type": "integer",
+					"name": "amount",
+					"description": "How many items"
+				},
+				{
+					"type": "string",
+					"name": "charge_title",
+					"description": "Title of charge"
+				},
+				{
+					"type": "string",
+					"name": "charge_description",
+					"description": "Description of charge"
+				},
+				{
+					"type": "function",
+					"name": "callback",
+					"description": "Charge creation callback in the format (success, charge_id)"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "ChargePlayerComplete",
+			"description": "Charge completed when the Player has accepted or refused it",
+			"authority": "server",
+			"arguments": [
+				{
+					"type": "boolean",
+					"name": "success",
+					"description": "If the charge intent was created successfully"
+				},
+				{
+					"type": "string",
+					"name": "charge_id",
+					"description": "Charge ID"
+				},
+				{
+					"type": "integer",
+					"name": "amount",
+					"description": "Charge amount"
+				},
+				{
+					"type": "string",
+					"name": "status",
+					"description": "Charge status"
+				}
+			]
+		},
+		{
+			"name": "SellItemToPlayerComplete",
+			"description": "Item charge completed when the Player has accepted or refused it",
+			"authority": "server",
+			"arguments": [
+				{
+					"type": "boolean",
+					"name": "success",
+					"description": "If the charge intent was created successfully"
+				},
+				{
+					"type": "string",
+					"name": "charge_id",
+					"description": "Charge ID"
+				},
+				{
+					"type": "string",
+					"name": "item_id",
+					"description": "Item ID"
+				},
+				{
+					"type": "integer",
+					"name": "amount",
+					"description": "How many items was sold"
+				},
+				{
+					"type": "string",
+					"name": "status",
+					"description": "Charge status"
+				}
+			]
+		}
+	]
+}

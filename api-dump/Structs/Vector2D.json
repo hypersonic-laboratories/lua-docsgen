@@ -1,0 +1,65 @@
+{
+	"name": "Vector2D",
+	"description": "A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen.",
+	"operators": [
+		{
+			"name": "+",
+			"operator": "__add",
+			"lhs": "Vector2D|number",
+			"rhs": "Vector2D|number",
+			"return": "Vector2D"
+		},
+		{
+			"name": "-",
+			"operator": "__sub",
+			"lhs": "Vector2D|number",
+			"rhs": "Vector2D|number",
+			"return": "Vector2D"
+		},
+		{
+			"name": "*",
+			"operator": "__mul",
+			"lhs": "Vector2D|number",
+			"rhs": "Vector2D|number",
+			"return": "Vector2D"
+		},
+		{
+			"name": "/",
+			"operator": "__div",
+			"lhs": "Vector2D",
+			"rhs": "Vector2D|number",
+			"return": "Vector2D"
+		}
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"name": "X",
+					"type": "number",
+					"default": "0",
+					"description": "X Coordinate"
+				},
+				{
+					"name": "Y",
+					"type": "number",
+					"default": "X",
+					"description": "Y Coordinate"
+				}
+			]
+		}
+	],
+	"properties": [
+		{
+			"name": "X",
+			"type": "number",
+			"description": "X Coordinate"
+		},
+		{
+			"name": "Y",
+			"type": "number",
+			"description": "Y Coordinate"
+		}
+	]
+}

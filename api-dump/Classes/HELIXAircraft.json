@@ -1,0 +1,42 @@
+{
+	"name": "HELIXAircraft",
+	"description": "Aircraft are air vehicle entities which Characters can possesses and fly.",
+	"authority": "server",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "BlueprintPath",
+					"name": "asset"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Auto"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				}
+			]
+		}
+	],
+	"functions": [
+
+	]
+}

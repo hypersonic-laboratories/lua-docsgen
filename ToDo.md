@@ -1,0 +1,1 @@
+- Adapt to new binding formatting; just extensible proof of concept is good for now

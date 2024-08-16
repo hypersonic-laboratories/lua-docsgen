@@ -1,0 +1,547 @@
+{
+	"name": "Canvas",
+	"description": "Canvas is an entity which you can draw onto it.",
+	"authority": "client",
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "is_visible",
+					"default": "true",
+					"description": "Whether to draw it on screen"
+				},
+				{
+					"type": "Color",
+					"name": "clear_color",
+					"default": "Color.TRANSPARENT",
+					"description": "Color to clear with (background color)"
+				},
+				{
+					"type": "float",
+					"name": "auto_repaint_rate",
+					"default": "-1",
+					"description": "Rate to auto repaint (call Update event), pass 0 for every frame, -1 to disable"
+				},
+				{
+					"type": "boolean",
+					"name": "should_clear_before_update",
+					"default": "true",
+					"description": "Whether to clear with Clear Color before updates"
+				},
+				{
+					"type": "boolean",
+					"name": "auto_resize",
+					"default": "true",
+					"description": "Auto resize with screen's size"
+				},
+				{
+					"type": "integer",
+					"name": "width",
+					"default": "0",
+					"description": "If not using auto_resize"
+				},
+				{
+					"type": "integer",
+					"name": "height",
+					"default": "0",
+					"description": "If not using auto_resize"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position",
+					"default": "Vector2D(0, 0)",
+					"description": "If not using auto_resize, offset when drawing to screen"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "client",
+			"name": "DrawBox",
+			"description": "Draws an unfilled box on the Canvas",
+			"description_long": "Draws an unfilled box on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event",
+			"parameters": [
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "float",
+					"name": "thickness"
+				},
+				{
+					"type": "Color",
+					"name": "render_color",
+					"default": "Color.WHITE"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawLine",
+			"description": "Draws a line on the Canvas",
+			"description_long": "Draws a line on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event",
+			"parameters": [
+				{
+					"type": "Vector2D",
+					"name": "screen_position_a"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position_b"
+				},
+				{
+					"type": "float",
+					"name": "thickness"
+				},
+				{
+					"type": "Color",
+					"name": "render_color"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawMaterial",
+			"description": "Draws a Material on the Canvas",
+			"description_long": "Draws a Material on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event<br/><br/><strong>Note:</strong> Due how Unreal handles Render Targets, drawing material on Canvas result on a weird translucent effect. Hope in the future to be improved.",
+			"parameters": [
+				{
+					"type": "MaterialPath",
+					"name": "material_path"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_size",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "float",
+					"name": "rotation",
+					"default": "0"
+				},
+				{
+					"type": "Vector2D",
+					"name": "pivot_point",
+					"default": "Vector2D(0.5, 0.5)"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawMaterialFromWebUI",
+			"description": "Draws a WebUI on the Canvas",
+			"description_long": "Draws a WebUI on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event<br/><br/><strong>Note:</strong> Due how Unreal handles Render Targets, drawing material on Canvas result on a weird translucent effect. Hope in the future to be improved.",
+			"parameters": [
+				{
+					"type": "WebUI",
+					"name": "webui_entity"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_size",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "float",
+					"name": "rotation",
+					"default": "0"
+				},
+				{
+					"type": "Vector2D",
+					"name": "pivot_point",
+					"default": "Vector2D(0.5, 0.5)"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawMaterialFromSceneCapture",
+			"description": "Draws a SceneCapture on the Canvas",
+			"description_long": "Draws a SceneCapture on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event<br/><br/><strong>Note:</strong> Due how Unreal handles Render Targets, drawing material on Canvas result on a weird translucent effect. Hope in the future to be improved.",
+			"parameters": [
+				{
+					"type": "SceneCapture",
+					"name": "scenecapture_entity"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_size",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "float",
+					"name": "rotation",
+					"default": "0"
+				},
+				{
+					"type": "Vector2D",
+					"name": "pivot_point",
+					"default": "Vector2D(0.5, 0.5)"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawText",
+			"description": "Draws a Text on the Canvas",
+			"description_long": "Draws a Text on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event<br/><br/>Shadow and Outline won't work properly with Transparent <code>clear_color</code>",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "text"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "FontType",
+					"name": "font_type",
+					"default": "FontType.Roboto"
+				},
+				{
+					"type": "integer",
+					"name": "font_size",
+					"default": "12"
+				},
+				{
+					"type": "Color",
+					"name": "text_color",
+					"default": "Color.WHITE"
+				},
+				{
+					"type": "float",
+					"name": "kerning",
+					"default": "0"
+				},
+				{
+					"type": "boolean",
+					"name": "center_x",
+					"default": "false"
+				},
+				{
+					"type": "boolean",
+					"name": "center_y",
+					"default": "false"
+				},
+				{
+					"type": "Color",
+					"name": "shadow_color",
+					"default": "Color.TRANSPARENT"
+				},
+				{
+					"type": "Vector2D",
+					"name": "shadow_offset",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "boolean",
+					"name": "outlined",
+					"default": "false"
+				},
+				{
+					"type": "Color",
+					"name": "outline_color",
+					"default": "Color.BLACK"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawTexture",
+			"description": "Draws a Texture on the Canvas",
+			"description_long": "Draws a Texture on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event",
+			"parameters": [
+				{
+					"type": "ImagePath",
+					"name": "texture_path"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "coordinate_size",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "Color",
+					"name": "render_color",
+					"default": "Color.WHITE"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				},
+				{
+					"type": "float",
+					"name": "rotation",
+					"default": "0"
+				},
+				{
+					"type": "Vector2D",
+					"name": "pivot_point",
+					"default": "Vector2D(0.5, 0.5)"
+				}
+			]
+		},
+
+		{
+			"authority": "client",
+			"name": "DrawPolygon",
+			"description": "Draws a N-Polygon on the Canvas",
+			"description_long": "Draws a N-Polygon on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event",
+			"parameters": [
+				{
+					"type": "ImagePath",
+					"name": "texture_path",
+					"description": "Pass empty to use default white Texture"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "radius",
+					"default": "Vector2D(1, 1)"
+				},
+				{
+					"type": "integer",
+					"name": "number_of_sides",
+					"default": "3"
+				},
+				{
+					"type": "Color",
+					"name": "render_color",
+					"default": "Color.WHITE"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "DrawRect",
+			"description": "Draws a filled Rect on the Canvas",
+			"description_long": "Draws a fille Rect on the Canvas<br/></br>This method can only be called from inside <code>Update</code> event",
+			"parameters": [
+				{
+					"type": "ImagePath",
+					"name": "texture_path",
+					"description": "Pass empty to use default white Texture"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				},
+				{
+					"type": "Vector2D",
+					"name": "screen_size"
+				},
+				{
+					"type": "Color",
+					"name": "render_color",
+					"default": "Color.WHITE"
+				},
+				{
+					"type": "BlendMode",
+					"name": "blend_mode",
+					"default": "BlendMode.Opaque"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "SetAutoRepaintRate",
+			"description": "Sets the repaint rate",
+			"description_long": "Sets it to -1 to stop auto repainting or 0 to repaint every frame",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "auto_repaint_rate"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetSize",
+			"description": "Gets the Canvas Size",
+			"return": [
+				{
+					"type": "Vector2D",
+					"description": "the current size"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "Resize",
+			"description": "Resizes the Canvas if not using auto_resize",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "width"
+				},
+				{
+					"type": "integer",
+					"name": "height"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "SetScreenPosition",
+			"description": "Sets the Canvas Screen Position offset",
+			"parameters": [
+				{
+					"type": "Vector2D",
+					"name": "screen_position"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "SetAutoResize",
+			"description": "Sets if the canvas should auto resize to screen size",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "auto_resize"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "SetVisibility",
+			"description": "Sets if it's visible on screen",
+			"parameters": [
+				{
+					"type": "boolean",
+					"name": "visible"
+				}
+			]
+		},
+
+		{
+			"authority": "client",
+			"name": "Repaint",
+			"description": "Forces the repaint",
+			"description_long": "Forces the repaint, this will trigger Update event"
+		},
+		{
+			"authority": "client",
+			"name": "Clear",
+			"description": "Clear the Canvas with a specific Color",
+			"parameters": [
+				{
+					"type": "Color",
+					"name": "clear_color"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "Update",
+			"authority": "client",
+			"description": "Called when the Canvas needs to be painted<br/><br/>You can only call <code>:Draw...()</code> methods from inside this event",
+			"arguments": [
+				{
+					"name": "self",
+					"type": "Canvas"
+				},
+				{
+					"name": "width",
+					"type": "integer"
+				},
+				{
+					"name": "height",
+					"type": "integer"
+				}
+			]
+		}
+	]
+}

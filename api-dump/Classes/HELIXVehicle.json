@@ -1,0 +1,337 @@
+{
+	"name": "HELIXVehicle",
+	"description": "Vehicles are wheeled entities which Characters can possesses and drive.",
+	"authority": "server",
+	"inheritance": [
+		"Entity",
+		"Actor",
+		"Paintable"
+	],
+	"constructors": [
+		{
+			"description": "Default Constructor",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "location"
+				},
+				{
+					"type": "Rotator",
+					"name": "rotation"
+				},
+				{
+					"type": "SkeletalMeshPath",
+					"name": "asset"
+				},
+				{
+					"type": "CollisionType",
+					"name": "collision_type",
+					"default": "CollisionType.Normal"
+				},
+				{
+					"type": "boolean",
+					"name": "gravity_enabled",
+					"default": "true"
+				}
+			]
+		}
+	],
+	"functions": [
+		{
+			"authority": "server",
+			"name": "SetDoorAnimation",
+			"description": "Adds a Door animation to the Vehicle",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "seat_index"
+				},
+				{
+					"type": "string",
+					"name": "animation_enter"
+				},
+				{
+					"type": "string",
+					"name": "animation_leave"
+				}
+			]
+        },
+		{
+			"authority": "server",
+			"name": "SetDoor",
+			"description": "Adds a Door to the Vehicle",
+			"description_long": "Adds a Door at offset_location from root which will pose the Character at seat_location with seat_rotation rotation.",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "seat_index"
+				},
+				{
+					"type": "Vector",
+					"name": "offset_location"
+				},
+				{
+					"type": "Vector",
+					"name": "seat_location"
+				},
+				{
+					"type": "Rotator",
+					"name": "seat_rotation"
+				},
+				{
+					"type": "integer",
+					"name": "trigger_radius"
+				},
+				{
+					"type": "integer",
+					"name": "leave_lateral_offset",
+					"description": "It's where the Character will be ejected when leaving it (e.g. -150 for left door or 150 for right door)"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "PlayAnimation",
+			"description": "Plays an Animation on this Vehicle",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_path"
+				},
+				{
+					"type": "boolean",
+					"name": "loop_indefinitely",
+					"default": "false",
+					"description": "This parameter is only used if the Vehicle has an Animation Blueprint"
+				},
+				{
+					"type": "string",
+					"name": "slot_name",
+					"default": "DefaultSlot"
+				},
+				{
+					"type": "float",
+					"name": "blend_in_time",
+					"default": "0.25",
+					"description": "This parameter is only used if the Vehicle has an Animation Blueprint"
+				},
+				{
+					"type": "float",
+					"name": "blend_out_time",
+					"default": "0.25",
+					"description": "This parameter is only used if the Vehicle has an Animation Blueprint"
+				},
+				{
+					"type": "float",
+					"name": "play_rate",
+					"default": "1.0",
+					"description": "This parameter is only used if the Vehicle has an Animation Blueprint"
+				},
+				{
+					"type": "boolean",
+					"name": "stop_all_montages",
+					"default": "false",
+					"description": "Stops all running Montages from the same Group. This parameter is only used if the Vehicle has an Animation Blueprint"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "StopAnimation",
+			"description": "Stop an Animation on this Vehicle",
+			"parameters": [
+				{
+					"type": "AnimationPath",
+					"name": "animation_path"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetMesh",
+			"description": "Gets the Asset name",
+			"return": [
+				{
+					"type": "VehiclePath",
+					"description": "asset path"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetPassenger",
+			"description": "Gets a passenger from a seat",
+			"parameters": [
+				{
+					"type": "integer",
+					"name": "seat"
+				}
+			],
+			"return": [
+				{
+					"type": "Character",
+					"description": "or nil if no passenger in seat"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetPassengers",
+			"description": "Gets all passengers",
+			"return": [
+				{
+					"type": "Character[]"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetRPM",
+			"description": "Gets the current RPM",
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetGear",
+			"description": "Gets the current Gear",
+			"return": [
+				{
+					"type": "integer"
+				}
+			]
+		},
+		{
+			"authority": "client",
+			"name": "GetBoneTransform",
+			"description": "Gets a Bone Transform in world space given a bone name",
+			"return": [
+				{
+					"type": "table",
+					"table_properties": [
+						{
+							"name": "Location",
+							"type": "Vector"
+						},
+						{
+							"name": "Rotation",
+							"type": "Rotator"
+						}
+					]
+				}
+			],
+			"parameters": [
+				{
+					"name": "bone_name",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "SetCameraOffset",
+			"description": "Sets the Vehicle Camera Offset",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "offset"
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "GetDoors",
+			"description": "Gets all configured Doors",
+			"return": [
+				{
+					"type": "table",
+					"table_properties": [
+						{
+							"name": "seat_index",
+							"type": "integer"
+						},
+						{
+							"name": "offset_location",
+							"type": "Vector"
+						},
+						{
+							"name": "seat_location",
+							"type": "Vector"
+						},
+						{
+							"name": "seat_rotation",
+							"type": "Rotator"
+						},
+						{
+							"name": "leave_lateral_offset",
+							"type": "integer"
+						},
+						{
+							"name": "sphere_radius",
+							"type": "integer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"authority": "both",
+			"name": "SetExplosionSettings",
+			"description": "Set explosion settings.",
+			"parameters": [
+				{
+					"type": "Vector",
+					"name": "engine_relative_location"
+				},
+				{
+					"type": "Vector",
+					"name": "materials_override"
+				},
+				{
+					"type": "Vector",
+					"name": "materials_invisible"
+				}
+			]
+		}
+	],
+	"events": [
+		{
+			"name": "CharacterEnter",
+			"description": "Triggered when a Character fully enters the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "character"
+				},
+				{
+					"type": "integer",
+					"name": "seat",
+					"description": "The seat index"
+				}
+			]
+		},
+		{
+			"name": "CharacterLeave",
+			"description": "Triggered when a Character fully leaves the Vehicle",
+			"authority": "both",
+			"arguments": [
+				{
+					"type": "Vehicle",
+					"name": "self"
+				},
+				{
+					"type": "Character",
+					"name": "character"
+				}
+			]
+		}
+	]
+}

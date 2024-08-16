@@ -1,0 +1,7 @@
+{
+    "watch": ["src"],            
+    "ext": "ts",                 
+    "ignore": ["src/gen/**"],
+    "exec": "ts-node ./src/md-gen/index.ts"
+  }
+  

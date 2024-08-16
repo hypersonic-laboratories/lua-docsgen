@@ -1,0 +1,66 @@
+{
+	"name": "HELIXUtils",
+	"description": "A table containing useful and aux functions.",
+	"static_functions": [
+		{
+			"name": "IsEntityValid",
+			"description": "Returns if an entity is valid",
+			"return": [
+				{
+					"type": "boolean",
+					"description": "if the entity is valid"
+				}
+			],
+			"parameters": [
+				{
+					"type": "any",
+					"name": "entity",
+					"description": "Entity to verify"
+				}
+			]
+		},
+		{
+			"name": "Benchmark",
+			"description": "Benchmarks a function performance",
+			"description_long": "Benchmarks a function performance, outputs in the console the elapsed time",
+			"parameters": [
+				{
+					"type": "string",
+					"name": "name",
+					"description": "Benchmark name to output"
+				},
+				{
+					"type": "number",
+					"name": "amount",
+					"description": "Amount of times to loop"
+				},
+				{
+					"type": "function",
+					"name": "func",
+					"description": "The function to call"
+				},
+				{
+					"type": "any",
+					"name": "args...",
+					"description": "The arguments of the function to call"
+				}
+			],
+			"examples": [
+				{
+					"title": "Benchmarks a function",
+					"content": [
+						"local arg1 = math.random()",
+						"local arg2 = math.random()",
+						"",
+						"HELIXUtils.Benchmark(\"My Heavy Operation\", 1000, function(param1, param2)",
+						"    -- Do some heavy operations here",
+						"    local result = param1 * param2",
+						"end, arg1, arg2)",
+						""
+					],
+					"output": "Benchmark 'My Heavy Operation' (x1000) took 1.5ms"
+				}
+			]
+		}
+	]
+}
