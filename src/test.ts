@@ -14,7 +14,7 @@ async function getFilesRecursively(dir: string): Promise<string[]> {
     const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
     const files = await Promise.all(dirents.map((dirent) => {
         const res = path.resolve(dir, dirent.name);
-        return dirent.isDirectory() ? getFilesRecursively(res) : res;
+        return dirent.isDirectory() ? getFilesRecursively(res) : [res];
     }));
     return Array.prototype.concat(...files);
 }
