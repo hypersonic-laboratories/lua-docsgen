@@ -37,7 +37,11 @@ export class ComplexType extends OriginalComplexType {
                 // if (isArray) ret += "[]";
                 return ret;
             } else {
-                ret += "table";
+                if (isArray) {
+                    ret += "table";
+                } else {
+                    ret += `\n          display: ${type}`;
+                }
                 // ret += `\n          display: ${type}${isArray ? "[]" : ""}`;
             }
         } else {
@@ -127,7 +131,7 @@ export class YmlGenerator implements CodeGenerator {
     }
 
     generate(docs: Docs): string {
-        let output = "---\nbase: lua53\nname: helix\nglobals:\n";
+        let output = "base: lua53\nname: helix\nglobals:\n";
         Object.entries(docs.enums).forEach(([name, { enums: values }]) => {
             output += this.generateEnum(name, values);
         });
@@ -136,6 +140,8 @@ export class YmlGenerator implements CodeGenerator {
         });
         output += "\nstructs:";
         Object.entries(docs.classes).forEach(([_, cls]) => {
+            if (cls.staticClass) return;
+
             output += this.generateInstanceClass(docs.classes, cls);
         });
         return output;
@@ -161,10 +167,32 @@ export class YmlGenerator implements CodeGenerator {
             });
         }
 
+        // check inheritance
+        const className = cls.name;
+        let hasEvents = false;
+        cls.inheritance?.forEach((clsName) => {
+            let cls = classes[clsName];
+            if (cls.static_functions !== undefined) {
+                cls.static_functions.forEach((fun) => {
+                    if (
+                        (fun.name === "Subscribe" || fun.name === "Unsubscribe") &&
+                        cls.name !== "Events"
+                    ) {
+                        hasEvents = true;
+                        return;
+                    }
+                    staticFunctions += YmlGenerator.generateStaticFunction(fun, `${className}.`);
+                });
+            }
+        });
+
         let events = "";
-        if (cls.events !== undefined && cls.staticClass) {
+        if ((cls.events !== undefined && cls.staticClass) || hasEvents) {
             events = `\n  ${cls.name}.Subscribe:\n    args:\n    - type: string\n    - type: function\n  ${cls.name}.Unsubscribe:\n    args:\n    - type: string\n    - type: function`;
         }
+
+        // events
+
 
         const staticFields = cls.static_properties?.length ? `\n${cls.static_properties.map(field => `  ${cls.name}.${field.name}:\n    property: read-only`).join("\n")}` : "";
         return `${constructors}${staticFunctions}${staticFields}${events}`;
@@ -183,17 +211,37 @@ export class YmlGenerator implements CodeGenerator {
             });
         }
 
-        let events = "";
-        if (cls.events !== undefined && !cls.staticClass) {
-            events = `\n    Subscribe:\n      args:\n      - type: string\n      - type: function\n    Unsubscribe:\n      args:\n      - type: string\n      - type: function`;
-        }
-
         let fields = "";
         if (cls.properties !== undefined) {
             cls.properties.forEach((prop) => {
                 fields += `\n    ${prop.name}:\n      property: read-only`;
             });
         }
+
+        // check inheritance
+        let hasEvents = false;
+        cls.inheritance?.forEach((clsName) => {
+            let cls = classes[clsName];
+            if (cls.functions !== undefined) {
+                if (cls.events !== undefined) {
+                    hasEvents = true;
+                }
+                cls.functions.forEach((fun) => {
+                    if (
+                        (fun.name === "Subscribe" || fun.name === "Unsubscribe") &&
+                        cls.name !== "Events"
+                    )
+                        return;
+                    functions += YmlGenerator.generateFunction(fun, "");
+                });
+            }
+        });
+
+        let events = "";
+        if ((cls.events !== undefined || hasEvents) && !cls.staticClass) {
+            events = `\n    Subscribe:\n      args:\n      - type: string\n      - type: function\n    Unsubscribe:\n      args:\n      - type: string\n      - type: function`;
+        }
+
         return `\n  ${cls.name}:${fields}${functions}${events}`;
     }
 
