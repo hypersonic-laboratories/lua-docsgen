@@ -1,6 +1,3 @@
-import { getInput } from "@actions/core";
-import { getOctokit } from "@actions/github";
-
 import * as fs from "fs";
 
 import {
