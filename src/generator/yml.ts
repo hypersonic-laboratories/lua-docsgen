@@ -114,7 +114,7 @@ export class YmlGenerator implements CodeGenerator {
     }
 
     generate(docs: Docs): string {
-        let output = "---\nbase: lua52\nname: helix\nglobals:\n";
+        let output = "---\nbase: lua53\nname: helix\nglobals:\n";
         Object.entries(docs.enums).forEach(([name, { enums: values }]) => {
             output += this.generateEnum(name, values);
         });
