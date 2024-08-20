@@ -2,9 +2,19 @@ import { CodeGenerator, OPERATORS, Type, ComplexType as OriginalComplexType } fr
 import { Authority, DocClass, DocConstructor, DocDescriptive, DocEnumValue, DocEvent, DocFunction, DocParameter, DocReturn, Docs, DocTyped } from "../schema";
 
 export class ComplexType extends OriginalComplexType {
+    public mapTypename(name: string) {
+        switch (name) {
+			case "boolean":
+				return "bool";
+			default:
+		}
+
+        return super.mapTypename(name);
+    }
+
 	public toString = (): string => {
 		let ret = "";
-        if (this.typenames.length == 1) {
+        if (this.typenames.length === 1) {
             let isArray = this.typenames[0].array;
             let type = this.mapTypename(this.typenames[0].name);
             if (type.startsWith("{")) {
@@ -79,7 +89,7 @@ export class YmlGenerator implements CodeGenerator {
             if (param.name.endsWith("...")) param.name = "...";
     
             const type = YmlGenerator.generateType(param);
-            ret += `${type.optional ? "\n      - required: false\n        " : "\n      - "}type: ${type.toString()}`;
+            ret += `${type.optional ? "\n    - required: false\n        " : "\n    - "}type: ${type.toString()}`;
         });
 
         return ret;
@@ -140,7 +150,7 @@ export class YmlGenerator implements CodeGenerator {
 
         let events = "";
         if (cls.events !== undefined && cls.staticClass) {
-            events = `\n  ${cls.name}.Subscribe:\n    args:\n      - type: string\n      - type: function\n  ${cls.name}.Unsubscribe:\n    args:\n      - type: string\n      - type: function`;
+            events = `\n  ${cls.name}.Subscribe:\n    args:\n    - type: string\n    - type: function\n  ${cls.name}.Unsubscribe:\n    args:\n    - type: string\n    - type: function`;
         }
 
         const staticFields = cls.static_properties?.length ? `\n${cls.static_properties.map(field => `  ${cls.name}.${field.name}:\n    property: read-only`).join("\n")}` : "";
@@ -162,7 +172,7 @@ export class YmlGenerator implements CodeGenerator {
 
         let events = "";
         if (cls.events !== undefined && !cls.staticClass) {
-            events = `\n    Subscribe:\n      args:\n        - type: string\n        - type: function\n    Unsubscribe:\n      args:\n        - type: string\n        - type: function`;
+            events = `\n    Subscribe:\n      args:\n      - type: string\n      - type: function\n    Unsubscribe:\n      args:\n      - type: string\n      - type: function`;
         }
 
         let fields = "";
