@@ -44,23 +44,25 @@ async function buildDocs() {
                 return;
             }
 
-            const fileName = path.basename(filePath);
             if (
-                fileName.startsWith("Classes") ||
-                fileName.startsWith("StaticClasses") ||
-                fileName.startsWith("Structs") ||
-                fileName.startsWith("UtilityClasses")
+                relativePath.startsWith("Classes") ||
+                relativePath.startsWith("StaticClasses") ||
+                relativePath.startsWith("Structs") ||
+                relativePath.startsWith("UtilityClasses")
             ) {
                 fileContents.staticClass =
-                    fileName.startsWith("StaticClasses") ||
-                    fileName.startsWith("UtilityClasses");
+                    relativePath.startsWith("StaticClasses") ||
+                    relativePath.startsWith("UtilityClasses");
                 docs.classes[fileContents.name] = fileContents;
                 return;
             }
         });
 	await Promise.all(promises);
 
-	await fs.promises.mkdir("./docs");
+    // console.log(docs);
+
+    if (!fs.existsSync("./docs"))
+	    await fs.promises.mkdir("./docs");
 
 	for (const [name, gen] of Object.entries(SUPPORTED_LANGUAGES)) {
 		console.log(`Generating ${name} documentation...`);

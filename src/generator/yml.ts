@@ -2,6 +2,13 @@ import { CodeGenerator, OPERATORS, Type, ComplexType as OriginalComplexType } fr
 import { Authority, DocClass, DocConstructor, DocDescriptive, DocEnumValue, DocEvent, DocFunction, DocParameter, DocReturn, Docs, DocTyped } from "../schema";
 
 export class ComplexType extends OriginalComplexType {
+
+	protected static YML_TYPE = ["bool"];
+
+    public static IsLuaType(type: string): boolean {
+        return ComplexType.YML_TYPE.includes(type) || ComplexType.LUA_TYPE.includes(type);
+    }
+    
     public mapTypename(name: string) {
         switch (name) {
 			case "boolean":
@@ -19,14 +26,19 @@ export class ComplexType extends OriginalComplexType {
             let type = this.mapTypename(this.typenames[0].name);
             if (type.startsWith("{")) {
                 ret += "any";
-                if (isArray) ret += "[]";
+                // if (isArray) ret += "[]";
                 return ret;
             } else if (ComplexType.IsLuaType(type)) {
-                ret += type;
-                if (isArray) ret += "[]";
+                if (isArray) {
+                    ret += "table";
+                } else {
+                    ret += type;
+                }
+                // if (isArray) ret += "[]";
                 return ret;
             } else {
-                ret += `\n          display: ${type}${isArray ? "[]" : ""}`;
+                ret += "table";
+                // ret += `\n          display: ${type}${isArray ? "[]" : ""}`;
             }
         } else {
             ret = "any";
@@ -80,16 +92,17 @@ export class YmlGenerator implements CodeGenerator {
         return complexType;
     }
 
-    static generateParams(params?: DocParameter[]): string {
-        if (params === undefined) return " []";
+    static generateParams(params?: DocParameter[], long_padding = false): string {
+        if (params === undefined || params.length < 1) return " []";
     
+        let padding = long_padding ? "      " : "    ";
         let ret = "";
         params.forEach(function (param) {
             param.name = param.name ?? "missing_name";
             if (param.name.endsWith("...")) param.name = "...";
     
             const type = YmlGenerator.generateType(param);
-            ret += `${type.optional ? "\n    - required: false\n        " : "\n    - "}type: ${type.toString()}`;
+            ret += `\n${padding}${type.optional ? "- required: false\n" + padding + "  " : "- "}type: ${type.toString()}`;
         });
 
         return ret;
@@ -109,7 +122,7 @@ export class YmlGenerator implements CodeGenerator {
     }
 
     static generateFunction(fun: DocFunction, accessor: string = ""): string {
-        const params = YmlGenerator.generateParams(fun.parameters);
+        const params = YmlGenerator.generateParams(fun.parameters, true);
         return `\n    ${accessor}${fun.name}:\n      args:${params}`;
     }
 
